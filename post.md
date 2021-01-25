@@ -5,7 +5,6 @@
 layout: post
 ---
 <div id="posts">
-    COUCOU!!!!!!!!!!!!!!!
     <ul>
         {% for post in site.posts %}
         <li>
