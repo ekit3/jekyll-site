@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "TEST"
+date:   2021-01-20 22:22:20 -0600
+categories: jekyll test
+---
+blablabla `bloubloublou`.
+
+Jekyll also offers powerful support for code snippets:
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
