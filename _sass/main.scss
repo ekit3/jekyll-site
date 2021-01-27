@@ -4,3 +4,41 @@
     align-self: center;
     flex-direction: column;
 }
+
+body {
+    background: #333641;
+    color: #646464;
+}
+
+.posts {
+    article {
+        padding: 10px;
+        background : #121212;
+        border-radius: 7px;
+        margin: 20px 0;
+        a {
+            color: #444;
+            font-weight: bold;
+        }
+    }
+    .highlight {
+        pre {
+            background-color: #1a1b1f;
+            border: none;
+            border-radius: 0;
+            .language-ruby {
+                background-color: #1a1b1f;
+            }
+        }
+    }
+    .extract {
+        margin-top:10px;
+    }
+    .post-header {
+        border-top: 1px solid #dac1c1;
+        border-bottom: 1px solid  #dac1c1;
+        span {
+            color: #777;
+        }
+    }
+}
