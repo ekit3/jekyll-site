@@ -33,10 +33,10 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
+exclude:
+   - Gemfile
+   - Gemfile.lock
+   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
@@ -45,3 +45,8 @@ plugins:
 sass:
   sass_dir: _sass
   style: compressed
+
+gems:
+  - jekyll-babel
+
+babel_js_extensions: 'es6, babel, jsx' # Do not process .js files
