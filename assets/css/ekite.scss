@@ -1,21 +1,24 @@
 .page-content {
     display: flex;
-    width: 75%;
+    width: 50%;
     align-self: center;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 body {
-    background: #333641;
+    background: #131417;
     color: #646464;
 }
 
 .posts {
+    border-radius: 7px;
     article {
+        border-radius: 5px;
+        border: 1px solid #2F343A;
+        margin: 20px;
         padding: 10px;
-        background : #121212;
-        border-radius: 7px;
-        margin: 20px 0;
+        background : #1e1f26;
         a {
             color: #444;
             font-weight: bold;
@@ -24,11 +27,12 @@ body {
     .highlight {
         position: relative;
         pre {
-            background-color: #1a1b1f;
             border: none;
-            border-radius: 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #131417;
             .language-ruby {
-                background-color: #1a1b1f;
+                background-color: #131417;
                 .button-copy-clipboard {
                     position: absolute;
                     top:10px;

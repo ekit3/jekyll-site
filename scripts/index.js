@@ -8,5 +8,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 copyToClipBoard = (e) => {
-    navigator.clipboard.writeText(e)
+    navigator.clipboard.writeText(e);
 };

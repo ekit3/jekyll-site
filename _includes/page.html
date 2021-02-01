@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ page.title }}</title>
-        <link rel="stylesheet" href="/assets/main.css">
-        <link rel="stylesheet" href="/css/ekite.css" />
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/main.css" />
         <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Your awesome title" />
-        <script type="text/javascript" src="/scripts/main.js"></script>
     </head>
     <body>
         {% include header.html %}
@@ -14,5 +14,7 @@
             {{ include.content }}
         </main>
         {% include footer.html %}
+        <script src="/scripts/index.js"></script>
+        <script src="../assets/libs/bootstrap.bundle.min.js"></script>
     </body>
 </html>
