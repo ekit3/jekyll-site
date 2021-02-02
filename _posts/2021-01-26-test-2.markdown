@@ -1,6 +1,6 @@
 ---
 layout: default-template
-title:  "Welcome to Jekyll!"
+title:  "Test-2"
 date:   2021-01-20 14:22:20 -0600
 categories: jekyll update
 author: julien_wittouck

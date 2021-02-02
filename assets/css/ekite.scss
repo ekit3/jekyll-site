@@ -1,29 +1,41 @@
 .page-content {
+
     display: flex;
-    width: 50%;
-    align-self: center;
-    flex-direction: column;
-    margin: 0 auto;
+    flex: 1;
+    justify-content: center;
+    overflow: auto;
+    height: calc(100vh - 47px);
+
+    .posts {
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+    }
+
 }
 
 body {
     background: #131417;
     color: #646464;
+    overflow: hidden;
 }
 
 .posts {
     border-radius: 7px;
+
     article {
+        color: #999;
         border-radius: 5px;
         border: 1px solid #2F343A;
-        margin: 20px;
+        margin-top: 20px;
         padding: 10px;
         background : #1e1f26;
         a {
-            color: #444;
-            font-weight: bold;
+            color: #707070;
+            text-decoration: none;
         }
     }
+
     .highlight {
         position: relative;
         pre {
@@ -41,14 +53,66 @@ body {
             }
         }
     }
+
     .extract {
         margin-top:10px;
+
+        .read-more {
+            align-items: center;
+            display: flex;
+            .material-icons {
+                margin-right: 5px;
+                font-size: 13px;
+            }
+        }
+
     }
+
     .post-header {
-        border-top: 1px solid #dac1c1;
-        border-bottom: 1px solid  #dac1c1;
+        padding: 5px 0;
+        border-top: 1px solid #2F343A;
+        border-bottom: 1px solid #2F343A;
         span {
             color: #777;
         }
     }
+
+}
+
+.header {
+
+    display: flex;
+    border-bottom: 1px solid #2F343A;
+    padding: 10px 0 0 20px;
+    background-color: #161b22;
+
+    a {
+        span {
+            margin-right: 5px;
+        }
+        text-decoration: none;
+        color: white;
+        align-items: center;
+        display: flex;
+        margin: 0 10px;
+        border-bottom: 2px solid red;
+        padding-bottom: 10px;
+    }
+
+    .search {
+        margin-top: -3px;
+        align-content: flex-end;
+        margin-left: auto;
+        margin-right: 10px;
+        width: 300px;
+    }
+
+}
+
+.page-content::-webkit-scrollbar {
+    width: 9px;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+    background-color: #2F343A;
 }

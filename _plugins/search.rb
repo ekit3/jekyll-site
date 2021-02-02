@@ -3,10 +3,9 @@ require "jekyll-spark"
 module Jekyll
   class SearchComponent < ComponentTag
     def template(context)
+      data = @props["data"]
       render = %Q[
-        <div class="search-component">
-          toDo create component from bootstrap
-        </div>
+        <div>example of SearchComponent</div>
       ]
     end
   end
