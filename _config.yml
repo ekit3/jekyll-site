@@ -28,7 +28,8 @@ github_username:  jekyll
 markdown: kramdown
 theme: minima
 plugins:
-  - jekyll-feed
+  - jekyll-feed+
+  - jekyll-paginate-v2
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -50,5 +51,15 @@ gems:
   - jekyll-babel
 
 babel_js_extensions: 'es6, babel, jsx' # Do not process .js files
-
+#generation folders
 permalink: /:categories/:title/
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 1
+  permalink: '/page/:num/'
+  title_suffix: ' - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true

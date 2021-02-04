@@ -1,0 +1,135 @@
+<nav aria-label="Page navigation">
+
+    {% if total_pages > 1 %}
+    <ul class="pagination justify-content-center">
+      <!-- First Page. -->
+      {% unless paginator.page == 1 %}
+        <li class="page-item">
+          <a class="page-link"
+            href="{{ site.baseurl }}{{ page.paginate_root }}" 
+            rel="first">First</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">First</span>
+        </li>
+      {% endunless %}
+
+      <!-- Previous Page. -->
+      {% if paginator.previous_page %}
+        <li class="page-item">
+          <a class="page-link" 
+            href="{{ site.baseurl }}{{ paginator.previous_page_path }}" 
+            rel="prev">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      <!-- Indicator Number. -->
+      <li class="page-item disabled">
+        <span class="page-link">
+          Page: {{ paginator.page }} of {{ total_pages }}</span>
+      </li>
+
+      <!-- Next Page. -->
+      {% if paginator.next_page %}
+        <li class="page-item">
+          <a class="page-link" 
+            href="{{ site.baseurl }}{{ paginator.next_page_path }}" 
+            rel="next">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+
+      <!-- Last Page. -->
+      {% unless paginator.page == total_pages %}
+        <li class="page-item">
+          <a class="page-link"
+            href="{{ site.paginate_path | relative_url | replace: ':num', total_pages }}"
+            rel="last">Last</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Last</span>
+        </li>
+      {% endunless %}
+    </ul>
+    {% endif %}
+  </nav>
+<!-- ESSAI 2 -->
+  <!--
+      {% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="/">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
+  -->
+  <!-- ESSAI 3 -->
+  <!--
+      {% if paginator.total_pages > 1 %}
+<div class="pagination">
+    <nav aria-label="Pagination">
+        <ul class="pagination text-center">
+        {% if paginator.previous_page %}
+        <li class="pagination-previous"><a href="{{ paginator.previous_page_path }}">Previous</a></li>
+        {% else %}
+        <li class="pagination-previous disabled">Previous</li>
+        {% endif %}
+
+        {% for counter in (1..paginator.total_pages) %}
+            {% comment %}
+                Special case: page1 will be the index page, so the link has to be generated manually
+            {% endcomment %}
+
+            {% if counter == 1%}
+                {% if counter == paginator.page %}
+                <li class="current">{{ counter }}</li>
+                {% else %}
+                <li><a href="/">{{ counter }}</a></li>
+                {% endif %}
+            {% else %}
+                {% if counter == paginator.page %}
+                <li class="current">{{ counter }}</li>
+                {% else %}
+                <li><a href="/posts/page{{ counter }}">{{ counter }}</a></li>
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <li class="pagination-next"><a href="{{ paginator.next_page_path }}">Next</a></li>
+        {% else %}
+        <li class="pagination-next disabled">Next</li>
+        {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endif %}
+  -->

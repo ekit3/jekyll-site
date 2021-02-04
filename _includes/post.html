@@ -1,5 +1,5 @@
 <div class="posts">
-      {% for post in site.posts %}
+    {% for post in paginator.posts %}
         <article>
             <h2>{{ post.title }}</h2>
             <div class="post-header">
@@ -9,7 +9,7 @@
             <div class="extract">
                 <span>{{ post.excerpt }}</span>
                 <!-- {{ post.excerpt | strip_html | strip_newlines| truncate: 250 }} -->
-                <a class="read-more" href="{{ post.url }}"><span class="material-icons">arrow_forward_ios</span> Lire la suite</a>
+                <a class="read-more" href="{{ post.url | relative_url }}"><span class="material-icons">arrow_forward_ios</span> Lire la suite</a>
             </div>
         </article>
     {% endfor %}
