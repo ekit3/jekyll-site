@@ -1,9 +1,4 @@
 {% capture page_content %}
   {% include post.html %}
-  <!-- Pagination links -->
-  {% capture spaceless %}
-  {% assign total_pages = paginator.total_pages %}
-{% endcapture %}
-{% include pagination.html %}
 {% endcapture %}
 {% include page.html content=page_content %}

@@ -1,4 +1,19 @@
 {% capture page_content %}
-  {{ content }}
+  <div class="posts single">
+    <button type="button" class="btn btn-dark btn-return" onclick="goBackHistory()">Retour</button>
+    <article>
+      <h2>{{ page.title }}</h2>
+      <div class="post-header">
+          {% include author.html %}
+          <span>Published on {{ page.date | date_to_string }}</span>
+      </div>
+      <div class="extract">
+          <span></span>{{ page.content }}</span>
+      </div>
+    </article>
+  </div>
 {% endcapture %}
 {% include page.html content=page_content %}
+
+
+

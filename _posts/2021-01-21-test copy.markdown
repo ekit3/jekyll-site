@@ -1,14 +1,19 @@
 ---
 # Layout
 layout: default-template
-title:  "TEST"
+title:  "Mon super Article Javascript"
 date:   2021-01-20 22:22:20 -0600
 categories: jekyll test
 author: laurent_duchaussoy
+excerpt_separator: <!--END_SUMMARY-->
 ---
-blablabla `bloubloublou`.
 
-Jekyll also offers powerful support for code snippets:
+Voici un tuto pour apprendre comment faire de délicieux cupcake en Javascript.<br/>
+Il suffit tout simplement : <br/>
+Ultima Syriarum est Palaestina per intervalla magna protenta, cultis abundans terris et nitidis et civitates habens quasdam egregias, nullam nulli cedentem sed sibi vicissim velut ad perpendiculum aemulas: Caesaream, quam ad honorem Octaviani principis exaedificavit Herodes, et Eleutheropolim et Neapolim itidemque Ascalonem Gazam aevo superiore exstructas.
+
+<!--END_SUMMARY-->
+
 {% highlight ruby %}
 def print_hi(name)
   puts "Hi, #{name}"

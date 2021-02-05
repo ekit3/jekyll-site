@@ -7,10 +7,18 @@
                 <span>Published on {{ post.date | date_to_string }}</span>
             </div>
             <div class="extract">
-                <span>{{ post.excerpt }}</span>
+                <span></span>{{ post.excerpt }}</span>
                 <!-- {{ post.excerpt | strip_html | strip_newlines| truncate: 250 }} -->
-                <a class="read-more" href="{{ post.url | relative_url }}"><span class="material-icons">arrow_forward_ios</span> Lire la suite</a>
+                <a class="read-more" href="{{ post.url | relative_url }}">
+                    <span class="material-icons">arrow_forward_ios</span> 
+                    Lire la suite
+                </a>
             </div>
         </article>
     {% endfor %}
+    <!-- Pagination links -->
+    {% capture spaceless %}
+    {% assign total_pages = paginator.total_pages %}
+    {% endcapture %}
+    {% include pagination.html %}
 </div>

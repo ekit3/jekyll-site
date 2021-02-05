@@ -57,7 +57,7 @@ permalink: /:categories/:title/
 # Pagination Settings
 pagination:
   enabled: true
-  per_page: 1
+  per_page: 3
   permalink: '/page/:num/'
   title_suffix: ' - page :num'
   limit: 0
