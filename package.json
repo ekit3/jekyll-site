@@ -1,0 +1,13 @@
+{
+  "name": "jekyll-app",
+  "version": "0.0.1",
+  "description": "Jekyll blog",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0"
+  }
+}
