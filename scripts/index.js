@@ -1,14 +1,14 @@
-const buttonClipBoardTemplate = `<button class='button-copy-clipboard btn btn-light btn-sm' onclick="copyToClipBoard(this.parentElement.textContent)">Copier</button>`
+const buttonClipBoardTemplate = `<button class='button-copy-clipboard btn btn-light btn-sm' onclick="copyToClipBoard(this)">Copier</button>`;
+const select2Template = "<div style='display: flex; align-items:center;'><span class='material-icons' style='font-size:18px; margin-right: 5px'>search</span>Chercher un article ...</div>";
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    const elements = document.getElementsByClassName('language-ruby');
+    const elements = document.querySelectorAll (".highlighter-rouge code")
     for(let element of elements){
-        element.innerHTML += element.innerHTML + buttonClipBoardTemplate;
+        element.parentNode.innerHTML += buttonClipBoardTemplate;
     }
     // init select2
     $('.search-article').select2({
-        placeholder: "<div style='display: flex; align-items:center;'><span class='material-icons' style='font-size:18px; margin-right: 5px'>search</span>Chercher un article ...</div>",
+        placeholder: select2Template,
         escapeMarkup: function (markup) { return markup; },
         width: '100%'
     }).on('select2:select', function (e) {
@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 copyToClipBoard = (e) => {
-    navigator.clipboard.writeText(e);
+    //to remove button copy clipboard from text copy
+    const text = e.offsetParent.firstChild.innerText;
+    navigator.clipboard.writeText(text);
 };
 
 function goBackHistory() {

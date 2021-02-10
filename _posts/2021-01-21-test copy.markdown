@@ -1,9 +1,8 @@
 ---
-# Layout
 layout: default-template
 title:  "Mon super Article Javascript"
 date:   2021-01-20 22:22:20 -0600
-categories: jekyll test
+categories: ci
 author: laurent_duchaussoy
 excerpt_separator: <!--END_SUMMARY-->
 ---
@@ -14,10 +13,10 @@ Ultima Syriarum est Palaestina per intervalla magna protenta, cultis abundans te
 
 <!--END_SUMMARY-->
 
-{% highlight ruby %}
+```ruby
 def print_hi(name)
   puts "Hi, #{name}"
 end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+```
