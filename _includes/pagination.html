@@ -4,14 +4,24 @@
       <!-- First Page. -->
       {% unless paginator.page == 1 %}
         <li class="page-item">
-      
-          <a class="page-link"
-            href="{{ site.baseurl }}{{ page.paginate_root }}" 
-            rel="first">Première</a>
+          <a 
+            class="page-link"
+            href="{{ site.baseurl }}{{ paginator.first_page_path }}"
+            rel="first">
+            <span class="material-icons">
+              first_page
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Première">Première</span>
+          </a>
         </li>
       {% else %}
         <li class="page-item disabled">
-          <span class="page-link">Première</span>
+          <span class="page-link">
+            <span class="material-icons">
+              first_page
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Première">Première</span>
+          </span>
         </li>
       {% endunless %}
 
@@ -20,11 +30,21 @@
         <li class="page-item">
           <a class="page-link" 
             href="{{ site.baseurl }}{{ paginator.previous_page_path }}" 
-            rel="prev">Précédent</a>
+            rel="prev">
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Précédent">Précédent</span>
+          </a>
         </li>
       {% else %}
         <li class="page-item disabled">
-          <span class="page-link">Précédente</span>
+          <span class="page-link">
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Précédent">Précédente</span>
+          </span>
         </li>
       {% endif %}
 
@@ -39,24 +59,43 @@
         <li class="page-item">
           <a class="page-link" 
             href="{{ site.baseurl }}{{ paginator.next_page_path }}" 
-            rel="next">Suivante</a>
+            rel="next">
+            <span class="text-link" aria-hidden="true" aria-label="Suivante">Suivante</span>
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </span>
+          </a>
         </li>
       {% else %}
         <li class="page-item disabled">
-          <span class="page-link">Suivante</span>
+          <span class="page-link">
+            <span class="text-link" aria-hidden="true" aria-label="Suivante">Suivante</span>
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </span>
+          </span>
         </li>
       {% endif %}
-
       <!-- Last Page. -->
       {% unless paginator.page == total_pages %}
         <li class="page-item">
           <a class="page-link"
-            href="{{ site.paginate_path | relative_url | replace: ':num', total_pages }}"
-            rel="last">Dernière</a>
+            href="{{ site.baseurl }}{{ paginator.last_page_path }}"
+            rel="last">
+            <span class="text-link" aria-hidden="true" aria-label="Dernière">Dernière</span>
+            <span class="material-icons">
+              last_page
+            </span>
+          </a>
         </li>
       {% else %}
         <li class="page-item disabled">
-          <span class="page-link">Dernière</span>
+          <span class="page-link">
+            <span class="text-link" aria-hidden="true" aria-label="Dernière">Dernière</span>
+            <span class="material-icons" aria-hidden="true">
+              last_page
+            </span>
+          </span>
         </li>
       {% endunless %}
     </ul>
