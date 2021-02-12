@@ -1,5 +1,5 @@
-const buttonClipBoardTemplate = `<button class='button-copy-clipboard btn btn-light btn-sm' onclick="copyToClipBoard(this)">Copier</button>`;
-const select2Template = "<div style='display: flex; align-items:center;'><span class='material-icons' style='font-size:18px; margin-right: 5px'>search</span>Chercher un article ...</div>";
+const buttonClipBoardTemplate = `<button class="btn btn-sm button-copy-clipboard" alt="Copy example source" onclick="copyToClipBoard(this)"><span aria-hidden="true" aria-label="Copy example source to clipboard" class="material-icons">content_copy</span></button>`;
+const select2Template = "<div style='display: flex; align-items:center;'><span class='material-icons'>search</span><span class='search-placeholder'>Chercher un article ...</span></div>";
 
 document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll (".highlighter-rouge code")
