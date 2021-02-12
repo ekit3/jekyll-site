@@ -2,7 +2,7 @@
 layout: default-template
 title:  "Welcome to Jekyll!"
 date:   2021-01-20 14:22:20 -0600
-categories: jekyll update
+categories: ci
 author: julien_wittouck
 excerpt_separator: <!--END_SUMMARY-->
 ---
@@ -14,13 +14,13 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 <!--END_SUMMARY-->
 
 Jekyll also offers powerful support for code snippets:
-{% highlight ruby %}
+```ruby
 def print_hi(name)
   puts "Hi, #{name}"
 end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+```
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 

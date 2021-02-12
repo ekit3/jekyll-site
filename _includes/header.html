@@ -5,8 +5,12 @@
     <div class="search">
         <select class="search-article">
             <option></option>
-            {% for post in site.posts %}
-                <option value="{{post.url}}">{{post.title}}</option>
+            {% for category in site.categories %}
+                <optgroup label="{{ category[0] }}">
+                {% for post in category[1] %}
+                    <option value="{{post.url}}">{{post.title}}</option>
+                {% endfor %}
+            </optgroup>
             {% endfor %}
         </select>
     </div>
