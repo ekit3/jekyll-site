@@ -14,14 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:3.8 jekyll build --future
-        
-    - name: Upload the site
-      uses: actions/upload-artifact@v2.2.2
+    # deploy on github-pages
+    - uses:  helaili/jekyll-action@v2
       with:
-        name: site
-        path: ${{ github.workspace }}/_site
+        token: ${{ secrets.GITHUB_TOKEN }}
