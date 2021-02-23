@@ -15,7 +15,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    # deploy on github-pages
-    - uses:  helaili/jekyll-action@v2
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:3.8 jekyll build --future
+        
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: _site
+        CLEAN: true
