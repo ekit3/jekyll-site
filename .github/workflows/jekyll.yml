@@ -19,7 +19,7 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:3.8 jekyll build --future
+        jekyll/builder:3.8 jekyll build --future --baseurl /jekyll-site
         
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
