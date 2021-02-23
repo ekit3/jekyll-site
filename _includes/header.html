@@ -1,14 +1,14 @@
 <nav class="header">
-    <img alt="logo Ekite" src="/assets/images/logo-ekite.png">
-    <a href="/"><span class="material-icons">roofing</span><span class="a-title">Accueil</span></a>
-    <a href="/pageTest"><span class="material-icons">star_border</span>Page test</a>
+    <img alt="logo Ekite" src="{{ site.baseurl }}/assets/images/logo-ekite.png">
+    <a href="{{ site.baseurl }}/"><span class="material-icons">roofing</span><span class="a-title">Accueil</span></a>
+    <a href="{{ site.baseurl }}/pageTest"><span class="material-icons">star_border</span>Page test</a>
     <div class="search">
         <select class="search-article">
             <option></option>
             {% for category in site.categories %}
                 <optgroup label="{{ category[0] }}">
                 {% for post in category[1] %}
-                    <option value="{{post.url}}">{{post.title}}</option>
+                    <option value="{{ site.baseurl }}{{post.url}}">{{post.title}}</option>
                 {% endfor %}
             </optgroup>
             {% endfor %}
