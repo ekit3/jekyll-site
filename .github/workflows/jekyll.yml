@@ -19,6 +19,8 @@ jobs:
     
     - name: Build the site in the jekyll/builder container
       run: |
+        # copy assets from _posts submodule to jekyll assets directory
+        mv _posts/assets/* assets/
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:3.8 jekyll build --future --baseurl /jekyll-site
