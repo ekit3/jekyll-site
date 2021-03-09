@@ -21,6 +21,9 @@ jobs:
       run: |
         # copy assets from _posts submodule to jekyll assets directory
         mv _posts/assets/* assets/
+        sed -i 's|\(!\[.*\](\)|\1{{site.baseurl}}|g' _posts/*.markdown
+        
+        
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:3.8 jekyll build --future --baseurl /jekyll-site
