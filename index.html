@@ -214,7 +214,6 @@ To add new posts, simply add a file in the <code class="highlighter-rouge">_post
         <script src="/jekyll-site/assets/libs/select2.full.min.js"></script>
         <script>
             if (window.Worker) {
-                debugger
                 navigator.serviceWorker.register('/jekyll-site/worker.js').then(function(registration) {
                     console.log('ServiceWorker registration successful with scope:',  registration.scope);
                 }).catch(function(error) {
