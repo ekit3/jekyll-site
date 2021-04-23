@@ -1,0 +1,9 @@
+{% capture page_content %}
+  <div class="posts single">
+    <article>
+      <h2>{{ page.title }}</h2>
+      {{ page.content }}
+    </article>
+  </div>
+{% endcapture %}
+{% include page.html content=page_content %}

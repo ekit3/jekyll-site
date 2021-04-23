@@ -37,4 +37,3 @@ gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 # plugins
 gem 'jekyll-babel'
 gem 'jekyll-spark'
-gem 'jekyll-paginate-v2'
