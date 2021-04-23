@@ -110,5 +110,10 @@ To add new posts, simply add a file in the <code class="highlighter-rouge">_post
         <script src="/jekyll-site/scripts/index.js"></script>
         <script src="/jekyll-site/assets/libs/bootstrap.bundle.min.js"></script>
         <script src="/jekyll-site/assets/libs/select2.full.min.js"></script>
+        <script>
+            if (window.Worker) {
+                navigator.serviceWorker.register('/jekyll-site/worker.js');
+            }
+        </script>
     </body>
 </html>
