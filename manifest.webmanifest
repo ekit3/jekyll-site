@@ -1,0 +1,21 @@
+{
+    "name": "Blog Ekite",
+    "short_name": "Blog Ekite",
+    "description": "Blog Ekite.",
+    "icons": [
+        {
+            "src": "assets/images/icons/icon-32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/jekyll-site/",
+    "display": "fullscreen",
+    "theme_color": "#2F343A",
+    "background_color": "#2F343A"
+}

@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" />
         <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.png" href="logo.png" />
-        <link rel="manifest" href="ekite.webmanifest">
+        <link rel="manifest" href="{{ site.baseurl }}/manifest.webmanifest">
     </head>
     <body>
         {% include header.html %}
@@ -25,9 +25,9 @@
         <script>
             if (window.Worker) {
                 navigator.serviceWorker.register('{{ site.baseurl }}/worker.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope:',  registration.scope);
+                    // console.log('ServiceWorker registration successful with scope:',  registration.scope);
                 }).catch(function(error) {
-                    console.log('ServiceWorker registration failed:', error);
+                    console.warn('ServiceWorker registration failed:', error);
                 });
             }
         </script>
