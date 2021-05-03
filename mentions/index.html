@@ -105,9 +105,9 @@ Le site est exempté de déclaration à la Commission Nationale Informatique et 
         <script>
             if (window.Worker) {
                 navigator.serviceWorker.register('/jekyll-site/worker.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope:',  registration.scope);
+                    // console.log('ServiceWorker registration successful with scope:',  registration.scope);
                 }).catch(function(error) {
-                    console.log('ServiceWorker registration failed:', error);
+                    console.warn('ServiceWorker registration failed:', error);
                 });
             }
         </script>
