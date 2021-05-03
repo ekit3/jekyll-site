@@ -1,5 +1,5 @@
 {
-    "name": "Application Web progressive Blog Ekité",
+    "name": "Blog Ekite",
     "short_name": "Blog Ekité",
     "description": "Blog Ekité.",
     "icons": [
@@ -16,6 +16,6 @@
     ],
     "start_url": "/jekyll-site/",
     "display": "fullscreen",
-    "theme_color": "#B12A34",
-    "background_color": "#B12A34"
+    "theme_color": "#2F343A",
+    "background_color": "#2F343A"
 }
