@@ -1,0 +1,325 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta name="theme-color" content="#000000"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PWA : Innovation ou solution de consolation ?</title>
+        <link rel="stylesheet" href="/jekyll-site/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/jekyll-site/assets/css/select2.min.css" />
+        <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Bienvenue sur le Blog d'Ekite" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/jekyll-site/css/main.css" />
+        <link rel="icon" href="/jekyll-site/assets/images/favicon.png" href="logo.png" />
+        <link rel="manifest" href="/jekyll-site/manifest.webmanifest">
+    </head>
+    <body>
+        <nav class="header">
+    <a class="ekite" href="https://www.ekit3.com/"><img alt="logo Ekite" src="/jekyll-site/assets/images/logo-ekite.png"></a>
+    <a class="link" href="/jekyll-site/"><span class="material-icons">roofing</span><span class="a-title">Accueil</span></a>
+    <!--<a class="link" href="/jekyll-site/pageTest"><span class="material-icons">star_border</span>Page test</a>-->
+    <div class="search">
+        <select class="search-article">
+            <option></option>
+            
+                <optgroup label="ci">
+                
+                    <option value="/jekyll-site/articles/ci/welcome-to-jekyll/">Welcome to Jekyll!</option>
+                
+            </optgroup>
+            
+                <optgroup label="back-end">
+                
+                    <option value="/jekyll-site/articles/back-end/test-3/">Test-3</option>
+                
+                    <option value="/jekyll-site/articles/back-end/test-2/">Test-2</option>
+                
+            </optgroup>
+            
+                <optgroup label="front-end">
+                
+                    <option value="/jekyll-site/articles/front-end/test-5/">Test-5</option>
+                
+                    <option value="/jekyll-site/articles/front-end/test-4/">Test-4</option>
+                
+                    <option value="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">PWA : Innovation ou solution de consolation ?</option>
+                
+            </optgroup>
+            
+        </select>
+    </div>
+</nav>
+        <main class="page-content" aria-label="Content">
+            
+  <div class="posts single">
+    <button type="button" class="btn btn-dark btn-return" onclick="goBackHistory()">Retour</button>
+    <article>
+      <h2>PWA : Innovation ou solution de consolation ?</h2>
+      <div class="post-header">
+          
+
+          <span>Published on 20 Jan 2021</span>
+      </div>
+      <div class="extract">
+          <span></span><p><img src="/jekyll-site/assets/pwa/pwa-dbz-img.jpg" alt="image" /></p>
+
+<p>Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
+Mais qu’est ce qu’une “Progressive Web App” ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n’aurait plus rien à envier aux applications natives.
+Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre avis, nous avons rassemblé ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet. 
+<!--END_SUMMARY--></p>
+
+<h5 id="mais-doù-ça-vient-">Mais d’où ça vient ?</h5>
+
+<p>La PWA est une suite logique de l’évolution du web sur mobile.
+Avant 2007 et l’arrivée des smartphones, l’accès mobile au web se fait par le WAP.
+Il permet le téléchargement d’applications hors ligne non dépendantes d’un réseau instable et peu performant.</p>
+
+<p>L’après 2007 voit l’explosion du développement mobile au moment où les solutions WEB tournent sur des technologies dynamiques exécutées côté serveur.
+PHP en est le fer de lance. Steve Jobs imagine déjà des applications proche du principe de la PWA mais les principaux acteurs du marché font alors le choix de partir sur le développement d’applications natives permettant une meilleure UX et une meilleure intégration avec nos téléphones.</p>
+
+<p>C’est en 2010 que l’arrivée de HTML5 et CSS3 va relancer les travaux autour d’applications hybrides et la mise en place de design responsive. On cherche alors à mutualiser le développement desktop et mobile.</p>
+
+<p>Le terme PWA arrive en 2015 de la bouche d’Alex Russell, l’un des ingénieurs ayant conceptualisé la solution chez Google. PWA: Progressive Web Apps: Escaping Tabs Without Losing Our Soul”</p>
+
+<p>Aujourd’hui les PWA sont supportés par une majorité de grande entreprise de la tech (Google, Microsoft, Samsung, Mozilla, etc.) et utilisé par de nombreuses marques grand public (Starbucks, Pinterest, Spotify, etc.).</p>
+
+<p><img src="/jekyll-site/assets/pwa/pwa-speed-img.jpg" alt="image" /></p>
+
+<h5 id="oui-mais-ça-consiste-en-quoi-">Oui mais ça consiste en quoi ?</h5>
+
+<p>Les Progressive Web Apps sont des versions optimisées d’un site web pour le mobile mais intégrant des fonctionnalités du téléphone qui jusqu’à aujourd’hui étaient réservées aux applications natives: prise de photo, mode hors ligne, raccourcie sur l’écran d’accueil …
+Elles sont considérés comme des <code class="highlighter-rouge">solutions Hybrides</code>
+Supportées par le navigateur du téléphone, elles ne nécessitent pas de développement spécifique à l’OS et permettent la mutualisation des coûts de développement mobile et desktop</p>
+
+<h4 id="1-un-service-worker-pour-laccessibilité">1. Un service Worker pour l’accessibilité</h4>
+
+<p>Composante fondamentale de la PWA, il s’agit d’un script exécuté en tâche de fond qui va apporter toute l’intelligence à la PWA en interceptant les requêtes réseaux et en y appliquant des configurations.
+C’est lui qui permet en autre de:</p>
+
+<ul>
+  <li>Mettre en cache du contenu</li>
+  <li>Synchroniser des données en arrière plan</li>
+  <li>Envoyer des notifications</li>
+  <li>Utiliser les fonctionnalités de votre téléphone.</li>
+  <li>etc.</li>
+</ul>
+
+<p>Il peut également effectuer des actions hors ligne comme pousser une bannière lorsque le téléphone est hors ligne.</p>
+
+<h4 id="2-un-manifest-pour-une-expérience-mobile">2. Un Manifest pour une expérience mobile</h4>
+
+<p>Le manifest, en plus du service worker, est ce qui va vous permettre de déclarer votre PWA et de simuler une expérience native.
+Il s’agit d’un simple fichier JSON dans lequel vous allez configurer et personnaliser votre application.
+Cela permet également aux utilisateurs d’installer directement votre site web sur leur mobile ou leur desktop sans passer par les stores d’application.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog Ekite"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog Ekite"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog Ekite."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-48.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48x48"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-72.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72x72"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-96.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96x96"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-128.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128x128"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-192.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-384.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"384x384"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assets/images/icons/icon-512.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512x512"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/jekyll-site/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fullscreen"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Configuration du raccourcie mobile</p>
+
+<ul>
+  <li>Nom</li>
+  <li>URL</li>
+  <li>Icone</li>
+  <li>etc.</li>
+</ul>
+
+<h4 id="3-api-html5">3. API HTML5</h4>
+
+<p>Le développement des PWA s’est vû grandement facilité par HTML5 qui proposent de nombreuses API mises à disposition des navigateurs et permettant entre autres l’utilisation de fonctionnalités de géolocalisation, push, status de la batterie, presse papier, orientation de l’écran, les vibrations du mobile…</p>
+
+<p>Ci-après la liste des caractéristiques officielles que vous pouvez retrouver dans Lighthouse afin d’évaluer la performance de vos applications.
+Lighthouse est un plugin chrome permettant d’auditer votre site web qui vous donnera son niveau de compatibilité avec la PWA.</p>
+
+<p><b>Progressive</b></p>
+<blockquote>
+  <p>Les applications web progressives fonctionnent sur n’importe quel périphérique en intégrant les fonctionnalités disponibles du navigateur et de l’appareil utilisé.</p>
+</blockquote>
+
+<p><b>Sécurisée</b></p>
+<blockquote>
+  <p>Afin de répondre aux problématiques de sécurité des échanges entre les utilisateurs et les sites, les PWA doivent être fiables et sûres par la mise en place d’un protocole HTTPS.</p>
+</blockquote>
+
+<p><b>Engageante</b></p>
+<blockquote>
+  <p>Elles proposent une expérience utilisateur immersive en plein écran et un réengagement facilité grâce à l’envoi de notifications push web.</p>
+</blockquote>
+
+<p><b>Installable</b></p>
+<blockquote>
+  <p>l’utilisation d’un fichier manifest permet aux PWA de proposer, à l’instar d’une application mobile native, l’installation d’un raccourci sur l’écran d’accueil du terminal mobile.</p>
+</blockquote>
+
+<p><b>Rapidité</b></p>
+<blockquote>
+  <p>D’après Google, 53 % des internautes abandonnent un site si le chargement prend plus de trois secondes. Une fois le site chargé, la navigation doit se faire de manière rapide et fluide.</p>
+</blockquote>
+
+<p><b>Optimisation pour le référencement</b></p>
+<blockquote>
+  <p>utilisant les technologies du web, les progressive web app peuvent être référencées sur les moteurs de recherche de la même manière que n’importe quel site web classique.</p>
+</blockquote>
+
+<p><b>Indépendante de la connexion</b></p>
+<blockquote>
+  <p>Grâce à la gestion du cache via l’utilisation d’un Service Worker, une fois le contenu chargé une première fois, il est possible de le consulter même dans les zones de faible connexion réseau.</p>
+</blockquote>
+
+<p>D’un point de vue mise en place et compatibilité avec les langages du marché, rien d’exotique. 
+Vous pouvez retrouver la liste des framework disponible ici: <a href="https://www.hnpwa.com/" target="_blank">HNPWA</a></p>
+
+<h5 id="donc-pas-mal-davantages-">Donc pas mal d’avantages !</h5>
+
+<p>Les solution PWA sont donc assez simples à mettre en place et ont une marge d’évolution relativement importante selon le temps et l’argent qu’on y consacre.
+D’un point de vue utilisateur, l’installation se fait de façon intuitive sans même avoir à passer par les stores.
+L’expérience utilisateur peut devenir aussi immersive que sur une application native
+Les avantages principaux de la PWA sont sans aucun doute sa fluidité et sa fiabilité grâce au chargement progressif, sa capacité à proposer des parcours hors ligne ou encore par l’optimisation de l’affichage sur mobile.
+Côté développement, la co-construction avec le site web facilite l’organisation des équipes et permet de mutualiser les coûts de développement.</p>
+
+<p>Sur un marché qui ne pense plus seulement à l’expérience utilisateur mais également à l’impact environnemental, ces différents avantages s’ancrent parfaitement dans des projets d’éco-conception : moins de données à héberger, un design optimisé pour une utilisation réduite de la batterie de votre mobile mais surtout des phases de développement réduite contrairement à un projet d’application native.</p>
+
+<h5 id="mais-aussi-des-limites">Mais aussi des limites.</h5>
+
+<p>Vous avez peut être entendu que Apple et PWA ne faisaient pas bon ménage, et bien c’est vrai.
+ Vous constaterez dans le <a href="https://www.goodbarber.com/widget/browsers/" target="_blank">tableau des compatibilités</a> mis à jour dernièrement que, sans que son utilisation soit bloquée, les fonctionnalités disponibles sur Iphone et Safari sont très limitées.
+Il s’agit là du principal frein à la substitution des applications natives pour les entreprises fortement implantées sur mobile.</p>
+
+<p>Il est également à noter que la mise en place d’une PWA nécessite une sécurisation de l’ensemble des pages de votre site par le protocole https.</p>
+
+<h5 id="qui-fait-de-la-pwa-">Qui fait de la PWA ?</h5>
+
+<p>Voici 2 beaux exemples de pwa réussies:</p>
+
+<p><b>Twitter avec twitter lite: </b></p>
+
+<p>Objectifs: améliorer l’expérience sur les connexions limitées.</p>
+<ul>
+  <li>un accès simplifié sans téléchargement sur les stores</li>
+  <li>optimisation par le cache et la taille des images</li>
+  <li>Chargement en amont pour une navigation hors ligne</li>
+</ul>
+
+<p>Résultat:</p>
+<ul>
+  <li>65 % d’augmentation de pages par session</li>
+  <li>75 % d’augmentation des tweets envoyés</li>
+  <li>20 % de baisse du taux de rebond comparé au site mobile avant PWA.</li>
+</ul>
+
+<p><b>Pinterest: </b></p>
+
+<p>Objectifs: augmenter le taux de conversion pour pousser à la création de compte</p>
+<ul>
+  <li>Personnalisation de l’ergonomie et du design sur la PWA</li>
+  <li>Optimisation du chargement des images (nombreuses) pour se déployer sur les pays à faibles connections</li>
+  <li>Fidélisation avec la proposition d’ajouter le site à l’écran d’accueil</li>
+</ul>
+
+<p>Résultat:</p>
+<ul>
+  <li>Augmentation de 103 % du nombre d’utilisateurs actifs hebdomadaires</li>
+  <li>Le temps d’utilisation de l’application a connu une hausse</li>
+  <li>Le nombre d’utilisateurs en Inde et au Brésil à fortement augmenté.</li>
+</ul>
+
+<h5 id="en-conclusion">En conclusion</h5>
+
+<p>La pwa n’est donc ni une évolution des solutions mobiles natives ni une solution de consolation.
+Il s’agit d’une vraie réponse aux problématiques de déploiement sur mobile.
+Elle offre une expérience immersive, intuitive pour l’utilisateur et sa mise en place est accessible à n’importe quelle taille de projet web.
+Malheureusement son utilisation pour le développement de parcours innovants reste restreinte de par sa non compatibilité avec les fonctionnalités native des appareils IOS.
+Aujourd’hui la montée en puissance de cette technologie semble être conditionnée par Apple et sa volonté ou non d’améliorer sa prise en charge.</p>
+
+</span>
+      </div>
+    </article>
+  </div>
+
+            <footer class="footer">
+    <div class="footer-content">
+        <h4>Qui sommes nous :</h4>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"</p>
+    </div>
+    <div class="footer-content">
+        <h4>Lorem Ipsum :</h4>
+        <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </p>
+    </div>
+    <div class="footer-content">
+        <h4>Nous suivre :</h4>
+        <div class="social">
+            <a href="https://www.linkedin.com/company/ekite/" target="_blank"><img alt="linkedin" src="/jekyll-site/assets/images/logo-linkedin.png"></a>
+            <a href="https://twitter.com/Ekite_" target="_blank"><img alt="Twitter" src="/jekyll-site/assets/images/logo-twitter.png"></a>
+            <a href="https://github.com/ekit3" target="_blank"><img alt="Github" src="/jekyll-site/assets/images/logo-github.png"></a>
+        </div>
+    </div>
+</footer>
+ <div class="copyright">
+    <span>Ekite © Copyright 2021. Tous droits réservés</span>
+    <a href="/jekyll-site/mentions">Mentions légales</a>
+    <a href="https://github.com/Ekawa-fr" target="_blank">Réalisé par Ekawa</a>
+</div>
+        </main>
+        <script src="/jekyll-site/assets/libs/jquery-3.5.1.min.js"></script>
+        <script src="/jekyll-site/scripts/index.js"></script>
+        <script src="/jekyll-site/assets/libs/bootstrap.bundle.min.js"></script>
+        <script src="/jekyll-site/assets/libs/select2.full.min.js"></script>
+        <script>
+            if (window.Worker) {
+                navigator.serviceWorker.register('/jekyll-site/worker.js').then(function(registration) {
+                    // console.log('ServiceWorker registration successful with scope:',  registration.scope);
+                }).catch(function(error) {
+                    console.warn('ServiceWorker registration failed:', error);
+                });
+            }
+        </script>
+    </body>
+</html>
