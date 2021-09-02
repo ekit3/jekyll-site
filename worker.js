@@ -2,12 +2,11 @@ var PRECACHE = 'precache-v1';
 var RUNTIME = 'runtime';
 
 // list the files you want cached by the service worker
-PRECACHE_URLS = [
-  'index.html',
+/*PRECACHE_URLS = [
   './',
   'css/main.css'
-];
-
+];*/
+PRECACHE_URLS = [];
 
 // the rest below handles the installing and caching
 self.addEventListener('install', event => {

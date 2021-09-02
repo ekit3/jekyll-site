@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-09-01T15:32:41-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Ekite Blog</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-03T19:00:00-05:00</published><updated>2021-09-03T19:00:00-05:00</updated><id>/jekyll-site/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/jekyll-site/assets/pwa/pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-09-02T15:34:26-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Ekite Blog</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-03T19:00:00-05:00</published><updated>2021-09-03T19:00:00-05:00</updated><id>/jekyll-site/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/jekyll-site/assets/pwa/pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
-Mais qu’est ce qu’une “Progressive Web App” ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n’aurait plus rien à envier aux applications natives.
-Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre avis, nous avons rassemblé ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet. 
-&lt;!--END_SUMMARY--&gt;&lt;/p&gt;
+Mais qu’est ce qu’une &lt;code class=&quot;highlighter-rouge&quot;&gt;Progressive Web App&lt;/code&gt; ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n’aurait plus rien à envier aux applications natives.
+Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre avis, nous avons rassemblé ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.&lt;/p&gt;
+
+&lt;!--END_SUMMARY--&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/assets/pwa/pwa-logo.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;mais-doù-ça-vient-&quot;&gt;Mais d’où ça vient ?&lt;/h5&gt;
 
@@ -11,41 +14,39 @@ Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre
 Avant 2007 et l’arrivée des smartphones, l’accès mobile au web se fait par le WAP.
 Il permet le téléchargement d’applications hors ligne non dépendantes d’un réseau instable et peu performant.&lt;/p&gt;
 
-&lt;p&gt;L’après 2007 voit l’explosion du développement mobile au moment où les solutions WEB tournent sur des technologies dynamiques exécutées côté serveur.
-PHP en est le fer de lance. Steve Jobs imagine déjà des applications proche du principe de la PWA mais les principaux acteurs du marché font alors le choix de partir sur le développement d’applications natives permettant une meilleure UX et une meilleure intégration avec nos téléphones.&lt;/p&gt;
+&lt;p&gt;L’après 2007 et la popularisation des smartphones entraîne l’essor du développement mobile au moment où les solutions WEB tournent sur des technologies dynamiques exécutées côté serveur.
+Steve Jobs imagine déjà des applications proche du principe de la PWA mais les principaux acteurs du marché font alors le choix de partir sur le développement d’applications natives permettant une meilleure UX et une meilleure intégration avec nos téléphones.&lt;/p&gt;
 
-&lt;p&gt;C’est en 2010 que l’arrivée de HTML5 et CSS3 va relancer les travaux autour d’applications hybrides et la mise en place de design responsive. On cherche alors à mutualiser le développement desktop et mobile.&lt;/p&gt;
+&lt;p&gt;C’est en 2010 que l’arrivée de HTML5 et CSS3 va relancer les travaux autour d’applications hybrides et la mise en place de design responsive.
+On cherche alors à mutualiser le développement desktop et mobile.&lt;/p&gt;
 
-&lt;p&gt;Le terme PWA arrive en 2015 de la bouche d’Alex Russell, l’un des ingénieurs ayant conceptualisé la solution chez Google. PWA: Progressive Web Apps: Escaping Tabs Without Losing Our Soul”&lt;/p&gt;
+&lt;p&gt;Le terme PWA arrive en 2015 de la bouche d’Alex Russell, l’un des ingénieurs ayant conceptualisé la solution chez Google.
+PWA: “Progressive Web Apps: Escaping Tabs Without Losing Our Soul”&lt;/p&gt;
 
-&lt;p&gt;Aujourd’hui les PWA sont supportés par une majorité de grande entreprise de la tech (Google, Microsoft, Samsung, Mozilla, etc.) et utilisé par de nombreuses marques grand public (Starbucks, Pinterest, Spotify, etc.).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/assets/pwa/pwa-speed-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Aujourd’hui les PWA sont supportés par une majorité de grandes entreprises de la tech (Google, Microsoft, Samsung, Mozilla, etc.) et utilisées par de nombreuses marques grand public (Starbucks, Pinterest, Spotify, etc.).&lt;/p&gt;
 
 &lt;h5 id=&quot;oui-mais-ça-consiste-en-quoi-&quot;&gt;Oui mais ça consiste en quoi ?&lt;/h5&gt;
 
-&lt;p&gt;Les Progressive Web Apps sont des versions optimisées d’un site web pour le mobile mais intégrant des fonctionnalités du téléphone qui jusqu’à aujourd’hui étaient réservées aux applications natives: prise de photo, mode hors ligne, raccourcie sur l’écran d’accueil …
-Elles sont considérés comme des &lt;code class=&quot;highlighter-rouge&quot;&gt;solutions Hybrides&lt;/code&gt;
-Supportées par le navigateur du téléphone, elles ne nécessitent pas de développement spécifique à l’OS et permettent la mutualisation des coûts de développement mobile et desktop&lt;/p&gt;
+&lt;p&gt;Les Progressive Web Apps sont des versions optimisées d’un site web pour le mobile mais intégrant des fonctionnalités du téléphone qui jusqu’à aujourd’hui étaient réservées aux applications natives: prise de photo, mode hors ligne, raccourcie sur l’écran d’accueil etc.
+Elles sont considérés comme des &lt;code class=&quot;highlighter-rouge&quot;&gt;solutions Hybrides&lt;/code&gt;.
+Supportées par le navigateur du téléphone, elles ne nécessitent pas de développement spécifique à l’OS et permettent la mutualisation des coûts de développement mobile et desktop.&lt;/p&gt;
 
-&lt;h4 id=&quot;1-un-service-worker-pour-laccessibilité&quot;&gt;1. Un service Worker pour l’accessibilité&lt;/h4&gt;
+&lt;h4 id=&quot;1--un-service-worker-au-coeur-de-lapplication&quot;&gt;1- Un service Worker au coeur de l’application&lt;/h4&gt;
 
-&lt;p&gt;Composante fondamentale de la PWA, il s’agit d’un script exécuté en tâche de fond qui va apporter toute l’intelligence à la PWA en interceptant les requêtes réseaux et en y appliquant des configurations.
-C’est lui qui permet en autre de:&lt;/p&gt;
-
+&lt;p&gt;Composante fondamentale de la PWA, il s’agit d’un script exécuté en tâche de fond qui va apporter toute l’intelligence à la PWA en interceptant les requêtes réseaux et en y appliquant des configurations. 
+Il permet :&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Mettre en cache du contenu&lt;/li&gt;
-  &lt;li&gt;Synchroniser des données en arrière plan&lt;/li&gt;
-  &lt;li&gt;Envoyer des notifications&lt;/li&gt;
-  &lt;li&gt;Utiliser les fonctionnalités de votre téléphone.&lt;/li&gt;
+  &lt;li&gt;Mise en cache du contenu&lt;/li&gt;
+  &lt;li&gt;Synchronisation des données en arrière plan&lt;/li&gt;
+  &lt;li&gt;Push de notifications&lt;/li&gt;
+  &lt;li&gt;Utiliser les fonctionnalités de votre téléphone&lt;/li&gt;
+  &lt;li&gt;Il peut également effectuer des actions hors ligne comme pousser une bannière lorsque le téléphone est hors ligne&lt;/li&gt;
   &lt;li&gt;etc.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Il peut également effectuer des actions hors ligne comme pousser une bannière lorsque le téléphone est hors ligne.&lt;/p&gt;
+&lt;h4 id=&quot;2--un-manifest-pour-une-expérience-mobile&quot;&gt;2- Un Manifest pour une expérience mobile&lt;/h4&gt;
 
-&lt;h4 id=&quot;2-un-manifest-pour-une-expérience-mobile&quot;&gt;2. Un Manifest pour une expérience mobile&lt;/h4&gt;
-
-&lt;p&gt;Le manifest, en plus du service worker, est ce qui va vous permettre de déclarer votre PWA et de simuler une expérience native.
+&lt;p&gt;Le manifest, en plus du service worker, va vous permettre de transformer votre site en PWA et de simuler une expérience native.
 Il s’agit d’un simple fichier JSON dans lequel vous allez configurer et personnaliser votre application.
 Cela permet également aux utilisateurs d’installer directement votre site web sur leur mobile ou leur desktop sans passer par les stores d’application.&lt;/p&gt;
 
@@ -97,8 +98,7 @@ Cela permet également aux utilisateurs d’installer directement votre site web
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Configuration du raccourcie mobile&lt;/p&gt;
-
+&lt;p&gt;Configuration du raccourci de l’application mobile&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Nom&lt;/li&gt;
   &lt;li&gt;URL&lt;/li&gt;
@@ -106,12 +106,16 @@ Cela permet également aux utilisateurs d’installer directement votre site web
   &lt;li&gt;etc.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;3-api-html5&quot;&gt;3. API HTML5&lt;/h4&gt;
+&lt;h4 id=&quot;3--des-apis-html5-pour-les-fonctionnalités&quot;&gt;3- Des APIs HTML5 pour les fonctionnalités&lt;/h4&gt;
 
-&lt;p&gt;Le développement des PWA s’est vû grandement facilité par HTML5 qui proposent de nombreuses API mises à disposition des navigateurs et permettant entre autres l’utilisation de fonctionnalités de géolocalisation, push, status de la batterie, presse papier, orientation de l’écran, les vibrations du mobile…&lt;/p&gt;
+&lt;p&gt;Le développement des PWA s’est vû grandement facilité par HTML5 qui proposent de nombreuses API mises à disposition des navigateurs.
+Permettant, entre autres, l’utilisation de fonctionnalités de géolocalisation, push, status de la batterie, presse papier, orientation de l’écran, les vibrations du mobile etc.
+Vous pouvez retrouver la liste de ces fonctionnalités détaillées sur ce &lt;a href=&quot;https://whatwebcando.today/&quot; target=&quot;_blank&quot;&gt;site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/assets/pwa/pwa-lighthouse.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ci-après la liste des caractéristiques officielles que vous pouvez retrouver dans Lighthouse afin d’évaluer la performance de vos applications.
-Lighthouse est un plugin chrome permettant d’auditer votre site web qui vous donnera son niveau de compatibilité avec la PWA.&lt;/p&gt;
+Lighthouse est un plugin Chrome permettant d’auditer votre site web qui vous donnera son niveau de compatibilité avec la PWA.&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Progressive&lt;/b&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -130,7 +134,7 @@ Lighthouse est un plugin chrome permettant d’auditer votre site web qui vous d
 
 &lt;p&gt;&lt;b&gt;Installable&lt;/b&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;l’utilisation d’un fichier manifest permet aux PWA de proposer, à l’instar d’une application mobile native, l’installation d’un raccourci sur l’écran d’accueil du terminal mobile.&lt;/p&gt;
+  &lt;p&gt;L’utilisation d’un fichier Manifest permet aux PWA de proposer, à l’instar d’une application mobile native, l’installation de l’application sur l’écran d’accueil du terminal mobile.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;b&gt;Rapidité&lt;/b&gt;&lt;/p&gt;
@@ -140,7 +144,7 @@ Lighthouse est un plugin chrome permettant d’auditer votre site web qui vous d
 
 &lt;p&gt;&lt;b&gt;Optimisation pour le référencement&lt;/b&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;utilisant les technologies du web, les progressive web app peuvent être référencées sur les moteurs de recherche de la même manière que n’importe quel site web classique.&lt;/p&gt;
+  &lt;p&gt;Utilisant les technologies du web, les progressive web app peuvent être référencées sur les moteurs de recherche de la même manière que n’importe quel site web classique.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;b&gt;Indépendante de la connexion&lt;/b&gt;&lt;/p&gt;
@@ -149,29 +153,30 @@ Lighthouse est un plugin chrome permettant d’auditer votre site web qui vous d
 &lt;/blockquote&gt;
 
 &lt;p&gt;D’un point de vue mise en place et compatibilité avec les langages du marché, rien d’exotique. 
-Vous pouvez retrouver la liste des framework disponible ici: &lt;a href=&quot;https://www.hnpwa.com/&quot; target=&quot;_blank&quot;&gt;HNPWA&lt;/a&gt;&lt;/p&gt;
+Vous pouvez retrouver la liste des framework disponible ici:  &lt;a href=&quot;https://www.hnpwa.com/&quot; target=&quot;_blank&quot;&gt;HNPWA&lt;/a&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;donc-pas-mal-davantages-&quot;&gt;Donc pas mal d’avantages !&lt;/h5&gt;
 
 &lt;p&gt;Les solution PWA sont donc assez simples à mettre en place et ont une marge d’évolution relativement importante selon le temps et l’argent qu’on y consacre.
 D’un point de vue utilisateur, l’installation se fait de façon intuitive sans même avoir à passer par les stores.
-L’expérience utilisateur peut devenir aussi immersive que sur une application native
+L’expérience utilisateur peut devenir aussi immersive que sur une application native.
 Les avantages principaux de la PWA sont sans aucun doute sa fluidité et sa fiabilité grâce au chargement progressif, sa capacité à proposer des parcours hors ligne ou encore par l’optimisation de l’affichage sur mobile.
-Côté développement, la co-construction avec le site web facilite l’organisation des équipes et permet de mutualiser les coûts de développement.&lt;/p&gt;
+La co-construction avec le site web facilite l’organisation des équipes et permet de mutualiser les coûts de développement.&lt;/p&gt;
 
-&lt;p&gt;Sur un marché qui ne pense plus seulement à l’expérience utilisateur mais également à l’impact environnemental, ces différents avantages s’ancrent parfaitement dans des projets d’éco-conception : moins de données à héberger, un design optimisé pour une utilisation réduite de la batterie de votre mobile mais surtout des phases de développement réduite contrairement à un projet d’application native.&lt;/p&gt;
+&lt;p&gt;Sur un marché qui ne pense plus seulement à l’expérience utilisateur mais également à l’impact environnemental.
+Ces différents avantages s’ancrent parfaitement dans des projets d’éco-conception.
+Moins de données à héberger, un design optimisé pour une utilisation réduite de la batterie de votre mobile mais surtout des phases de développement réduite contrairement à un projet d’application native.&lt;/p&gt;
 
 &lt;h5 id=&quot;mais-aussi-des-limites&quot;&gt;Mais aussi des limites.&lt;/h5&gt;
 
-&lt;p&gt;Vous avez peut être entendu que Apple et PWA ne faisaient pas bon ménage, et bien c’est vrai.
- Vous constaterez dans le &lt;a href=&quot;https://www.goodbarber.com/widget/browsers/&quot; target=&quot;_blank&quot;&gt;tableau des compatibilités&lt;/a&gt; mis à jour dernièrement que, sans que son utilisation soit bloquée, les fonctionnalités disponibles sur Iphone et Safari sont très limitées.
+&lt;p&gt;Vous avez peut être entendu que Apple et PWA ne faisaient pas bon ménage, et malheuresement comme vous pouvez le constater dans le &lt;a href=&quot;https://www.goodbarber.com/widget/browsers/&quot; target=&quot;_blank&quot;&gt;tableau des compatibilités&lt;/a&gt;, les fonctionnalités disponibles sur Iphone et Safari sont aujourd’hui encore très limitées.
 Il s’agit là du principal frein à la substitution des applications natives pour les entreprises fortement implantées sur mobile.&lt;/p&gt;
 
 &lt;p&gt;Il est également à noter que la mise en place d’une PWA nécessite une sécurisation de l’ensemble des pages de votre site par le protocole https.&lt;/p&gt;
 
 &lt;h5 id=&quot;qui-fait-de-la-pwa-&quot;&gt;Qui fait de la PWA ?&lt;/h5&gt;
 
-&lt;p&gt;Voici 2 beaux exemples de pwa réussies:&lt;/p&gt;
+&lt;p&gt;Voici 2 exemples de PWA réussies:&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Twitter avec twitter lite: &lt;/b&gt;&lt;/p&gt;
 
@@ -189,9 +194,8 @@ Il s’agit là du principal frein à la substitution des applications natives p
   &lt;li&gt;20 % de baisse du taux de rebond comparé au site mobile avant PWA.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;b&gt;Pinterest: &lt;/b&gt;&lt;/p&gt;
-
-&lt;p&gt;Objectifs: augmenter le taux de conversion pour pousser à la création de compte&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;ALIBABA (2016): &lt;/b&gt;
+Objectifs: augmenter le taux de conversion sur mobile&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Personnalisation de l’ergonomie et du design sur la PWA&lt;/li&gt;
   &lt;li&gt;Optimisation du chargement des images (nombreuses) pour se déployer sur les pays à faibles connections&lt;/li&gt;
@@ -200,9 +204,9 @@ Il s’agit là du principal frein à la substitution des applications natives p
 
 &lt;p&gt;Résultat:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Augmentation de 103 % du nombre d’utilisateurs actifs hebdomadaires&lt;/li&gt;
-  &lt;li&gt;Le temps d’utilisation de l’application a connu une hausse&lt;/li&gt;
-  &lt;li&gt;Le nombre d’utilisateurs en Inde et au Brésil à fortement augmenté.&lt;/li&gt;
+  &lt;li&gt;76% de conversions en plus sur tous les navigateurs 30% sur Android&lt;/li&gt;
+  &lt;li&gt;14% d’utilisateurs actifs mensuels en plus sur iOS&lt;/li&gt;
+  &lt;li&gt;4X plus d’ajout à l’écran d’accueil&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&quot;en-conclusion&quot;&gt;En conclusion&lt;/h5&gt;
@@ -210,5 +214,28 @@ Il s’agit là du principal frein à la substitution des applications natives p
 &lt;p&gt;La pwa n’est donc ni une évolution des solutions mobiles natives ni une solution de consolation.
 Il s’agit d’une vraie réponse aux problématiques de déploiement sur mobile.
 Elle offre une expérience immersive, intuitive pour l’utilisateur et sa mise en place est accessible à n’importe quelle taille de projet web.
+Elle permet de rapidement mutualiser les coûts grâce à sa facilité de transformation.
 Malheureusement son utilisation pour le développement de parcours innovants reste restreinte de par sa non compatibilité avec les fonctionnalités native des appareils IOS.
-Aujourd’hui la montée en puissance de cette technologie semble être conditionnée par Apple et sa volonté ou non d’améliorer sa prise en charge.&lt;/p&gt;</content><author><name>Romain Vermeeren</name></author><category term="front-end" /><summary type="html">Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique. Mais qu’est ce qu’une “Progressive Web App” ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n’aurait plus rien à envier aux applications natives. Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre avis, nous avons rassemblé ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</summary></entry></feed>
+Aujourd’hui la montée en puissance de cette technologie semble être conditionnée par Apple et sa volonté ou non d’améliorer sa prise en charge.
+Après 5 ans d’existence, cette technologie n’a aujourd’hui pas encore réussi à percer.&lt;/p&gt;
+
+&lt;p&gt;Glossaire:&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;WAP:&lt;/b&gt; C’est le premier protocole de communication qui a permis de relier le réseau mobile à internet.
+&lt;b&gt;Application Hybride: Une application hybride, contrairement aux applications natives qui utilisent directement les composants du device (mobile/tablette..), utilise le navigateur WEB embarqué dans le device &amp;amp; les technologies qu’on retrouve dans le développement web, HTML, CSS, JavaScript.
+&lt;b&gt;Responsive:&lt;/b&gt; Le Responsive Web Design (RWD) est une technique qui consiste à ajuster automatiquement l’affichage d’une page web à la taille d’écran du terminal utilisé.
+&lt;b&gt;Script:&lt;/b&gt; Suite de commandes permettant d’automatiser une tâche.
+&lt;b&gt;Stores d’application:&lt;/b&gt; Bibliothèque tel que l’Apple store ou le Play store permettant de trouver et d’installer des applications sur son téléphone. 
+&lt;b&gt;Framework:&amp;lt;/b Un Framework est le regroupement d’outils facilitant le développement de logiciels et la création de systèmes. Aussi appelé environnement de développement.&lt;/b&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://blog.octo.com/cest-quoi-une-progressive-web-app-pwa/&lt;/li&gt;
+  &lt;li&gt;https://fr.wikipedia.org/wiki/Progressive_web_app&lt;/li&gt;
+  &lt;li&gt;https://developer.mozilla.org/fr/docs/Web/Progressive_web_apps&lt;/li&gt;
+  &lt;li&gt;https://www.novaway.fr/blog/tech/3-exemples-pwa&lt;/li&gt;
+  &lt;li&gt;https://www.goodbarber.com/blog/progressive-web-apps-browser-support-compatibility-a883/&lt;/li&gt;
+  &lt;li&gt;https://developers.google.com/web/showcase/2017/twitter&lt;/li&gt;
+  &lt;li&gt;https://developers.google.com/web/showcase/2016/flipkart&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Romain Vermeeren</name></author><category term="front-end" /><summary type="html">Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique. Mais qu’est ce qu’une Progressive Web App ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n’aurait plus rien à envier aux applications natives. Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre avis, nous avons rassemblé ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</summary></entry></feed>
