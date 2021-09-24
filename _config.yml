@@ -41,6 +41,7 @@ exclude:
    - Gemfile
    - Gemfile.lock
    - node_modules
+   - .idea/
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
@@ -54,7 +55,6 @@ gems:
   - jekyll-babel
   - kramdown
   - rouge
-  
 
 babel_js_extensions: 'es6, babel, jsx' # Do not process .js files
 #generation folders
