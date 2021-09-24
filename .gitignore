@@ -3,4 +3,5 @@ _site
 .jekyll-metadata
 node_modules
 *.log
-/_posts/2021-01-26-mock.markdown.md
+
+.idea/
