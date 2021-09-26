@@ -1,6 +1,12 @@
-{% assign author = site.data.authors[post.author] %}
-{% if author %}
-    <span>
-        Written by <a href="{{ author.web }}">{{ author.name }}</a>
-    </span>
+<span>Written by</span>
+{% if page.path contains '_posts' %}
+    {% assign authors = page.author %}
+{% else %}
+    {% assign authors = post.author %}
 {% endif %}
+{% for author in authors %}
+    {% assign currentAuthor = site.data.authors[author] %}
+    {% if author %}
+         <a href="{{ currentAuthor.web }}">{{ currentAuthor.name }}</a>,
+    {% endif %}
+{% endfor %}
