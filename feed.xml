@@ -1,4 +1,264 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-10-26T23:40:18-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/jekyll-site/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-10-26T23:42:00-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Mutation testing</title><link href="/jekyll-site/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/jekyll-site/articles/testing/mutation-testing</id><content type="html" xml:base="/jekyll-site/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
+Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
+Le programmeur devait se contenter de tester intelligemment à moindre coût.
+Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects.
+Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. 
+Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing.&lt;/p&gt;
+
+&lt;p&gt;Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications.&lt;/p&gt;
+
+&lt;p&gt;Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus,
+mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.&lt;/p&gt;
+
+&lt;!--END_SUMMARY--&gt;
+
+&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
+
+&lt;p&gt;Dans la plupart des projets actuels, les équipes mettent un taux minimal arbitraire de couverture du code à 70 ou 80% (en fonction de la maturité des équipes).&lt;/p&gt;
+
+&lt;p&gt;Cet indicateur ne veut pas dire que le code a été testé à 70 ou 80% et même une couverture de code à 100% n’exclut pas de trouver un bug même si cela peut apporter une illusion de sécurité : qui n’a jamais vu un test avec un assert(true).&lt;/p&gt;
+
+&lt;p&gt;En parallèle, dans les projets informatiques, plus un bug est découvert tard, plus il coûte cher, le mutation testing peut aider à réduire ces coûts.&lt;/p&gt;
+
+&lt;p&gt;Le concept du mutation testing est là pour venir modifier le code “métier” et ainsi vérifier si les tests unitaires arrivent à détecter les changements.&lt;/p&gt;
+
+&lt;p&gt;Les objectifs du mutation testing sont multiples :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Identifier des tests qui ne détectent pas les changements&lt;/li&gt;
+  &lt;li&gt;Avoir un score de mutation&lt;/li&gt;
+  &lt;li&gt;Apprendre et analyser l’état d’infection d’une application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vocabulaire-du-mutation-testing&quot;&gt;Vocabulaire du mutation testing&lt;/h2&gt;
+
+&lt;p&gt;Les tests unitaires sont une composante du mutation testing. 
+Le test unitaire correspond à la vérification d’un bon comportement d’une petite partie d’une application.&lt;/p&gt;
+
+&lt;p&gt;Une mutation est, quant à elle, une modification du code source, comme par exemple, l’action de remplacer un opérateur par un autre, voici quelques exemples :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;passer de + à  -&lt;/li&gt;
+  &lt;li&gt;passer de &amp;gt;= à  ==&lt;/li&gt;
+  &lt;li&gt;passer de true à false&lt;/li&gt;
+  &lt;li&gt;supprimer une instruction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Un mutant est le code source modifié par une mutation&lt;/p&gt;
+
+&lt;h2 id=&quot;principe-de-mutation&quot;&gt;Principe de mutation&lt;/h2&gt;
+
+&lt;p&gt;Le principe de mutation se base sur un code “métier” sur lequel on souhaite tester la pertinence des tests unitaires.&lt;/p&gt;
+
+&lt;p&gt;Exemple de mutations possibles et de code métier associés&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!=&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;!=&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;=&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La phase de génération consiste à parcourir le code métier et à déterminer les mutations possibles. Dès qu’une mutation est applicable alors elle générera un nouveau “mutant”.&lt;/p&gt;
+
+&lt;p&gt;Le processus de génération des mutants peut être gourmand en ressources car le nombre de mutants peut varier en fonction de la complexité du code métier (il y a quelques années c’était encore un frein à l’utilisation de ce concept). 
+Il existe des frameworks permettant de générer des mutants de façon “automatique” tel que Pitest pour Java.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class.png&quot; alt=&quot;Une simple classe d'addition&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation1.png&quot; alt=&quot;La classe d'addition mutée (un + transformé en -)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png&quot; alt=&quot;La classe d'addition mutée (un return 0)&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;processus-de-tests&quot;&gt;Processus de tests&lt;/h2&gt;
+
+&lt;p&gt;En reprenant l’exemple précédent, nous avons une classe qui a pour but de faire l’addition de deux nombres. Pitest a été utilisé pour le projet.
+Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
+
+&lt;h3 id=&quot;cas-1--absence-de-test-unitaire&quot;&gt;Cas 1 : absence de test unitaire&lt;/h3&gt;
+
+&lt;p&gt;Le but de ce test est de voir comment le mutation testing peut aider un projet sans test unitaire même si cela peut paraître une hérésie… c’est possible…&lt;/p&gt;
+
+&lt;p&gt;Voici le résultat de Pitest sur notre classe :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-no-tests.png&quot; alt=&quot;un rapport PiTest en l'absence de tests unitaires&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pitest a créé deux mutants (mis en exemple précédemment) qui sont toujours en vie à la fin du test. Voici le détail des mutations qui ont été effectuées :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-mutations.png&quot; alt=&quot;les mutations faites par Pitest sur notre classse&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cas-2--ajout-dun-test-unitaire&quot;&gt;Cas 2 : ajout d’un test unitaire&lt;/h3&gt;
+
+&lt;p&gt;Pour l’exemple, nous avons un test unitaire qui ne couvre pas entièrement la méthode testée.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-add-positive.png&quot; alt=&quot;un test unitaire&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le résultat du mutation testing est le suivant :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-first-test.png&quot; alt=&quot;le résultat de pitest avec notre premier test&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le mutation testing révèle que les tests unitaires ne sont pas suffisamment costaud. Il faut les renforcer.&lt;/p&gt;
+
+&lt;p&gt;Le mutant encore debout est :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png&quot; alt=&quot;La classe d'addition mutée (un return 0)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour cela, il faut analyser le rapport que Pitest donne et appliquer un correctif sur le test unitaire pour tuer le mutant au prochain lancement de Pitest.&lt;/p&gt;
+
+&lt;h2 id=&quot;cas-3--renforcement-du-test-unitaire&quot;&gt;Cas 3 : renforcement du test unitaire&lt;/h2&gt;
+
+&lt;p&gt;Suite au renfort du test unitaire, Pitest indique que les tests sont bons et que tous les mutants ont été tués.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-renforce.png&quot; alt=&quot;Le test renforcé&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-test-renforce.png&quot; alt=&quot;Le résultat de pitest avec le test renforcé&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sur un code court et très simple, Pitest a mis moins de 3s (en moyenne) pour générer des mutants et tester ces derniers.
+Il a permis de remonter des faiblesses dans les tests unitaires.
+Le travail d’analyse sur les mutants encore en vie est assez simple pour ce cas.&lt;/p&gt;
+
+&lt;p&gt;Afin de connaître les limites du mutation testing nous allons l’utiliser sur du code plus complexe.&lt;/p&gt;
+
+&lt;p&gt;Schéma d’explication du framework :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./fonctionnement-fwk.jpg&quot; alt=&quot;Le fonctionnement du framework&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;exemple-avec-le-périmètre-dun-rectangle&quot;&gt;Exemple avec le périmètre d’un rectangle&lt;/h2&gt;
+
+&lt;p&gt;Le but de ce programme est de calculer l’aire d’un rectangle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle.png&quot; alt=&quot;Méthode de calcul d'une aire de rectangle&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On se doit de vérifier si l’aire du rectangle n’est pas égale à 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-rectangle-area.png&quot; alt=&quot;Test de la méthode d'aire du rectangle&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Une interprétation supplémentaire peut être apportée au code : “Un carré n’est pas un rectangle”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle-2.png&quot; alt=&quot;Méthode de calcul d'une aire de rectangle modifiée&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Suite au changement de code un test est ajouté afin de tester un carré dont les côtés valent 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-square-area.png&quot; alt=&quot;Test que l'objet n'est pas un carré&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Dans les deux cas, Pitest remonte une couverture sur le mutation testing de 0%.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-square.png&quot; alt=&quot;Résultat de Pitest&quot; /&gt;
+&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-square-detailed.png&quot; alt=&quot;Résultat Pitest détailllé&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici les mutants survivants créés par Pitest. 
+Il faut donc analyser les problèmes et renforcer les tests unitaires. 
+L’analyse en fonction des résultats peut prendre du temps.&lt;/p&gt;
+
+&lt;h2 id=&quot;exemple-avec-une-application-plus-complexe&quot;&gt;Exemple avec une application plus complexe&lt;/h2&gt;
+
+&lt;h3 id=&quot;spring-petclinic&quot;&gt;Spring PetClinic&lt;/h3&gt;
+
+&lt;p&gt;Spring PetClinic est une application exemple proposée par Spring. Elle montre les principales fonctionnalités du framework. C’est une application simple qui compte environ 250 lignes de code.&lt;/p&gt;
+
+&lt;p&gt;Elle propose des tests JUnit 5 avec quelques tests unitaires mais surtout des tests d’intégration, dont certains avec des mocks. Au total une quarantaine de tests et une couverture de 93%&lt;/p&gt;
+
+&lt;p&gt;L’exécution de l’ensemble des tests prend environ dix secondes dans un IDE.
+La commande &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test&lt;/code&gt; s’exécute approximativement en 20 secondes.&lt;/p&gt;
+
+&lt;p&gt;On peut exécuter pitest sur un projet Maven en tapant directement la commande : &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn org.pitest:pitest-maven:mutationCoverage&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Il est nécessaire d’intégrer un plugin pour le support de Junit 5 (par défaut, PiTest ne supporte que JUnit 4). Le message n’est d’ailleurs pas très précis.
+Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-maven.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;================================================================================
+- Statistics
+================================================================================
+&amp;gt;&amp;gt; Line Coverage: 222/238 (93%)
+&amp;gt;&amp;gt; Generated 111 mutations Killed 74 (67%)
+&amp;gt;&amp;gt; Mutations with no coverage 8. Test strength 72%
+&amp;gt;&amp;gt; Ran 235 tests (2.12 tests per mutation)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le temps d’exécution est d’un peu plus de 2 minutes.&lt;/p&gt;
+
+&lt;h2 id=&quot;quel-indicateur-mutation-testing-&quot;&gt;Quel indicateur mutation testing ?&lt;/h2&gt;
+
+&lt;p&gt;Pitest fournit un taux de force par rapport au mutation testing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest-result.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce taux peut être utilisé avec le % de couverture de code dans les équipes comme indicateur de qualité sur les premiers niveaux de tests.&lt;/p&gt;
+
+&lt;h2 id=&quot;implémentations-possibles-sur-différents-langages&quot;&gt;Implémentations possibles sur différents langages&lt;/h2&gt;
+
+&lt;p&gt;Il existe différents outils pour faire du mutation testing selon les langages :&lt;/p&gt;
+
+&lt;p&gt;Java → Pitest&lt;/p&gt;
+
+&lt;p&gt;Kotlin → Pitest&lt;/p&gt;
+
+&lt;p&gt;Scala → Stryker&lt;/p&gt;
+
+&lt;p&gt;PHP → Infection&lt;/p&gt;
+
+&lt;p&gt;JS → Stryker&lt;/p&gt;
+
+&lt;p&gt;TypeScript → Stryker&lt;/p&gt;
+
+&lt;p&gt;Python → MutPy&lt;/p&gt;
+
+&lt;h2 id=&quot;où-situer-le-mutation-testing-dans-les-méthodes-bdd-et-tdd-&quot;&gt;Où situer le mutation testing dans les méthodes BDD et TDD ?&lt;/h2&gt;
+
+&lt;p&gt;Le Mutation testing est un complément à ces méthodes, il permet de couvrir l’ensemble des tests unitaires et du code en apportant des modifications.&lt;/p&gt;
+
+&lt;p&gt;Le TDD aide à garder le code modulaire cependant il ne suffit pas à fournir un code qui fonctionne exactement comme prévu car il est toujours possible d’ajouter du code à une partie de l’application sans en décrire les attentes. Ceci peut mettre en danger l’ensemble du code. Le mutation testing permet de détecter de façon régulière les possibles “brèches” dans le développement.&lt;/p&gt;
+
+&lt;p&gt;Le BDD, quant à lui, est là pour décrire le comportement que doit avoir une application. Le mutation testing lui va s’assurer du bon fonctionnement d’une fonction et non du comportement global.&lt;/p&gt;
+
+&lt;h2 id=&quot;limites-sur-le-mutation-testing&quot;&gt;Limites sur le mutation testing&lt;/h2&gt;
+
+&lt;p&gt;L’une des premières limites du mutation testing portait sur l’impact qu’il avait sur les ressources d’un ordinateur (CPU/RAM). Cette limite est de moins en moins vrai aujourd’hui.&lt;/p&gt;
+
+&lt;p&gt;La seconde limite reste le temps d’analyse qu’il y a après un rapport de test de mutation testing. Il faut analyser le rapport, puis corriger le test unitaire et ensuite relancer le test de mutation.
+Dans cette analyse on peut se retrouver avec des faux positifs ce qui peut constituer une “perte de temps”.&lt;/p&gt;
+
+&lt;p&gt;La troisième limite est une tendance de plus en plus présente de nos jours : celle du Green IT.
+Le Green IT est une démarche d’amélioration continue qui vise à réduire l’empreinte écologique, économique et sociale des technologies de l’information et de la communication et de l’organisation grâce aux outils numériques. Le mutation testing est très gourmand en termes de ressources CPU et RAM vu qu’il lit le projet, crée des mutants à partir du code source, recompile et rejoue les tests autant de fois qu’il y a de mutants disponibles.&lt;/p&gt;
+
+&lt;p&gt;En conclusion, le mutation testing est un outil qui aide les équipes à améliorer la qualité de leurs tests unitaires. Cependant cette méthode peut se révéler très coûteuse si on souhaite une couverture à 100%. 
+Il faut prendre en compte le temps d’analyse du rapport et du code à la génération des mutants et à l’exécution des tests pour chaque mutant. 
+Cet outil doit être utilisé dans des équipes qui sont déjà “matures” sur la qualité de leur tests. Il peut aider les nouveaux développeurs à structurer leur façon de construire les TU.
+De plus, il est possible d’utiliser cet outil pour cibler uniquement des parties bien précises de l’application, notamment les parties les plus sensibles, cela peut être un bon moyen de réduire les coûts et de se concentrer sur le plus critique.&lt;/p&gt;
+
+&lt;h2 id=&quot;quelques-axes-de-réflexion-pour-aller-plus-loin-sur-ce-sujet&quot;&gt;Quelques axes de réflexion pour aller plus loin sur ce sujet&lt;/h2&gt;
+&lt;p&gt;Comment intégrer le mutation testing dans une stratégie de test ?
+Comment automatiser les tests de mutation testing avec github lors d’une peer review par exemple ?
+Peut-on automatiser la lecture des rapports et en ressortir les problèmes les plus critiques ?&lt;/p&gt;
+
+&lt;h2 id=&quot;ressources--bibliographie-&quot;&gt;Ressources / Bibliographie :&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Papier de Google : https://research.google/pubs/pub46584/ State of Mutation Testing at Google (PDF)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
+une mutation max par ligne de code étudiée (pour limiter la complexité de la review)
+le code “aride” n’est pas muté (caches, System.out.println, code de logging =&amp;gt; if debug, log.debug() ))
+les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i &amp;lt; 10 ou for i != 10) ne sont pas testées
+ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blog de PiTest : https://blog.pitest.org/&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;PiTest : https://pitest.org/&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;https://github.com/theofidry/awesome-mutation-testing Hints on Test Data Selection: Help for the Practicing Programmer de Richard A. Demillo et R.J Lipton&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/jekyll-site/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
 Mais qu’est ce qu’une &lt;code class=&quot;highlighter-rouge&quot;&gt;Progressive Web App&lt;/code&gt; ?&lt;/p&gt;
