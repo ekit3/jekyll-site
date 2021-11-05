@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-11-05T05:06:50-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Mutation testing</title><link href="/jekyll-site/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/jekyll-site/articles/testing/mutation-testing</id><content type="html" xml:base="/jekyll-site/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/jekyll-site/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-site/" rel="alternate" type="text/html" /><updated>2021-11-05T05:09:09-05:00</updated><id>/jekyll-site/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Mutation testing</title><link href="/jekyll-site/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/jekyll-site/articles/testing/mutation-testing</id><content type="html" xml:base="/jekyll-site/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
 Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
 Le programmeur devait se contenter de tester intelligemment à moindre coût.
 Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects.
@@ -65,11 +65,42 @@ Le test unitaire correspond à la vérification d’un bon comportement d’une 
 &lt;p&gt;Le processus de génération des mutants peut être gourmand en ressources car le nombre de mutants peut varier en fonction de la complexité du code métier (il y a quelques années c’était encore un frein à l’utilisation de ce concept). 
 Il existe des frameworks permettant de générer des mutants de façon “automatique” tel que Pitest pour Java.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class.png&quot; alt=&quot;Une simple classe d'addition&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Voici par exemple une simple classe qui réalise une addition:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation1.png&quot; alt=&quot;La classe d'addition mutée (un + transformé en -)&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.business&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png&quot; alt=&quot;La classe d'addition mutée (un return 0)&quot; /&gt;&lt;/p&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Et voici deux mutants possibles:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.business&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddMutation1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.business&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddMutation2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;processus-de-tests&quot;&gt;Processus de tests&lt;/h2&gt;
 
@@ -92,7 +123,17 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 
 &lt;p&gt;Pour l’exemple, nous avons un test unitaire qui ne couvre pas entièrement la méthode testée.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-add-positive.png&quot; alt=&quot;un test unitaire&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testAddPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myAddTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myAddTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a et b sont positifs, le résultat attendu devrait être positif&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Le résultat du mutation testing est le suivant :&lt;/p&gt;
 
@@ -102,7 +143,16 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 
 &lt;p&gt;Le mutant encore debout est :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png&quot; alt=&quot;La classe d'addition mutée (un return 0)&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.business&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddMutation2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Pour cela, il faut analyser le rapport que Pitest donne et appliquer un correctif sur le test unitaire pour tuer le mutant au prochain lancement de Pitest.&lt;/p&gt;
 
@@ -110,7 +160,18 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 
 &lt;p&gt;Suite au renfort du test unitaire, Pitest indique que les tests sont bons et que tous les mutants ont été tués.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-renforce.png&quot; alt=&quot;Le test renforcé&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testAddResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myAddTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expectedResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myAddTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expectedResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aLe résultat est différent&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./pitest-result-test-renforce.png&quot; alt=&quot;Le résultat de pitest avec le test renforcé&quot; /&gt;&lt;/p&gt;
 
@@ -128,19 +189,50 @@ Le travail d’analyse sur les mutants encore en vie est assez simple pour ce ca
 
 &lt;p&gt;Le but de ce programme est de calculer l’aire d’un rectangle.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle.png&quot; alt=&quot;Méthode de calcul d'une aire de rectangle&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calcRectangleArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;On peut vérifier avec un test si l’aire du rectangle n’est pas égale à 0.&lt;/p&gt;
 
-&lt;p&gt;On se doit de vérifier si l’aire du rectangle n’est pas égale à 0.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testRectangleArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;calcRectangleeArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L'aire doit être supérieure à 0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-rectangle-area.png&quot; alt=&quot;Test de la méthode d'aire du rectangle&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;On pourrait ajouter une règle de gestion à notre premier code, avec une interprétation supplémentaire : “Un carré n’est pas un rectangle”.&lt;/p&gt;
 
-&lt;p&gt;Une interprétation supplémentaire peut être apportée au code : “Un carré n’est pas un rectangle”.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle-2.png&quot; alt=&quot;Méthode de calcul d'une aire de rectangle modifiée&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calcRectangleArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// on retourne 0 pour les carrés&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Suite au changement de code un test est ajouté afin de tester un carré dont les côtés valent 0.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./test-square-area.png&quot; alt=&quot;Test que l'objet n'est pas un carré&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testSquareArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RectangleArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;calcRectangleeArea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0 attendu, car nous sommes dans un carré&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Dans les deux cas, Pitest remonte une couverture sur le mutation testing de 0%.&lt;/p&gt;
 
@@ -164,13 +256,6 @@ La commande &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test&lt;/code&gt
 
 &lt;p&gt;On peut exécuter pitest sur un projet Maven en tapant directement la commande : &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn org.pitest:pitest-maven:mutationCoverage&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Il est nécessaire d’intégrer un plugin pour le support de Junit 5 (par défaut, PiTest ne supporte que JUnit 4). Le message n’est d’ailleurs pas très précis.
-Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-maven.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;================================================================================
 - Statistics
 ================================================================================
@@ -182,11 +267,12 @@ Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest&lt;/
 
 &lt;p&gt;Le temps d’exécution est d’un peu plus de 2 minutes.&lt;/p&gt;
 
-&lt;h2 id=&quot;quel-indicateur-mutation-testing-&quot;&gt;Quel indicateur mutation testing ?&lt;/h2&gt;
+&lt;h2 id=&quot;quels-indicateurs-fournit-le-mutation-testing-&quot;&gt;Quels indicateurs fournit le mutation testing ?&lt;/h2&gt;
 
-&lt;p&gt;Pitest fournit un taux de force par rapport au mutation testing.&lt;/p&gt;
+&lt;p&gt;Pitest calcule un taux de force des tests (Test strength) par rapport au mutation testing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest-result.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt; Mutations with no coverage 8. Test strength 72%
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Ce taux peut être utilisé avec le % de couverture de code dans les équipes comme indicateur de qualité sur les premiers niveaux de tests.&lt;/p&gt;
 
@@ -239,25 +325,24 @@ Peut-on automatiser la lecture des rapports et en ressortir les problèmes les p
 &lt;h2 id=&quot;ressources--bibliographie-&quot;&gt;Ressources / Bibliographie :&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Papier de Google : https://research.google/pubs/pub46584/ State of Mutation Testing at Google (PDF)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
-une mutation max par ligne de code étudiée (pour limiter la complexité de la review)
-le code “aride” n’est pas muté (caches, System.out.println, code de logging =&amp;gt; if debug, log.debug() ))
-les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i &amp;lt; 10 ou for i != 10) ne sont pas testées
-ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Blog de PiTest : https://blog.pitest.org/&lt;/p&gt;
+  &lt;li&gt;Papier de Google : &lt;a href=&quot;https://research.google/pubs/pub46584/&quot;&gt;State of Mutation Testing at Google (PDF)&lt;/a&gt;. Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
+    &lt;ul&gt;
+      &lt;li&gt;une mutation max par ligne de code étudiée (pour limiter la complexité de la review)&lt;/li&gt;
+      &lt;li&gt;le code “aride” n’est pas muté (caches, System.out.println, code de logging =&amp;gt; if debug, log.debug() ))&lt;/li&gt;
+      &lt;li&gt;les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i &amp;lt; 10 ou for i != 10) ne sont pas testées&lt;/li&gt;
+      &lt;li&gt;ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;PiTest : https://pitest.org/&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://blog.pitest.org/&quot;&gt;Blog de PiTest&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;https://github.com/theofidry/awesome-mutation-testing Hints on Test Data Selection: Help for the Practicing Programmer de Richard A. Demillo et R.J Lipton&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://pitest.org/&quot;&gt;Site de PiTest&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/theofidry/awesome-mutation-testing&quot;&gt;awesome mutation testing&lt;/a&gt; : Une compilation des meilleures ressources sur le mutation testing&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hints on Test Data Selection: Help for the Practicing Programmer, de Richard A. Demillo et R.J Lipton&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/jekyll-site/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/jekyll-site/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/jekyll-site/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.

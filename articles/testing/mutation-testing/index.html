@@ -413,11 +413,42 @@ Le test unitaire correspond à la vérification d’un bon comportement d’une 
 <p>Le processus de génération des mutants peut être gourmand en ressources car le nombre de mutants peut varier en fonction de la complexité du code métier (il y a quelques années c’était encore un frein à l’utilisation de ce concept). 
 Il existe des frameworks permettant de générer des mutants de façon “automatique” tel que Pitest pour Java.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./add-class.png" alt="Une simple classe d'addition" /></p>
+<p>Voici par exemple une simple classe qui réalise une addition:</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./add-class-mutation1.png" alt="La classe d'addition mutée (un + transformé en -)" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.business</span><span class="o">;</span>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png" alt="La classe d'addition mutée (un return 0)" /></p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Add</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">addNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Et voici deux mutants possibles:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.business</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddMutation1</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">addNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.business</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddMutation2</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">addNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">){</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
 
 <h2 id="processus-de-tests">Processus de tests</h2>
 
@@ -440,7 +471,17 @@ Pour l’exercice, nous allons voir plusieurs cas.</p>
 
 <p>Pour l’exemple, nous avons un test unitaire qui ne couvre pas entièrement la méthode testée.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./test-add-positive.png" alt="un test unitaire" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">testAddPositive</span><span class="o">(){</span>
+    <span class="nc">Add</span> <span class="n">myAddTest</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Add</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">myAddTest</span><span class="o">.</span><span class="na">addNumber</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">){</span>
+        <span class="n">fail</span><span class="o">(</span><span class="s">"a et b sont positifs, le résultat attendu devrait être positif"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p>Le résultat du mutation testing est le suivant :</p>
 
@@ -450,7 +491,16 @@ Pour l’exercice, nous allons voir plusieurs cas.</p>
 
 <p>Le mutant encore debout est :</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./add-class-mutation2.png" alt="La classe d'addition mutée (un return 0)" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.business</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddMutation2</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">addNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">){</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p>Pour cela, il faut analyser le rapport que Pitest donne et appliquer un correctif sur le test unitaire pour tuer le mutant au prochain lancement de Pitest.</p>
 
@@ -458,7 +508,18 @@ Pour l’exercice, nous allons voir plusieurs cas.</p>
 
 <p>Suite au renfort du test unitaire, Pitest indique que les tests sont bons et que tous les mutants ont été tués.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./test-renforce.png" alt="Le test renforcé" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">testAddResult</span><span class="o">(){</span>
+    <span class="nc">Add</span> <span class="n">myAddTest</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Add</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">expectedResult</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">;</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">myAddTest</span><span class="o">.</span><span class="na">addNumber</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">!=</span> <span class="n">expectedResult</span><span class="o">){</span>
+        <span class="n">fail</span><span class="o">(</span><span class="s">"aLe résultat est différent"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p><img src="/jekyll-site/articles/testing/mutation-testing//./pitest-result-test-renforce.png" alt="Le résultat de pitest avec le test renforcé" /></p>
 
@@ -476,19 +537,50 @@ Le travail d’analyse sur les mutants encore en vie est assez simple pour ce ca
 
 <p>Le but de ce programme est de calculer l’aire d’un rectangle.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle.png" alt="Méthode de calcul d'une aire de rectangle" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">RectangleArea</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcRectangleArea</span><span class="o">(</span><span class="kt">int</span> <span class="n">length</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>On peut vérifier avec un test si l’aire du rectangle n’est pas égale à 0.</p>
 
-<p>On se doit de vérifier si l’aire du rectangle n’est pas égale à 0.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testRectangleArea</span><span class="o">(){</span>
+    <span class="nc">RectangleArea</span> <span class="n">area</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RectangleArea</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span> <span class="n">area</span><span class="o">.</span><span class="na">calcRectangleeArea</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">){</span>
+        <span class="n">fail</span><span class="o">(</span><span class="s">"L'aire doit être supérieure à 0"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./test-rectangle-area.png" alt="Test de la méthode d'aire du rectangle" /></p>
+<p>On pourrait ajouter une règle de gestion à notre premier code, avec une interprétation supplémentaire : “Un carré n’est pas un rectangle”.</p>
 
-<p>Une interprétation supplémentaire peut être apportée au code : “Un carré n’est pas un rectangle”.</p>
-
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./method-calc-rectangle-2.png" alt="Méthode de calcul d'une aire de rectangle modifiée" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">RectangleArea</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">calcRectangleArea</span><span class="o">(</span><span class="kt">int</span> <span class="n">length</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">length</span> <span class="o">!=</span> <span class="n">width</span><span class="o">){</span>
+            <span class="k">return</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="c1">// on retourne 0 pour les carrés</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p>Suite au changement de code un test est ajouté afin de tester un carré dont les côtés valent 0.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./test-square-area.png" alt="Test que l'objet n'est pas un carré" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSquareArea</span><span class="o">(){</span>
+    <span class="nc">RectangleArea</span> <span class="n">area</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RectangleArea</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span> <span class="n">area</span><span class="o">.</span><span class="na">calcRectangleeArea</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">){</span>
+        <span class="n">fail</span><span class="o">(</span><span class="s">"0 attendu, car nous sommes dans un carré"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <p>Dans les deux cas, Pitest remonte une couverture sur le mutation testing de 0%.</p>
 
@@ -512,13 +604,6 @@ La commande <code class="highlighter-rouge">mvn test</code> s’exécute approxi
 
 <p>On peut exécuter pitest sur un projet Maven en tapant directement la commande : <code class="highlighter-rouge">mvn org.pitest:pitest-maven:mutationCoverage</code></p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest.png" alt="" /></p>
-
-<p>Il est nécessaire d’intégrer un plugin pour le support de Junit 5 (par défaut, PiTest ne supporte que JUnit 4). Le message n’est d’ailleurs pas très précis.
-Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest</p>
-
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./petclinic-maven.png" alt="" /></p>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>================================================================================
 - Statistics
 ================================================================================
@@ -530,11 +615,12 @@ Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest</p>
 
 <p>Le temps d’exécution est d’un peu plus de 2 minutes.</p>
 
-<h2 id="quel-indicateur-mutation-testing-">Quel indicateur mutation testing ?</h2>
+<h2 id="quels-indicateurs-fournit-le-mutation-testing-">Quels indicateurs fournit le mutation testing ?</h2>
 
-<p>Pitest fournit un taux de force par rapport au mutation testing.</p>
+<p>Pitest calcule un taux de force des tests (Test strength) par rapport au mutation testing.</p>
 
-<p><img src="/jekyll-site/articles/testing/mutation-testing//./petclinic-pitest-result.png" alt="" /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt; Mutations with no coverage 8. Test strength 72%
+</code></pre></div></div>
 
 <p>Ce taux peut être utilisé avec le % de couverture de code dans les équipes comme indicateur de qualité sur les premiers niveaux de tests.</p>
 
@@ -587,25 +673,24 @@ Peut-on automatiser la lecture des rapports et en ressortir les problèmes les p
 <h2 id="ressources--bibliographie-">Ressources / Bibliographie :</h2>
 
 <ul>
-  <li>Papier de Google : https://research.google/pubs/pub46584/ State of Mutation Testing at Google (PDF)</li>
-</ul>
-
-<p>Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
-une mutation max par ligne de code étudiée (pour limiter la complexité de la review)
-le code “aride” n’est pas muté (caches, System.out.println, code de logging =&gt; if debug, log.debug() ))
-les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i &lt; 10 ou for i != 10) ne sont pas testées
-ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions</p>
-
-<ul>
-  <li>
-    <p>Blog de PiTest : https://blog.pitest.org/</p>
+  <li>Papier de Google : <a href="https://research.google/pubs/pub46584/">State of Mutation Testing at Google (PDF)</a>. Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
+    <ul>
+      <li>une mutation max par ligne de code étudiée (pour limiter la complexité de la review)</li>
+      <li>le code “aride” n’est pas muté (caches, System.out.println, code de logging =&gt; if debug, log.debug() ))</li>
+      <li>les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i &lt; 10 ou for i != 10) ne sont pas testées</li>
+      <li>ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions</li>
+    </ul>
   </li>
   <li>
-    <p>PiTest : https://pitest.org/</p>
+    <p><a href="https://blog.pitest.org/">Blog de PiTest</a></p>
   </li>
   <li>
-    <p>https://github.com/theofidry/awesome-mutation-testing Hints on Test Data Selection: Help for the Practicing Programmer de Richard A. Demillo et R.J Lipton</p>
+    <p><a href="https://pitest.org/">Site de PiTest</a></p>
   </li>
+  <li>
+    <p><a href="https://github.com/theofidry/awesome-mutation-testing">awesome mutation testing</a> : Une compilation des meilleures ressources sur le mutation testing</p>
+  </li>
+  <li>Hints on Test Data Selection: Help for the Practicing Programmer, de Richard A. Demillo et R.J Lipton</li>
 </ul>
 
 </span>
