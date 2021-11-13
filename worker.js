@@ -1,11 +1,12 @@
-var PRECACHE = 'precache-v1';
-var RUNTIME = 'runtime';
+var PRECACHE = 'precache-v-13.11.2021';
+var RUNTIME = 'runtime-v-13.11.2021';
 
 // list the files you want cached by the service worker
-PRECACHE_URLS = [
+/*PRECACHE_URLS = [
   './',
   'css/main.css'
-];
+];*/
+PRECACHE_URLS = [];
 
 // the rest below handles the installing and caching
 self.addEventListener('install', event => {
@@ -28,13 +29,17 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // avoid precache home-page
+  if(event.request.url === '/jekyll-site/' || event.request.url === 'http://localhost/'){
+    return null;
+  }
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         if (cachedResponse) {
+          console.log('cached response', cachedResponse.url)
           return cachedResponse;
         }
-
         return caches.open(RUNTIME).then(cache => {
           return fetch(event.request).then(response => {
             // Put a copy of the response in the runtime cache.
