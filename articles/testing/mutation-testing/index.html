@@ -87,13 +87,14 @@
                     <button 
                         style="margin-right:50px;"
                         class="btn btn-light"
-                        name="Accepter"
+                        name="Refuser"
                         onclick="tagAnalyticsCNIL.CookieConsent.gaOptout();tagAnalyticsCNIL.CookieConsent.hideInform();"
                         id="optout-button">
                         Refuser
                     </button>
                     <button
-                        name="cancel"
+                        id="accept-ga"
+                        name="Valider"
                         class="btn btn-success"
                         onclick="tagAnalyticsCNIL.CookieConsent.hideInform()">
                         Accepter
@@ -195,16 +196,24 @@
       if (!isClickOnOptOut(evt)) {
         // On vérifie qu'il ne s'agit pas d'un clic sur la banniére
         if (!clickprocessed) {
-          evt.preventDefault();
-          /*document.cookie = `hasConsent=true ${getCookieExpireDate()} ${getCookieDomainName()} path=/`;
-          callGoogleAnalytics();*/
-          clickprocessed = true;
-          window.setTimeout(function () {
-            evt.target.click();
-          }, 1000);
-          tagAnalyticsCNIL.CookieConsent.hideInform();
+         evt.preventDefault();
+         closeModalAfterClickProcessed();
         }
       }
+      if(evt.target.id === 'accept-ga'){
+        evt.preventDefault();
+          document.cookie = `hasConsent=true ${getCookieExpireDate()} ${getCookieDomainName()} path=/`;
+          callGoogleAnalytics();
+          closeModalAfterClickProcessed();
+        }
+    }
+
+    function closeModalAfterClickProcessed(){
+        clickprocessed = true;
+        window.setTimeout(function () {
+        evt.target.click();
+        }, 1000);
+        tagAnalyticsCNIL.CookieConsent.hideInform();
     }
 
     // Tag Google Analytics, cette version est avec le tag Universal Analytics
