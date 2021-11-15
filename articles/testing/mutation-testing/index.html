@@ -196,8 +196,8 @@
         // On vérifie qu'il ne s'agit pas d'un clic sur la banniére
         if (!clickprocessed) {
           evt.preventDefault();
-          document.cookie = `hasConsent=true ${getCookieExpireDate()} ${getCookieDomainName()} path=/`;
-          callGoogleAnalytics();
+          /*document.cookie = `hasConsent=true ${getCookieExpireDate()} ${getCookieDomainName()} path=/`;
+          callGoogleAnalytics();*/
           clickprocessed = true;
           window.setTimeout(function () {
             evt.target.click();
@@ -271,7 +271,6 @@
             if (notToTrack()) {
                 //L'utilisateur a activé DoNotTrack. Do not ask for consent and just opt him out
                 tagAnalyticsCNIL.CookieConsent.gaOptout();
-                alert("You've enabled DNT, we're respecting your choice");
             } else {
                 if (isToTrack()) {
                 //DNT is set to 0, no need to ask for consent just set cookies
