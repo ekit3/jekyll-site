@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-17T11:19:47-06:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Mutation testing</title><link href="/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/articles/testing/mutation-testing</id><content type="html" xml:base="/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-17T11:22:41-06:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Mutation testing</title><link href="/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/articles/testing/mutation-testing</id><content type="html" xml:base="/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
 Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
 Le programmeur devait se contenter de tester intelligemment à moindre coût.
 Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects.
@@ -113,11 +113,11 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 
 &lt;p&gt;Voici le résultat de Pitest sur notre classe :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-result-no-tests.png&quot; alt=&quot;un rapport PiTest en l'absence de tests unitaires&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-result-no-tests.png&quot; alt=&quot;un rapport PiTest en l'absence de tests unitaires&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pitest a créé deux mutants (mis en exemple précédemment) qui sont toujours en vie à la fin du test. Voici le détail des mutations qui ont été effectuées :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-mutations.png&quot; alt=&quot;les mutations faites par Pitest sur notre classse&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-mutations.png&quot; alt=&quot;les mutations faites par Pitest sur notre classse&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;cas-2--ajout-dun-test-unitaire&quot;&gt;Cas 2 : ajout d’un test unitaire&lt;/h3&gt;
 
@@ -137,7 +137,7 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 
 &lt;p&gt;Le résultat du mutation testing est le suivant :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-result-first-test.png&quot; alt=&quot;le résultat de pitest avec notre premier test&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-result-first-test.png&quot; alt=&quot;le résultat de pitest avec notre premier test&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le mutation testing révèle que les tests unitaires ne sont pas suffisamment costaud. Il faut les renforcer.&lt;/p&gt;
 
@@ -173,7 +173,7 @@ Pour l’exercice, nous allons voir plusieurs cas.&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-result-test-renforce.png&quot; alt=&quot;Le résultat de pitest avec le test renforcé&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-result-test-renforce.png&quot; alt=&quot;Le résultat de pitest avec le test renforcé&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Sur un code court et très simple, Pitest a mis moins de 3s (en moyenne) pour générer des mutants et tester ces derniers.
 Il a permis de remonter des faiblesses dans les tests unitaires.
@@ -183,7 +183,7 @@ Le travail d’analyse sur les mutants encore en vie est assez simple pour ce ca
 
 &lt;p&gt;Schéma d’explication du framework :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./fonctionnement-fwk.jpg&quot; alt=&quot;Le fonctionnement du framework&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./fonctionnement-fwk.jpg&quot; alt=&quot;Le fonctionnement du framework&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;exemple-avec-le-périmètre-dun-rectangle&quot;&gt;Exemple avec le périmètre d’un rectangle&lt;/h2&gt;
 
@@ -236,8 +236,8 @@ Le travail d’analyse sur les mutants encore en vie est assez simple pour ce ca
 
 &lt;p&gt;Dans les deux cas, Pitest remonte une couverture sur le mutation testing de 0%.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-result-square.png&quot; alt=&quot;Résultat de Pitest&quot; /&gt;
-&lt;img src=&quot;//articles/testing/mutation-testing//./pitest-result-square-detailed.png&quot; alt=&quot;Résultat Pitest détailllé&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-result-square.png&quot; alt=&quot;Résultat de Pitest&quot; /&gt;
+&lt;img src=&quot;/articles/testing/mutation-testing//./pitest-result-square-detailed.png&quot; alt=&quot;Résultat Pitest détailllé&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Voici les mutants survivants créés par Pitest. 
 Il faut donc analyser les problèmes et renforcer les tests unitaires. 
@@ -343,7 +343,7 @@ Peut-on automatiser la lecture des rapports et en ressortir les problèmes les p
     &lt;p&gt;&lt;a href=&quot;https://github.com/theofidry/awesome-mutation-testing&quot;&gt;awesome mutation testing&lt;/a&gt; : Une compilation des meilleures ressources sur le mutation testing&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;Hints on Test Data Selection: Help for the Practicing Programmer, de Richard A. Demillo et R.J Lipton&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;//articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
 Mais qu’est ce qu’une &lt;code class=&quot;highlighter-rouge&quot;&gt;Progressive Web App&lt;/code&gt; ?&lt;/p&gt;
@@ -354,7 +354,7 @@ Mais qu’est ce qu’une &lt;code class=&quot;highlighter-rouge&quot;&gt;Progre
 
 &lt;!--END_SUMMARY--&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/front-end/pwa-innovation-or-consolation//pwa-logo.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/front-end/pwa-innovation-or-consolation//pwa-logo.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;mais-doù-ça-vient-&quot;&gt;Mais d’où ça vient ?&lt;/h5&gt;
 
@@ -458,7 +458,7 @@ Les utilisateurs pourront également installer directement un site web sur leur 
 Ces API permettent, entre autres choses, l’utilisation de fonctionnalités telles que la géolocalisation, le push, le statut de la batterie, le presse papier, l’orientation de l’écran, les vibrations du mobile etc.
 La liste détaillée de ces fonctionnalités est disponible sur ce &lt;a href=&quot;https://whatwebcando.today/&quot; target=&quot;_blank&quot;&gt;site&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;//articles/front-end/pwa-innovation-or-consolation//pwa-lighthouse.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/front-end/pwa-innovation-or-consolation//pwa-lighthouse.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Lighthouse est un plugin Chrome qui permet d’auditer un site web et qui indique son niveau de compatibilité avec la PWA.
 Ce plugin liste l’ensemble des caractéristiques officielles qui permettent d’évaluer la performance des applications.&lt;/p&gt;
