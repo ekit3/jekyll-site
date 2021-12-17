@@ -39,7 +39,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/jekyll-site/",
+    "start_url": "/",
     "display": "fullscreen",
     "theme_color": "#000000",
     "background_color": "#000000"
