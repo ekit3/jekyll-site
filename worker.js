@@ -30,7 +30,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   // avoid precache home-page
-  if(event.request.url === 'https://ekit3.github.io/jekyll-site/' || event.request.url === 'http://localhost/'){
+  if(event.request.url === 'https://ekite.tech' || event.request.url === 'http://localhost/'){
     return null;
   }
   if (event.request.url.startsWith(self.location.origin)) {
