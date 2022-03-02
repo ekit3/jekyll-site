@@ -5,7 +5,7 @@
         <meta name="theme-color" content="#000000"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Eco Conception</title>
+        <title>Micro Frond End</title>
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/select2.min.css" />
         <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Bienvenue sur le Blog d'Ekite" />
@@ -244,7 +244,7 @@
             "ga"
         );
         ga("create", gaProperty, "auto"); // Replace with your property ID.
-        ga("send", "pageview", "/articles/green/it/eco-conception/");
+        ga("send", "pageview", "/articles/front-end/micro-front-end/");
     }
 
     return {
@@ -319,27 +319,23 @@
         <select class="search-article">
             <option></option>
             
-                <optgroup label="front-end">
+                <optgroup label="Front-End">
+                
+                    <option value="/articles/front-end/micro-front-end/">Micro Frond End</option>
                 
                     <option value="/articles/front-end/pwa-innovation-or-consolation/">PWA : Innovation ou solution de consolation ?</option>
                 
             </optgroup>
             
-                <optgroup label="testing">
+                <optgroup label="Testing">
                 
                     <option value="/articles/testing/mutation-testing/">Mutation testing</option>
                 
             </optgroup>
             
-                <optgroup label="Green">
+                <optgroup label="Green-IT">
                 
-                    <option value="/articles/green/it/eco-conception/">Eco Conception</option>
-                
-            </optgroup>
-            
-                <optgroup label="IT">
-                
-                    <option value="/articles/green/it/eco-conception/">Eco Conception</option>
+                    <option value="/articles/green-it/eco-conception/">Eco Conception</option>
                 
             </optgroup>
             
@@ -352,164 +348,157 @@
   <div class="posts single">
     <button type="button" class="btn btn-dark btn-return" onclick="goBackHistory()">Retour</button>
     <article>
-      <h2>Eco Conception</h2>
+      <h2>Micro Frond End</h2>
       <div class="post-header">
           <span>Ecrit par</span>
 
 
     
     
-         <a href="">Pauline Vandame</a>,
+         <a href="">Yohann Gueguin</a>,
     
 
     
     
-         <a href="">Romain Vermeeren</a>,
+         <a href="">Florian Barbet</a>,
     
 
     
     
-         <a href="">Mehdi Kheir</a>,
+         <a href="http://twitter.com/m3stash">Laurent Duchaussoy</a>,
     
 
 
-          <span>Publié le 02 Feb 2022</span>
+          <span>Publié le 02 Mar 2022</span>
       </div>
       <div class="extract">
-          <span></span><p><img src="/articles/green/it/eco-conception//image4.gif" alt="image" /></p>
+          <span></span><p>Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ».<br />
+Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE.
+Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”.<br />
+Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun.
+Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs.<br />
+Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun.<br />
+Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…
+<!--END_SUMMARY--></p>
 
-<p>L’éco-design, l’éco-conception, le green it ou dernièrement <code class="highlighter-rouge">la conception responsable de service numérique</code> sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire.</p>
+<h5 id="origine">Origine</h5>
 
-<p>“Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)</p>
+<p><img src="/articles/front-end/micro-front-end//image_1.jpg" alt="image" /><br /></p>
 
-<!--END_SUMMARY-->
+<p>Le terme est apparu dans les RADAR techniques de Thoughtworks en 2016 mais c’est en 2019 que les micro-front end commencent à émerger.</p>
 
-<p>Que ce soit dans une démarche écologique engagée ou à des fins de communication, le monde de l’informatique n’échappe pas à cette problématique sociétale. Comme dans tous les domaines, l’optimisation des ressources consommées se fait à tous les niveaux et sur tous les périmètres d’un projet informatique :</p>
+<h4 id="thoughtworks--qui-sont-ils-">Thoughtworks : qui sont-ils ?</h4>
 
+<p>C’est un organisme public qui se concentre sur la mise en place de concept technologique.<br />
+Ils mettent à disposition la conception et participe à la livraison de logiciels, d’outils, ils proposent également un service de conseil informatique.</p>
+
+<h4 id="que-sest-il-passé-entre-lapparition-du-terme-et-sa-réelle-émergence-">Que s’est-il passé entre l’apparition du terme et sa réelle émergence ?</h4>
+
+<p>Thoughtworks a mis à disposition une recherche réalisée dans leurs équipes. Cette recherche porte sur la mise en place des micro-services au niveau de l’UI. Thoughtworks a partagé l’évolution conceptuelle des micro-front end. En Novembre 2016, arrivent les premières idées à propos de ce type d’architecture (des idées mais aussi des POC et des phases d’évaluation). <br /></p>
+
+<p>Les ingénieurs de Thoughtworks pensent qu’il serait intéressant d’appliquer un système de micro-services au niveau de l’UI afin d’éviter les monolithes. Ils mettent en avant le fait que l’approche BFF (back-for-front : couche permettant la communication entre le back-end et le front-end) en serait largement bénéficiaire.<br /></p>
+
+<p>S’ensuit une communication en Mai 2018 (lors de la phase d’essai), celle-ci nous informe que des équipes ont mis en place des structures monolithiques au niveau des services back. Ils font un petit rappel afin d’expliquer l’objectif des micro-front end : obtenir des composants/pages isolés et indépendants les uns des autres et qui appartiennent à différentes équipes.<br /></p>
+
+<p>En Avril 2019 débute la phase d’émergence, à ce stade, Thoughtworks pense que la mise en place des micro-front end représente un bénéfice certain pour les équipes de développement. A partir de ce moment ils commencent à informer et à conseiller sur les implémentations liées aux micro-front end.</p>
+
+<h4 id="et-si-jai-rien-compris--petit-résumé">“Et si j’ai rien compris ?”: Petit Résumé</h4>
+
+<p>Le processus lié à ce concept, dans un format de type release/actualisation semble venir de la frustration de certaines équipes vis-à-vis des monolithes.<br /></p>
+
+<p>Les “assessments” donne pour définition des structures monolithiques Front : « large and sprawling browser applications that are as difficult to maintain and evolve as the monolithic server-side applications we’ve abandoned »<br /></p>
+
+<p>Soit en français : « Des applications “navigateurs” volumineuses et entremêlées étant aussi difficiles à maintenir et à faire évoluer que des applications back monolithiques déjà  abandonnées. »<br /></p>
+
+<h4 id="mise-en-place">Mise en place</h4>
+
+<h5 id="--la-gouvernance">- La Gouvernance</h5>
+
+<p>La gouvernance est un élément indispensable lors de l’initialisation d’un projet micro-front end. La liberté provenant de ce type d’architecture est à double tranchant. Une plus grande liberté permet de réaliser plus facilement un ensemble de tâches mais c’est aussi un moyen de surcharger votre application.</p>
+
+<p>Voici 3 axes de réflexions afin de mieux comprendre la problématique :</p>
+
+<h5 id="--le-premier--déterminer-le-scope">- Le premier : déterminer le scope</h5>
+
+<p>Réfléchissez à la taille de vos composants (comme ce qui est fait pour les briques dans un modèle microservice en back-end). Cela permet ainsi de réfléchir à la taille de vos équipes et le nombre de ressources à mobiliser. (Votre budget vous remerciera.)</p>
+
+<h5 id="--le-second--il-en-faut-un-pour-les-gouverner-tous">- Le second : il en faut un pour les gouverner tous.</h5>
+
+<p>L’indépendance des composants peut faire perdre de vue l’objectif commun: la réalisation d’une interface graphique pour une application. Cette application a des attentes en termes d’objectifs, de performances, ou encore d’image (marketing etc…).<br />
+Il faut, par exemple, veiller à avoir une équipe responsable du partage de la connaissance et de la culture afin de ne pas diviser “pour mieux régner” mais plutôt de “réunir pour mieux réussir”. Il est également important d’imaginer la mise en place de tests d’intégrations globaux au niveau du plus haut parent de la famille des composants.<br />
+(Imaginez une application dont chaque composant possède sa propre charte graphique façon sapin de noël..)</p>
+
+<p>Une solution commune dite “Core” se matérialise par une équipe gérant le noyau du site, elle régit les librairies de bases, la création, la gestion des outils (e.g.. Eventbus), la charte graphique etc.<br />
+Les composants “enfants” hériteront de tout ce qui aura été prévu et partagé par le noyau applicatif.</p>
+
+<h5 id="--la-troisième--comment-bien-séquiper-pour-la-performance-">- La troisième : comment bien s’équiper pour la performance ?</h5>
+
+<p>Il faut distinguer deux aspects lorsque l’on pense à la qualité des MFE : la performance de chacun d’entre eux mais également du site global en termes d’affichage et de rendu.
+Avoir de multiples composants, c’est accepter d’avoir un possible laps de temps au moment de la création/initialisation de chacun.<br />
+Il faut également penser au démarrage et à l’intégration de nouveaux MFE dans l’architecture globale, que ce soit en termes de cohérence, de qualité de code, de sécurité, de chaîne d’intégration et de déploiement.<br />
+Pour éviter cela, il faut mettre en relation des experts techniques (architectes, leader, etc.) capables de trouver des solutions performantes et de partager les bonnes pratiques à tous ces différents niveaux.</p>
+
+<p><b>Point d’attention : le runtime</b><br />
+Plus il y a de frameworks, plus il y aura de runtimes et donc plus de risques que le poids de la page soit augmenté et sa performance dégradée.<br />
+Il faudra limiter la diversité des frameworks utilisés.</p>
+
+<p><img src="/articles/front-end/micro-front-end//image_2.jpg" alt="image" /><br /></p>
+
+<p>Ce graphique montre la consommation en runtime pour chaque build avec le runtime Svelte. On dénote qu’avec à peine 10 composants on consomme moins qu’un Angular pour ne citer que lui.</p>
+
+<h5 id="que-doit-on-retenir-">Que doit-on retenir ?</h5>
+
+<p>Pour résumer en un seul mot :  “Communiquez !”<br />
+L’indépendance apportée par les MFE peut desservir, chaque équipe faisant ses composants de manière “isolée”, si personne ne s’assure de la cohérence globale cela peut rapidement devenir néfaste.<br />
+Sans communication et gouvernance, la page finale peut vite se retrouver alourdie (du au fait d’un ensemble de technologies mélangées et de la multiplicité des frameworks utilisés) ou chartée de façon bien différente et donc perdre de la cohérence (notamment via le design).<br />
+Tous ces risques peuvent vite amener à regretter les monolithes.</p>
+
+<p><b>Schéma d’archi<br /></b></p>
+
+<p>Voici un exemple qui schématise une architecture micro front avec trois MFE.
+Chaque composant est développé avec une techno différente (Vue, Angular, React) et géré par une équipe spécifique, possédant ses outils de CI/CD, de tests, etc.</p>
+
+<p><img src="/articles/front-end/micro-front-end//image_3.jpg" alt="image" /><br /></p>
+
+<h5 id="framework-technos-et-outils">Framework, technos et outils</h5>
+
+<p>Une pluralité de frameworks qui vont vous faciliter le développement des micro frontend est disponible : chacun a sa propre philosophie dans la manière d’aborder les concepts liés aux micro frontend.<br />
+Parmi les plus connus on peut citer Single-spa, Bit, Qiankun, Open components …</p>
+
+<h5 id="proscons">Pros/Cons</h5>
+<p>De grandes entreprises ont choisi de se lancer dans les micro frontend, comme IKEA sur son magasin en ligne, Spotify avec son application desktop ou encore Leroy Merlin avec son site Web et Kobi.<br /></p>
+
+<p>Pour chacune de ces applications, des bénéfices se sont rapidement fait sentir, par exemple à travers leur vie dans les différentes plateformes, à travers l’expérience de l’utilisateur ou encore sur une meilleure réalisation des développements grâce à des équipes plus réduite mais concentrées sur une seule feature.</p>
+
+<p><b>Les avantages et inconvénients des MFE sont fortement liés.</b></p>
+
+<p>Le découpage du code</p>
 <ul>
-  <li>Conception fonctionnelle</li>
-  <li>Ergonomie</li>
-  <li>Conception technique</li>
-  <li>Conception graphique</li>
-  <li>Développement</li>
-  <li>Hébergement</li>
-  <li>Contenu
-…</li>
+  <li><b>Pros</b> : plus simple, plus léger, c’est un vrai bonus de lisibilité et de maintenabilité.</li>
+  <li><b>Cons</b> : même si la compréhension unitaire des composants est plus simple, la complexité globale de l’application peut en revanche être plus floue.</li>
 </ul>
 
-<p>Si certaines solutions paraissent évidentes, comme l’abonnement à une énergie verte, d’autres sont plus étonnantes, comme le fait de remplacer les boutons officiels de partage des réseaux sociaux.</p>
+<p>La liberté des choix technologiques</p>
+<ul>
+  <li><b>Pros</b> : plus de technologies disponibles implique plus de possibilités.</li>
+  <li><b>Cons</b> : cela peut induire des problèmes de performances, de compatibilité voire de maintenabilité.</li>
+</ul>
 
-<p>Cet article n’a pas pour but de toutes les lister mais d’aborder le lien entre solution numérique et consommation de ressources et de proposer un panel représentatif de la richesse du sujet. Le but n’est pas de donner une leçon ou de sauver  le monde.</p>
+<p>L’indépendance et l’autonomie des équipes</p>
+<ul>
+  <li><b>Pros</b> : cet aspect améliore les conditions et la qualité de développement.</li>
+  <li><b>Cons</b> : la relation inter-équipes ne doit pas être négligée. Le risque étant de s’éloigner de l’objectif principal, d’avoir des demandes de refontes (e.g : ne correspond pas à l’attente des composants consommateurs) et même des migrations d’outils.</li>
+</ul>
 
-<h5 id="le-numérique-la-physique-avant-tout">Le numérique, la physique avant tout.</h5>
+<p>L’indépendance des livraisons</p>
+<ul>
+  <li><b>Pros</b> : le choix des outils d’intégration et de déploiement continue est possible. Cela permet de livrer uniquement certaines parties de l’application.</li>
+  <li><b>Cons</b> : mais cela implique une gestion de la qualité, du release management ou software delivery global plus complexe à mettre en place.</li>
+</ul>
 
-<p>En premier lieu, il convient de poser quelques notions pour comprendre comment des informations dématérialisées comme une page web, un email ou encore le visionnage d’une vidéo peut avoir un impact sur l’environnement.</p>
+<p>Il est nécessaire de mettre en place une gouvernance forte pour garantir une cohérence dans les choix pris lors du développement des différents composants. (Objectif : assurer une qualité et maintenabilité globale).</p>
 
-<p>Prenons l’exemple d’une page d’un site e-commerce.</p>
-
-<p>Pour consulter cette page web, l’internaute à besoin d’un ordinateur, d’un smartphone ou d’une tablette qu’il va renouveler en moyenne tous les 2 ans. Ce terminal est connecté à une box. La fabrication de ces appareils est coûteuse en ressources environnementales puisque la production de leurs composants exige beaucoup d’énergie, des traitements chimiques et des métaux rares.</p>
-
-<p><img src="/articles/green/it/eco-conception//image3.gif" alt="image" /><br />
-<a href="https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false" target="_blank">source</a></p>
-
-<p>Ensuite (de façon simplifiée) pour afficher les éléments de la page web (des photos du produit, une description, des caractéristiques, une vidéo explicative, des produits complémentaires….) : on fait appel à des informations stockées sur un serveur, celui-ci traitant la demande et renvoyant les éléments à afficher en retour. Ces informations passent par un réseau de câbles qui consomme de l’énergie, s’use, doit être remplacé ou changé pour absorber la quantité de données toujours croissante.</p>
-
-<p><img src="/articles/green/it/eco-conception//image2.gif" alt="image" /></p>
-
-<p>Chacun de ces appels nécessite de l’électricité, dont la production est responsable d’émissions de gaz à effet de serre. Plus il y a d’éléments différents, plus ces éléments sont volumineux, plus l’impact environnemental de cette page sera élevé.
-Ces serveurs ont également besoin d’électricité pour fonctionner, et comme ils génèrent de la chaleur à l’usage, ils nécessitent des systèmes de refroidissement eux aussi coûteux en électricité pour fonctionner.</p>
-
-<p><img src="/articles/green/it/eco-conception//image5.gif" alt="image" /><br />
-<em>Problématique de refroidissement des datacenters - ferme de serveurs sous marin</em></p>
-
-<p>Le socle du numérique et ses impacts sur l’environnement est en réalité physique !</p>
-
-<p>Sans oublier également, le technicien qui se déplace pour la maintenance et toutes les autres dépendances et impacts que cela génère…</p>
-
-<h5 id="les-impacts-du-numérique-sur-lenvironnement-en-quelques-chiffres">Les impacts du numérique sur l’environnement en quelques chiffres:</h5>
-
-<p>Le rapport de GreenIT.fr réalisé avec le soutien de l’Institut du Numérique Responsable réalisé en 2019 nous indique que le secteur du numérique représente 3,8% de l’émission des gaz à effet de serre au niveau mondial. La plus grande source d’impact environnemental du numérique est liée aux équipements des utilisateurs qui représentent 39% des émissions de gaz à effet de serre, 74% de la consommation d’eau et 76% de contribution à l’épuisement des ressources.</p>
-
-<p><img src="/articles/green/it/eco-conception//image1.gif" alt="image" /><br />
-<em>évolution de l’empreinte environnementale de 2010 a 2025  (<a href="https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf" target="_blank">source</a>)</em></p>
-
-<h5 id="economie-déchelle">Economie d’échelle</h5>
-
-<p>Il nous paraît important d’expliquer le principe d’économie d’échelle avant de s’intéresser aux optimisations concrètes.<br />
-Pourquoi ? Pour éviter le linchage populaire lorsque vous lirez qu’utiliser une simple quote au lieu d’une double fait consommer moins.</p>
-
-<p>L’économie d’échelle correspond traditionnellement à la baisse d’un coût unitaire de production qui rapporté à une augmentation de la quantité produite entraîne une économie importante.<br />
-Vous retirez une frite de chaque repas vendu en france par mcdo (1 800 000 /jour) et vous économisez de la pomme de terre à la fin de l’année !</p>
-
-<p>Rapporté à notre sujet, il s’agit de diminuer la ressource consommée par chacun de vos utilisateurs pour finalement économiser une grande quantité d’énergie. Et quand on s’appelle Google, par exemple, la mise en place du dark mode entraîne des économies conséquentes.</p>
-
-<h5 id="en-pratique">En pratique</h5>
-
-<p>En pratique, il est possible d’agir à tous les niveaux de création et de vie d’un produit informatique : depuis sa conception fonctionnelle, graphique ou technique jusqu’à sa réalisation et sa mise en œuvre.</p>
-
-<p>Il n’est pas question ici de vous fournir une liste exhaustive d’actions à mettre en place mais plutôt d’évoquer quelques problématiques pour découvrir le sujet ou s’y sensibiliser.</p>
-
-<p><b>Compatibilité des sites web aux différents appareils et navigateurs</b><br />
-Au vu du rôle des équipements d’affichage dans l’impact du numérique sur l’environnement, il est primordial aujourd’hui de concevoir les sites web de façon responsive. Cela va permettre à n’importe quel utilisateur de l’utiliser de façon optimale sans avoir besoin d’un appareil en particulier. Cela permet également de limiter le poids des pages (par exemple sur la taille des images) en fonction du terminal utilisé. 
-La compatibilité vers les anciens navigateurs est également à prendre en compte pour minimiser les changements d’équipement.
-Les éventuels surcoûts de développement sont ici rattrapés par l’audience touchée et le confort de l’expérience utilisateur qui sera bénéfique à la conversion et donc au business.</p>
-
-<p><b>Sobriété du design et du contenu</b><br />
-Lorsque l’on se lance dans un projet qu’il soit professionnel ou personnel, on souhaite tous qu’il soit unique. Mais attention, à vouloir trop personnaliser on sort souvent des standards ce qui entraîne des chargements supplémentaires. Il est important de prendre en compte l’impact d’une police originale, d’une photo très haute définition ou d’éléments graphiques minutieux pour décider si l’apport au niveau UX reste intéressant.</p>
-
-<p>Un site web éco-conçu est un site sobre au design épuré, sans forcément le dépouiller : il s’agit de respecter les besoins et les contraintes tout en supprimant le superflu.</p>
-
-<p><b>Sobriété des fonctionnalités</b><br />
-Dans une société d’abondance, les produits numériques ne font pas exception à la règle. Combien de fonctionnalités utilisez-vous réellement sur vos applications?
-Il arrive vite que l’on empile les nouvelles fonctionnalités en se réjouissant de voir notre projet grandir et s’étoffer, avec l’impression d’offrir aux utilisateurs une expérience riche. Mais encore une fois l’éco conception fait réfléchir sur l’utile et le superflu. Il est important de connaître le parcours de ses utilisateurs et de retirer les fonctionnalités non utilisées pour un gain d’énergie, de performance mais aussi de lisibilité.</p>
-
-<p>Diversifier son offre est intéressant mais gardez en tête de répondre aux besoins pour lesquels vos utilisateurs vous ont contacté.</p>
-
-<p><b>S’arrêter à temps: le mieux est l’ennemi du bien</b>
-L’un des aspects les plus compliqué à gérer est de savoir se limiter dans l’optimisation.
-L’instantanéité par exemple : elle n’est parfois pas utile et repasser sur des traitements asynchrone répondra amplement à vos besoins tout en diminuant le nombre d’échanges dans votre SI.</p>
-
-<p>Une saisie assistée peut accompagner parfaitement votre utilisateur sans aller jusqu’à faire de l’autocomplétion systématique dès 3 caractères saisis.</p>
-
-<p>Une redirection simple vers les réseaux sociaux est souvent suffisante et beaucoup moins consommatrice que les boutons natifs proposés par ces plateformes qui génèrent de nombreux appels.</p>
-
-<h5 id="conclusion">Conclusion</h5>
-
-<p>Il existe une multitude d’actions possibles pour limiter l’impact des produits numériques. Nous pourrions passer des heures à décrire comment réduire la consommation d’énergie en passant sur du dark mode, ou en modifiant les CSS pour optimiser l’aspect d’une page pour l’impression par exemple.<br />
-Le but de cet article était plutôt de sensibiliser au sujet, d’exposer la richesse des options possibles pour limiter l’impact environnemental de son produit en intégrant l’écoconception au sein du processus créatif.</p>
-
-<p>Selon la nature du produit, énormément de choses peuvent être faites, tout dépend de votre contexte…Si le sujet vous intéresse et que vous avez envie d’aller plus loin, voici quelques liens utiles et notamment une liste des bonnes pratiques.</p>
-
-<h5 id="pour-aller-aller-plus-loin">Pour aller aller plus loin</h5>
-
-<p>liste de bonnes pratiques:<br />
-<a href="https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.htm">https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.htm</a></p>
-
-<p>Liste d’outils utiles pour mesurer son impact:<br />
-<a href="https://institutnr.org/outils-ecoconception-accessibilite">https://institutnr.org/outils-ecoconception-accessibilite</a></p>
-
-<p>Rapport mondial sur l’impact du numérique en 2019: <br />
-<a href="https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf">https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf</a></p>
-
-<p>Impact du numérique en France : <br />
-<a href="https://www.greenit.fr/wp-content/uploads/2021/02/2021-01-iNum-etude-impacts-numerique-France-rapport-0.8.pdf">https://www.greenit.fr/wp-content/uploads/2021/02/2021-01-iNum-etude-impacts-numerique-France-rapport-0.8.pdf</a></p>
-
-<p>Sobriété numérique, consommation usage et production: <br />
-<a href="https://theshiftproject.org/wp-content/uploads/2020/10/Deployer-la-sobriete-numerique_Rapport-complet_ShiftProject.pdf">https://theshiftproject.org/wp-content/uploads/2020/10/Deployer-la-sobriete-numerique_Rapport-complet_ShiftProject.pdf</a>
-<a href="https://medium.com/codeshake/%C3%A9coconception-8-cas-pratiques-dapplication-14032c72e8f6">https://medium.com/codeshake/%C3%A9coconception-8-cas-pratiques-dapplication-14032c72e8f6</a></p>
-
-<p><a href="https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie/#:~:text=L'analyse%20du%20cycle%20de,de%20services%20sur%20l'environnement">https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie/#:~:text=L'analyse%20du%20cycle%20de,de%20services%20sur%20l'environnement</a></p>
-
-<h5 id="références-">Références :</h5>
-<p><a href="https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false">https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false</a>
-<a href="https://www.eco-conception.fr/static/definition-de-leco-conception.html">https://www.eco-conception.fr/static/definition-de-leco-conception.html</a></p>
-
-<p><a href="https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false">https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false</a></p>
-
-<p>Impact du dark mode:<br />
-<a href="https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm">https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm</a></p>
-
-<p><a href="https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002">https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002</a></p>
+<p>Links : https://www.infoq.com/news/2019/04/real-world-framework-benchmark/</p>
 </span>
       </div>
     </article>

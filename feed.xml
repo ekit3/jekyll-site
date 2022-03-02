@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-03-02T02:27:43-06:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Eco Conception</title><link href="/articles/green/it/eco-conception/" rel="alternate" type="text/html" title="Eco Conception" /><published>2022-02-02T01:00:00-06:00</published><updated>2022-02-02T01:00:00-06:00</updated><id>/articles/green/it/eco-conception</id><content type="html" xml:base="/articles/green/it/eco-conception/">&lt;p&gt;&lt;img src=&quot;/articles/green/it/eco-conception//image4.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-03-02T02:54:59-06:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Micro Frond End</title><link href="/articles/front-end/micro-front-end/" rel="alternate" type="text/html" title="Micro Frond End" /><published>2022-03-02T01:00:00-06:00</published><updated>2022-03-02T01:00:00-06:00</updated><id>/articles/front-end/micro-front-end</id><content type="html" xml:base="/articles/front-end/micro-front-end/">&lt;p&gt;Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ».&lt;br /&gt;
+Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE.
+Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”.&lt;br /&gt;
+Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun.
+Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs.&lt;br /&gt;
+Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun.&lt;br /&gt;
+Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…
+&lt;!--END_SUMMARY--&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;origine&quot;&gt;Origine&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/front-end/micro-front-end//image_1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le terme est apparu dans les RADAR techniques de Thoughtworks en 2016 mais c’est en 2019 que les micro-front end commencent à émerger.&lt;/p&gt;
+
+&lt;h4 id=&quot;thoughtworks--qui-sont-ils-&quot;&gt;Thoughtworks : qui sont-ils ?&lt;/h4&gt;
+
+&lt;p&gt;C’est un organisme public qui se concentre sur la mise en place de concept technologique.&lt;br /&gt;
+Ils mettent à disposition la conception et participe à la livraison de logiciels, d’outils, ils proposent également un service de conseil informatique.&lt;/p&gt;
+
+&lt;h4 id=&quot;que-sest-il-passé-entre-lapparition-du-terme-et-sa-réelle-émergence-&quot;&gt;Que s’est-il passé entre l’apparition du terme et sa réelle émergence ?&lt;/h4&gt;
+
+&lt;p&gt;Thoughtworks a mis à disposition une recherche réalisée dans leurs équipes. Cette recherche porte sur la mise en place des micro-services au niveau de l’UI. Thoughtworks a partagé l’évolution conceptuelle des micro-front end. En Novembre 2016, arrivent les premières idées à propos de ce type d’architecture (des idées mais aussi des POC et des phases d’évaluation). &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Les ingénieurs de Thoughtworks pensent qu’il serait intéressant d’appliquer un système de micro-services au niveau de l’UI afin d’éviter les monolithes. Ils mettent en avant le fait que l’approche BFF (back-for-front : couche permettant la communication entre le back-end et le front-end) en serait largement bénéficiaire.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;S’ensuit une communication en Mai 2018 (lors de la phase d’essai), celle-ci nous informe que des équipes ont mis en place des structures monolithiques au niveau des services back. Ils font un petit rappel afin d’expliquer l’objectif des micro-front end : obtenir des composants/pages isolés et indépendants les uns des autres et qui appartiennent à différentes équipes.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;En Avril 2019 débute la phase d’émergence, à ce stade, Thoughtworks pense que la mise en place des micro-front end représente un bénéfice certain pour les équipes de développement. A partir de ce moment ils commencent à informer et à conseiller sur les implémentations liées aux micro-front end.&lt;/p&gt;
+
+&lt;h4 id=&quot;et-si-jai-rien-compris--petit-résumé&quot;&gt;“Et si j’ai rien compris ?”: Petit Résumé&lt;/h4&gt;
+
+&lt;p&gt;Le processus lié à ce concept, dans un format de type release/actualisation semble venir de la frustration de certaines équipes vis-à-vis des monolithes.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Les “assessments” donne pour définition des structures monolithiques Front : « large and sprawling browser applications that are as difficult to maintain and evolve as the monolithic server-side applications we’ve abandoned »&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Soit en français : « Des applications “navigateurs” volumineuses et entremêlées étant aussi difficiles à maintenir et à faire évoluer que des applications back monolithiques déjà  abandonnées. »&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;mise-en-place&quot;&gt;Mise en place&lt;/h4&gt;
+
+&lt;h5 id=&quot;--la-gouvernance&quot;&gt;- La Gouvernance&lt;/h5&gt;
+
+&lt;p&gt;La gouvernance est un élément indispensable lors de l’initialisation d’un projet micro-front end. La liberté provenant de ce type d’architecture est à double tranchant. Une plus grande liberté permet de réaliser plus facilement un ensemble de tâches mais c’est aussi un moyen de surcharger votre application.&lt;/p&gt;
+
+&lt;p&gt;Voici 3 axes de réflexions afin de mieux comprendre la problématique :&lt;/p&gt;
+
+&lt;h5 id=&quot;--le-premier--déterminer-le-scope&quot;&gt;- Le premier : déterminer le scope&lt;/h5&gt;
+
+&lt;p&gt;Réfléchissez à la taille de vos composants (comme ce qui est fait pour les briques dans un modèle microservice en back-end). Cela permet ainsi de réfléchir à la taille de vos équipes et le nombre de ressources à mobiliser. (Votre budget vous remerciera.)&lt;/p&gt;
+
+&lt;h5 id=&quot;--le-second--il-en-faut-un-pour-les-gouverner-tous&quot;&gt;- Le second : il en faut un pour les gouverner tous.&lt;/h5&gt;
+
+&lt;p&gt;L’indépendance des composants peut faire perdre de vue l’objectif commun: la réalisation d’une interface graphique pour une application. Cette application a des attentes en termes d’objectifs, de performances, ou encore d’image (marketing etc…).&lt;br /&gt;
+Il faut, par exemple, veiller à avoir une équipe responsable du partage de la connaissance et de la culture afin de ne pas diviser “pour mieux régner” mais plutôt de “réunir pour mieux réussir”. Il est également important d’imaginer la mise en place de tests d’intégrations globaux au niveau du plus haut parent de la famille des composants.&lt;br /&gt;
+(Imaginez une application dont chaque composant possède sa propre charte graphique façon sapin de noël..)&lt;/p&gt;
+
+&lt;p&gt;Une solution commune dite “Core” se matérialise par une équipe gérant le noyau du site, elle régit les librairies de bases, la création, la gestion des outils (e.g.. Eventbus), la charte graphique etc.&lt;br /&gt;
+Les composants “enfants” hériteront de tout ce qui aura été prévu et partagé par le noyau applicatif.&lt;/p&gt;
+
+&lt;h5 id=&quot;--la-troisième--comment-bien-séquiper-pour-la-performance-&quot;&gt;- La troisième : comment bien s’équiper pour la performance ?&lt;/h5&gt;
+
+&lt;p&gt;Il faut distinguer deux aspects lorsque l’on pense à la qualité des MFE : la performance de chacun d’entre eux mais également du site global en termes d’affichage et de rendu.
+Avoir de multiples composants, c’est accepter d’avoir un possible laps de temps au moment de la création/initialisation de chacun.&lt;br /&gt;
+Il faut également penser au démarrage et à l’intégration de nouveaux MFE dans l’architecture globale, que ce soit en termes de cohérence, de qualité de code, de sécurité, de chaîne d’intégration et de déploiement.&lt;br /&gt;
+Pour éviter cela, il faut mettre en relation des experts techniques (architectes, leader, etc.) capables de trouver des solutions performantes et de partager les bonnes pratiques à tous ces différents niveaux.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Point d’attention : le runtime&lt;/b&gt;&lt;br /&gt;
+Plus il y a de frameworks, plus il y aura de runtimes et donc plus de risques que le poids de la page soit augmenté et sa performance dégradée.&lt;br /&gt;
+Il faudra limiter la diversité des frameworks utilisés.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/front-end/micro-front-end//image_2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce graphique montre la consommation en runtime pour chaque build avec le runtime Svelte. On dénote qu’avec à peine 10 composants on consomme moins qu’un Angular pour ne citer que lui.&lt;/p&gt;
+
+&lt;h5 id=&quot;que-doit-on-retenir-&quot;&gt;Que doit-on retenir ?&lt;/h5&gt;
+
+&lt;p&gt;Pour résumer en un seul mot :  “Communiquez !”&lt;br /&gt;
+L’indépendance apportée par les MFE peut desservir, chaque équipe faisant ses composants de manière “isolée”, si personne ne s’assure de la cohérence globale cela peut rapidement devenir néfaste.&lt;br /&gt;
+Sans communication et gouvernance, la page finale peut vite se retrouver alourdie (du au fait d’un ensemble de technologies mélangées et de la multiplicité des frameworks utilisés) ou chartée de façon bien différente et donc perdre de la cohérence (notamment via le design).&lt;br /&gt;
+Tous ces risques peuvent vite amener à regretter les monolithes.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Schéma d’archi&lt;br /&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici un exemple qui schématise une architecture micro front avec trois MFE.
+Chaque composant est développé avec une techno différente (Vue, Angular, React) et géré par une équipe spécifique, possédant ses outils de CI/CD, de tests, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/front-end/micro-front-end//image_3.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;framework-technos-et-outils&quot;&gt;Framework, technos et outils&lt;/h5&gt;
+
+&lt;p&gt;Une pluralité de frameworks qui vont vous faciliter le développement des micro frontend est disponible : chacun a sa propre philosophie dans la manière d’aborder les concepts liés aux micro frontend.&lt;br /&gt;
+Parmi les plus connus on peut citer Single-spa, Bit, Qiankun, Open components …&lt;/p&gt;
+
+&lt;h5 id=&quot;proscons&quot;&gt;Pros/Cons&lt;/h5&gt;
+&lt;p&gt;De grandes entreprises ont choisi de se lancer dans les micro frontend, comme IKEA sur son magasin en ligne, Spotify avec son application desktop ou encore Leroy Merlin avec son site Web et Kobi.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour chacune de ces applications, des bénéfices se sont rapidement fait sentir, par exemple à travers leur vie dans les différentes plateformes, à travers l’expérience de l’utilisateur ou encore sur une meilleure réalisation des développements grâce à des équipes plus réduite mais concentrées sur une seule feature.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Les avantages et inconvénients des MFE sont fortement liés.&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Le découpage du code&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Pros&lt;/b&gt; : plus simple, plus léger, c’est un vrai bonus de lisibilité et de maintenabilité.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Cons&lt;/b&gt; : même si la compréhension unitaire des composants est plus simple, la complexité globale de l’application peut en revanche être plus floue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La liberté des choix technologiques&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Pros&lt;/b&gt; : plus de technologies disponibles implique plus de possibilités.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Cons&lt;/b&gt; : cela peut induire des problèmes de performances, de compatibilité voire de maintenabilité.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;L’indépendance et l’autonomie des équipes&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Pros&lt;/b&gt; : cet aspect améliore les conditions et la qualité de développement.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Cons&lt;/b&gt; : la relation inter-équipes ne doit pas être négligée. Le risque étant de s’éloigner de l’objectif principal, d’avoir des demandes de refontes (e.g : ne correspond pas à l’attente des composants consommateurs) et même des migrations d’outils.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;L’indépendance des livraisons&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Pros&lt;/b&gt; : le choix des outils d’intégration et de déploiement continue est possible. Cela permet de livrer uniquement certaines parties de l’application.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Cons&lt;/b&gt; : mais cela implique une gestion de la qualité, du release management ou software delivery global plus complexe à mettre en place.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Il est nécessaire de mettre en place une gouvernance forte pour garantir une cohérence dans les choix pris lors du développement des différents composants. (Objectif : assurer une qualité et maintenabilité globale).&lt;/p&gt;
+
+&lt;p&gt;Links : https://www.infoq.com/news/2019/04/real-world-framework-benchmark/&lt;/p&gt;</content><author><name>[&quot;yohann_gueguin&quot;, &quot;florian_barbet&quot;, &quot;laurent_duchaussoy&quot;]</name></author><category term="Front-End" /><summary type="html">Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ». Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE. Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”. Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun. Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs. Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun. Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…</summary></entry><entry><title type="html">Eco Conception</title><link href="/articles/green-it/eco-conception/" rel="alternate" type="text/html" title="Eco Conception" /><published>2022-02-02T01:00:00-06:00</published><updated>2022-02-02T01:00:00-06:00</updated><id>/articles/green-it/eco-conception</id><content type="html" xml:base="/articles/green-it/eco-conception/">&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image4.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;L’éco-design, l’éco-conception, le green it ou dernièrement &lt;code class=&quot;highlighter-rouge&quot;&gt;la conception responsable de service numérique&lt;/code&gt; sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire.&lt;/p&gt;
 
@@ -31,17 +157,17 @@
 
 &lt;p&gt;Pour consulter cette page web, l’internaute à besoin d’un ordinateur, d’un smartphone ou d’une tablette qu’il va renouveler en moyenne tous les 2 ans. Ce terminal est connecté à une box. La fabrication de ces appareils est coûteuse en ressources environnementales puisque la production de leurs composants exige beaucoup d’énergie, des traitements chimiques et des métaux rares.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/articles/green/it/eco-conception//image3.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image3.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
 &lt;a href=&quot;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&quot; target=&quot;_blank&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Ensuite (de façon simplifiée) pour afficher les éléments de la page web (des photos du produit, une description, des caractéristiques, une vidéo explicative, des produits complémentaires….) : on fait appel à des informations stockées sur un serveur, celui-ci traitant la demande et renvoyant les éléments à afficher en retour. Ces informations passent par un réseau de câbles qui consomme de l’énergie, s’use, doit être remplacé ou changé pour absorber la quantité de données toujours croissante.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/articles/green/it/eco-conception//image2.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image2.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Chacun de ces appels nécessite de l’électricité, dont la production est responsable d’émissions de gaz à effet de serre. Plus il y a d’éléments différents, plus ces éléments sont volumineux, plus l’impact environnemental de cette page sera élevé.
 Ces serveurs ont également besoin d’électricité pour fonctionner, et comme ils génèrent de la chaleur à l’usage, ils nécessitent des systèmes de refroidissement eux aussi coûteux en électricité pour fonctionner.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/articles/green/it/eco-conception//image5.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image5.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
 &lt;em&gt;Problématique de refroidissement des datacenters - ferme de serveurs sous marin&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Le socle du numérique et ses impacts sur l’environnement est en réalité physique !&lt;/p&gt;
@@ -52,7 +178,7 @@ Ces serveurs ont également besoin d’électricité pour fonctionner, et comme 
 
 &lt;p&gt;Le rapport de GreenIT.fr réalisé avec le soutien de l’Institut du Numérique Responsable réalisé en 2019 nous indique que le secteur du numérique représente 3,8% de l’émission des gaz à effet de serre au niveau mondial. La plus grande source d’impact environnemental du numérique est liée aux équipements des utilisateurs qui représentent 39% des émissions de gaz à effet de serre, 74% de la consommation d’eau et 76% de contribution à l’épuisement des ressources.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/articles/green/it/eco-conception//image1.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image1.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
 &lt;em&gt;évolution de l’empreinte environnementale de 2010 a 2025  (&lt;a href=&quot;https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf&quot; target=&quot;_blank&quot;&gt;source&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;economie-déchelle&quot;&gt;Economie d’échelle&lt;/h5&gt;
@@ -131,7 +257,7 @@ Le but de cet article était plutôt de sensibiliser au sujet, d’exposer la ri
 &lt;p&gt;Impact du dark mode:&lt;br /&gt;
 &lt;a href=&quot;https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm&quot;&gt;https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&quot;&gt;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&lt;/a&gt;&lt;/p&gt;</content><author><name>[&quot;pauline_vandame&quot;, &quot;romain_vermeeren&quot;, &quot;mehdi_kheir&quot;]</name></author><category term="Green" /><category term="IT" /><summary type="html">L’éco-design, l’éco-conception, le green it ou dernièrement la conception responsable de service numérique sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire. “Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)</summary></entry><entry><title type="html">Mutation testing</title><link href="/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/articles/testing/mutation-testing</id><content type="html" xml:base="/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
+&lt;p&gt;&lt;a href=&quot;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&quot;&gt;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&lt;/a&gt;&lt;/p&gt;</content><author><name>[&quot;pauline_vandame&quot;, &quot;romain_vermeeren&quot;, &quot;mehdi_kheir&quot;]</name></author><category term="Green-IT" /><summary type="html">L’éco-design, l’éco-conception, le green it ou dernièrement la conception responsable de service numérique sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire. “Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)</summary></entry><entry><title type="html">Mutation testing</title><link href="/articles/testing/mutation-testing/" rel="alternate" type="text/html" title="Mutation testing" /><published>2021-10-27T02:00:00-05:00</published><updated>2021-10-27T02:00:00-05:00</updated><id>/articles/testing/mutation-testing</id><content type="html" xml:base="/articles/testing/mutation-testing/">&lt;p&gt;Le mutation testing a été inventé en 1971 par Richard Lipton.
 Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
 Le programmeur devait se contenter de tester intelligemment à moindre coût.
 Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects.
@@ -476,7 +602,7 @@ Peut-on automatiser la lecture des rapports et en ressortir les problèmes les p
     &lt;p&gt;&lt;a href=&quot;https://github.com/theofidry/awesome-mutation-testing&quot;&gt;awesome mutation testing&lt;/a&gt; : Une compilation des meilleures ressources sur le mutation testing&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;Hints on Test Data Selection: Help for the Practicing Programmer, de Richard A. Demillo et R.J Lipton&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>[&quot;yoann_bouquet&quot;]</name></author><category term="Testing" /><summary type="html">Le mutation testing a été inventé en 1971 par Richard Lipton. Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests. Le programmeur devait se contenter de tester intelligemment à moindre coût. Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects. Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing. Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications. Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus, mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</summary></entry><entry><title type="html">PWA : Innovation ou solution de consolation ?</title><link href="/articles/front-end/pwa-innovation-or-consolation/" rel="alternate" type="text/html" title="PWA : Innovation ou solution de consolation ?" /><published>2021-09-29T02:00:00-05:00</published><updated>2021-09-29T02:00:00-05:00</updated><id>/articles/front-end/pwa-innovation-or-consolation</id><content type="html" xml:base="/articles/front-end/pwa-innovation-or-consolation/">&lt;p&gt;&lt;img src=&quot;/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
 Mais qu’est ce qu’une &lt;code class=&quot;highlighter-rouge&quot;&gt;Progressive Web App&lt;/code&gt; ?&lt;/p&gt;
@@ -726,4 +852,4 @@ Malheureusement son utilisation pour le développement de parcours innovants res
   &lt;li&gt;https://www.goodbarber.com/blog/progressive-web-apps-browser-support-compatibility-a883/&lt;/li&gt;
   &lt;li&gt;https://developers.google.com/web/showcase/2017/twitter&lt;/li&gt;
   &lt;li&gt;https://developers.google.com/web/showcase/2016/flipkart&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>[&quot;romain_vermeeren&quot;, &quot;laurent_duchaussoy&quot;, &quot;yohann_gueguin&quot;]</name></author><category term="front-end" /><summary type="html">Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique. Mais qu’est ce qu’une Progressive Web App ? Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de votre téléphone. Elle serait facile à mettre en place, de faible coût et elle n’aurait plus rien à envier aux applications natives. Afin de vous éclairer sur le sujet et de vous permettre de vous faire votre propre avis, vous trouverez ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>[&quot;romain_vermeeren&quot;, &quot;yohann_gueguin&quot;, &quot;laurent_duchaussoy&quot;]</name></author><category term="Front-End" /><summary type="html">Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique. Mais qu’est ce qu’une Progressive Web App ? Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de votre téléphone. Elle serait facile à mettre en place, de faible coût et elle n’aurait plus rien à envier aux applications natives. Afin de vous éclairer sur le sujet et de vous permettre de vous faire votre propre avis, vous trouverez ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</summary></entry></feed>
