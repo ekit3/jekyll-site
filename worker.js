@@ -30,7 +30,8 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   // avoid precache home-page
-  if(event.request.url === 'https://ekite.tech' || event.request.url === 'http://localhost/'){
+  const homePages = ['https://ekite.tech', 'http://localhost'];
+  if(homePages.includes(event.request.url) || homePages.map(uri => `${uri}/`).includes(event.request.url)){
     return null;
   }
   if (event.request.url.startsWith(self.location.origin)) {

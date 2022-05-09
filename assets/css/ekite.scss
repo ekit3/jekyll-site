@@ -92,6 +92,27 @@ body {
 .posts {
     border-radius: 7px;
 
+    details {
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom:10px;
+    }
+
+    table {
+        min-width: 30%;
+        thead {
+            border-bottom: 1px solid #2F343A;
+        }
+        tr > td {
+            padding: 5px;
+        }
+        th {
+            padding: 5px;
+        }
+        margin-bottom: 10px;
+    }
+
     article {
         color: #999;
         border-radius: 5px;
@@ -132,7 +153,7 @@ body {
 
     .highlighter-rouge {
         background-color: #333;
-        color: white;
+        color: #999;
         .button-copy-clipboard {
             position: absolute;
             top:10px;
