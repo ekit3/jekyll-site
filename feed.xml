@@ -1,4 +1,198 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-08T02:08:09-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Les structures algébriques</title><link href="/articles/front-end/algebraic-structure/" rel="alternate" type="text/html" title="Les structures algébriques" /><published>2022-05-18T02:00:00-05:00</published><updated>2022-05-18T02:00:00-05:00</updated><id>/articles/front-end/algebraic-structure</id><content type="html" xml:base="/articles/front-end/algebraic-structure/">&lt;p&gt;Les premiers algorithmes ont été réalisés bien avant que le premier ordinateur ne soit conceptualisé.&lt;br /&gt; 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-15T02:07:53-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Design Pattern</title><link href="/articles/other/design-pattern/" rel="alternate" type="text/html" title="Design Pattern" /><published>2022-06-15T02:00:00-05:00</published><updated>2022-06-15T02:00:00-05:00</updated><id>/articles/other/design-pattern</id><content type="html" xml:base="/articles/other/design-pattern/">&lt;h5 id=&quot;lart-de-savoir-utiliser-le-bon-outil-au-bon-moment&quot;&gt;L’art de savoir utiliser le bon outil au bon moment&lt;br /&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//image-pattern.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Les “Design Patterns”, ou “patrons de conception”, sont un ensemble de solutions reconnues, particulièrement dans la programmation orientée objet, comme étant la meilleure réponse afin de résoudre un problème de conception récurrent.&lt;/p&gt;
+
+&lt;p&gt;Les exemples de patrons peuvent être faits de différentes façons: par le biais de schémas, de pseudo code, la manière d’organiser ses modules ou classes ou à l’aide d’une implémentation proposée.&lt;/p&gt;
+
+&lt;!--END_SUMMARY--&gt;
+
+&lt;h2 id=&quot;doù-viennent-ils-&quot;&gt;D’où viennent-ils ?&lt;/h2&gt;
+
+&lt;p&gt;Nous pouvons être redevable à Christopher Alexander, anthropologue et architecte Américain pour avoir travaillé sur “la théorie des Pattern Languages” permettant des déclinaisons dans des domaines aussi divers que l’histoire de l’art, l’anthropologie…&lt;br /&gt;
+Cette façon d’aborder le modèle de conception a été reprise en 1987 par Kent Beck (concepteur d’extrême programming) et Ward Cunningham (inventeur du concept de Wiki) , qui ont décidé d’appliquer ce type de design architectural à l’informatique.&lt;br /&gt;
+C’est en 1994, à la suite d’un livre nommé &lt;b&gt;Design Patterns: Elements of Reusable Software&lt;/b&gt; co-écrit par un collectif (GoF pour Gang of Four) et décrivant plus d’une vingtaine de patrons que ce principe fut réellement reconnu.&lt;/p&gt;
+
+&lt;h2 id=&quot;voici-les-différents-types-de-patrons-de-conception-&quot;&gt;Voici les différents types de patrons de conception :&lt;/h2&gt;
+
+&lt;h3 id=&quot;le-patron-de-création-creational-pattern&quot;&gt;&lt;b&gt;Le patron de création&lt;/b&gt; (Creational Pattern)&lt;br /&gt;&lt;/h3&gt;
+&lt;p&gt;Il a pour but d’aider à résoudre les problèmes d’instanciation de classes.&lt;/p&gt;
+
+&lt;p&gt;Quelques exemples:&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Singleton&lt;/li&gt;
+  &lt;li&gt;Prototype&lt;/li&gt;
+  &lt;li&gt;Fabrique (Factory)&lt;/li&gt;
+  &lt;li&gt;Fabrique Abstraite (Abstract Factory)&lt;/li&gt;
+  &lt;li&gt;Monteur (Builder)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;le-patron-de-structure-structural-pattern&quot;&gt;&lt;b&gt;Le patron de structure&lt;/b&gt; (Structural Pattern)&lt;/h3&gt;
+&lt;p&gt;Structurer les classes et objets afin de garder ceux-ci flexibles et efficaces au travers de leur 
+structuration et leur interface.&lt;/p&gt;
+
+&lt;p&gt;Quelques exemples:&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Pont (Bridge)&lt;/li&gt;
+  &lt;li&gt;Façade&lt;/li&gt;
+  &lt;li&gt;Adaptateur (Adapter)&lt;/li&gt;
+  &lt;li&gt;Objet composite&lt;/li&gt;
+  &lt;li&gt;Proxy&lt;/li&gt;
+  &lt;li&gt;Poids-mouche (Flyweight pattern)&lt;/li&gt;
+  &lt;li&gt;Décorateur (Decorator)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;le-patron-de-comportement-behavioral-pattern&quot;&gt;&lt;b&gt;Le patron de comportement&lt;/b&gt; (Behavioral Pattern)&lt;/h3&gt;
+&lt;p&gt;Permet de modéliser et répartir les responsabilités entre les objets.&lt;/p&gt;
+
+&lt;p&gt;Quelques exemples:&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Chaîne de responsabilité (Chain of Responsibility)&lt;/li&gt;
+  &lt;li&gt;Commande (Command)&lt;/li&gt;
+  &lt;li&gt;Interpréteur (Interpreter)&lt;/li&gt;
+  &lt;li&gt;Itérateur (Iterator)&lt;/li&gt;
+  &lt;li&gt;Médiateur (Mediator)&lt;/li&gt;
+  &lt;li&gt;Mémento&lt;/li&gt;
+  &lt;li&gt;Observateur (Observer)&lt;/li&gt;
+  &lt;li&gt;Etat (State)&lt;/li&gt;
+  &lt;li&gt;Stratégie (Strategy)&lt;/li&gt;
+  &lt;li&gt;Patron de méthode (Template Method Pattern)&lt;/li&gt;
+  &lt;li&gt;Visiteur (Visitor)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;quand-et-pourquoi-les-utiliser-&quot;&gt;Quand et pourquoi les utiliser ?&lt;/h2&gt;
+
+&lt;p&gt;Un développeur ayant une culture du Design Pattern (et sachant quand c’est le moment d’en utiliser un) pourra trouver plus rapidement une solution grâce aux différents paradigmes proposés et ayant déjà fait leurs preuves.&lt;/p&gt;
+
+&lt;p&gt;Il permet donc :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;d’accélérer le processus de développement,&lt;/li&gt;
+  &lt;li&gt;de réduire les bugs potentiels,&lt;/li&gt;
+  &lt;li&gt;de connaître les bonnes pratiques et les pièges à éviter&lt;/li&gt;
+  &lt;li&gt;de s’appuyer sur la capitalisation de l’expérience de la communauté.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Il est donc vraiment important de l’intégrer le plus tôt possible dans le processus de conception / développement.&lt;br /&gt;
+Un bon développeur devra savoir s’arrêter et remettre en question son code lorsqu’il se retrouve face à un problème.&lt;br /&gt;
+Il faudra se demander “Ne suis-je pas en train de réinventer la roue ? N’existe t’il pas un patron qui pourrait répondre à ma problématique ?”&lt;/p&gt;
+
+&lt;h3 id=&quot;quelques-exemples&quot;&gt;Quelques exemples&lt;/h3&gt;
+
+&lt;p&gt;Il existe de nombreux modèles qui sont souvent très utilisés. La plupart du temps beaucoup de développeurs en utilisent sans savoir qu’il s’agit de modèles de patrons de conception.
+Voici quelques cas parmis ceux que vous utilisez peut-être sans même le savoir.&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Modèle Composite&lt;/b&gt; : pour représenter des structures arborescentes pour présenter des hiérarchies de composants / composés.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Singleton&lt;/b&gt; qui permet de limiter l’instanciation d’une classe à un seul objet.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Les &lt;b&gt;itérateurs&lt;/b&gt; qui permettent de parcourir les éléments d’une collection (liste, arbre etc.).&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Proxy&lt;/b&gt; : substitue une classe à une autre en utilisant la même interface permettant entre autres la sécurité ou l’appel de méthodes à distance.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-3.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Décorateur&lt;/b&gt; : attacher dynamiquement des nouvelles responsabilités à un objet&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-4.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Façade&lt;/b&gt; pour simplifier l’utilisation d’une interface complète.&lt;/p&gt;
+
+&lt;p&gt;L’&lt;b&gt;Observateur&lt;/b&gt; : mécanisme de souscription afin d’envoyer des notifications à plusieurs objets qui sont observés.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-5.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le &lt;b&gt;Stratégie&lt;/b&gt; qui permet de créer des algorithmes séparés dans plusieurs classes autonomes / interchangeables.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//dp-6.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici un cas d’usage écrit en Typescript pour savoir quand l’utiliser. Imaginons que l’on souhaite faire plusieurs actions différentes mais avec le même objet, nous pourrions être tenté de faire une classe qui contiendrait toutes ces actions? Oui et non, car celà reviendrait à ne pas respecter un des principes du &lt;a href=&quot;https://fr.wikipedia.org/wiki/SOLID_(informatique)&quot;&gt;SOLID&lt;/a&gt; à savoir le “S” pour Single Responsibility Principe.
+Prenons le cas d’un site, nous voulons développer une classe qui permet de gérer le paiement.&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PaymentStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;nous allons ensuite créer plusieurs classes correspondant aux différents moyens de paiement :&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CreditCardStrategy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PaymentStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//  ici on fait des traitements différents&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;je paye en carte de crédit un total de&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;		
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OtherPaymentStrategy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PaymentStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+
+    &lt;span class=&quot;c1&quot;&gt;//  ici on fait des traitements différents&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;je paye en X moyen de paiement un total de&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;		
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pour finir nous créerons une classe finale qui va permettre d’utiliser notre stratégie.&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Cart&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getTotalCart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PaymentStrategyMethod&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;methodToPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;methodToPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTotalCart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Afin d’utiliser tout ça on pourrait imaginer un sélecteur lorsque l’on passe à l’étape du paiement qui permettrait de sélectionner son moyen de paiement préféré.&lt;/p&gt;
+
+&lt;p&gt;exemple :&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;cart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Cart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;199&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CreditCardStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// pour le premier cas&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;cart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doPay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OtherPaymentStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// pour le second cas&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le &lt;b&gt;Prototype&lt;/b&gt; qui permet de créer de nouveaux objets à partir d’objets existants tout en laissant à la classe le soin du type d’objet à créer.&lt;/p&gt;
+
+&lt;p&gt;La &lt;b&gt;Fabrique&lt;/b&gt; pour instancier des objets dans une classe mère tout en laissant aux sous classes le choix des types d’objets à créer.&lt;/p&gt;
+
+&lt;p&gt;L’ &lt;b&gt;Object Pool&lt;/b&gt; pour économiser le temps d’instanciation et de suppression lorsque de nombreux objets ayant une vie courte seront utilisés.&lt;/p&gt;
+
+&lt;h2 id=&quot;pour-finir&quot;&gt;Pour finir&lt;/h2&gt;
+
+&lt;p&gt;Vous l’aurez compris, le Design Pattern fait partie intégrante des outils indispensables du développeur.&lt;br /&gt; 
+Le but de cet article est de vous donner l’envie de vous y intéresser, de lire, de découvrir et surtout d’apprendre à savoir quand les utiliser afin de répondre au mieux à vos besoins.&lt;/p&gt;
+
+&lt;p&gt;Attention toutefois à ne pas tomber dans l’exact contraire, à savoir, l’anti pattern.&lt;br /&gt;
+Cela reviendrait à faire le mauvais choix et donc à apporter la mauvaise réponse à une problématique donnée.&lt;/p&gt;
+
+&lt;p&gt;Voici un exemple développé en Java par Maxime, il combine le Pattern Observer et Builder avec comme thème l’organisation de course à pied. &lt;br /&gt;
+Lien du repos git : https://github.com/ekit3/design-pattern&lt;/p&gt;
+
+&lt;p&gt;Sources ayant servie à écrire l’article et pour aller plus loin :&lt;/p&gt;
+
+&lt;p&gt;https://fr.wikibooks.org/wiki/Patrons_de_conception
+https://ryax.tech/fr/design-pattern-cest-quoi-et-pourquoi-lutiliser/
+https://refactoring.guru/
+https://madasamy.medium.com/introduction-to-object-oriented-design-patterns-part-i-4e5c7845015b&lt;/p&gt;</content><author><name>[&quot;laurent_duchaussoy&quot;]</name></author><category term="Other" /><summary type="html">L’art de savoir utiliser le bon outil au bon moment Les “Design Patterns”, ou “patrons de conception”, sont un ensemble de solutions reconnues, particulièrement dans la programmation orientée objet, comme étant la meilleure réponse afin de résoudre un problème de conception récurrent. Les exemples de patrons peuvent être faits de différentes façons: par le biais de schémas, de pseudo code, la manière d’organiser ses modules ou classes ou à l’aide d’une implémentation proposée.</summary></entry><entry><title type="html">Les structures algébriques</title><link href="/articles/front-end/algebraic-structure/" rel="alternate" type="text/html" title="Les structures algébriques" /><published>2022-05-18T02:00:00-05:00</published><updated>2022-05-18T02:00:00-05:00</updated><id>/articles/front-end/algebraic-structure</id><content type="html" xml:base="/articles/front-end/algebraic-structure/">&lt;p&gt;Les premiers algorithmes ont été réalisés bien avant que le premier ordinateur ne soit conceptualisé.&lt;br /&gt; 
 Le tout premier algorithme connu a été écrit en -300 avant notre ère par Euclide (PGCD).&lt;br /&gt;
 Aujourd’hui les mathématiques font rêver, font peur et semblent parfois inaccessibles. Une chose est sûre, elles sont partout.&lt;br /&gt;
 Comptables, développeurs, boulangers ou même politiques, tous utilisent les mathématiques : le langage suit un ensemble de règles mathématiques.&lt;br /&gt;
