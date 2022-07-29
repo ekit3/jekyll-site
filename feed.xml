@@ -1,4 +1,401 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-07-27T02:08:17-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Design Pattern</title><link href="/articles/other/design-pattern/" rel="alternate" type="text/html" title="Design Pattern" /><published>2022-06-15T02:00:00-05:00</published><updated>2022-06-15T02:00:00-05:00</updated><id>/articles/other/design-pattern</id><content type="html" xml:base="/articles/other/design-pattern/">&lt;h5 id=&quot;lart-de-savoir-utiliser-le-bon-outil-au-bon-moment&quot;&gt;L’art de savoir utiliser le bon outil au bon moment&lt;br /&gt;&lt;/h5&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-07-29T04:41:29-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Exécuter une application localement sur minikube avec skaffold</title><link href="/articles/devops/skaffold-et-minikube/" rel="alternate" type="text/html" title="Exécuter une application localement sur minikube avec skaffold" /><published>2022-07-22T00:00:00-05:00</published><updated>2022-07-22T00:00:00-05:00</updated><id>/articles/devops/skaffold-et-minikube</id><content type="html" xml:base="/articles/devops/skaffold-et-minikube/">&lt;p&gt;Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Développement&lt;/li&gt;
+  &lt;li&gt;Contruction de l’image Docker (quelques secondes/minutes)&lt;/li&gt;
+  &lt;li&gt;Push de l’image sur un registry&lt;/li&gt;
+  &lt;li&gt;Déploiement sur Kubernetes (quelques minutes)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Cette boucle est généralement implémentée par des pipelines de CI/CD. Ces pipelines augmentent encore le temps entre le développement et une application démarrée sur Kubernetes. Ce temps est relativement long lorsqu’on compare un cycle de développement local auquel un développeur peut être habitué.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://skaffold.dev&quot; target=&quot;_blank&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt;&lt;/a&gt;, développé par Google, est un outil open-source en license Apache, qui permet d’implémenter cette boucle de développement sur un environnement Kubernetes local ou distant. La promesse de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; est de rendre le développement sur Kubernetes simple, rapide et reproductible.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/devops/skaffold-et-minikube//skaffold.png&quot; alt=&quot;la page d'accueil de skaffold&quot; /&gt;&lt;/p&gt;
+
+&lt;!--END_SUMMARY--&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; implémente un &lt;em&gt;pipeline&lt;/em&gt; qui se déroule en plusieurs étapes:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;em&gt;build&lt;/em&gt; : construction des images docker avec:
+    &lt;ul&gt;
+      &lt;li&gt;Docker (sur base d’un &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;)&lt;/li&gt;
+      &lt;li&gt;Buildpacks&lt;/li&gt;
+      &lt;li&gt;Jib&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;tag&lt;/em&gt; de l’image docker en utilisant différentes stratégies :
+    &lt;ul&gt;
+      &lt;li&gt;l’identifiant du commit git (par défaut)&lt;/li&gt;
+      &lt;li&gt;une date&lt;/li&gt;
+      &lt;li&gt;des variables d’environnement&lt;/li&gt;
+      &lt;li&gt;un hash des fichiers source
+      * push de l’image sur un registry
+      * chargement direct de l’image dans un cluster Kubernetes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;deploy&lt;/em&gt; : déploiement de l’application sur Kubernetes (local ou distant) en utilisant:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; et des fichiers yaml&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;kustomize&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;helm&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;tail logs &amp;amp; port forward&lt;/em&gt; : affiche les logs de l’application et redirige un port local&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;status check&lt;/em&gt; : attend la fin du bon déploiement de application&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; a besoin d’un code à déployer, ainsi qu’un accès à un cluster Kubernetes. L’accès au cluster se configure de la même manière que pour &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt;, à travers un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.kube/config&lt;/code&gt;. Pour la suite de cet article, j’utilise un cluster &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; que j’installe sur mon poste pour l’occasion.&lt;/p&gt;
+
+&lt;h2 id=&quot;déployer-un-cluster-minikube-localement&quot;&gt;Déployer un cluster minikube localement&lt;/h2&gt;
+&lt;p&gt;La première étape consiste à déployer un cluster &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; sur mon poste de développement.
+Pour ce faire, le plus pratique est de suivre les étapes d’installation de l’outil détaillées &lt;a href=&quot;https://minikube.sigs.k8s.io/docs/start/&quot; target=&quot;_blank&quot;&gt;dans leur documentation d’installation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/devops/skaffold-et-minikube//minikube-install.png&quot; alt=&quot;installation de minikube&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici les commandes que j’ai exécuté pour installer &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; sur mon poste Linux :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+&lt;span class=&quot;nb&quot;&gt;sudo install &lt;/span&gt;minikube-linux-amd64 /usr/local/bin/minikube
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker&lt;/code&gt; étant déjà installé sur mon poste, je peux tout de suite démarrer un cluster Kubernetes local avec la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube start&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;minikube start
+😄  minikube v1.24.0 on Debian bookworm/sid
+🎉  minikube 1.26.0 is available! Download it: https://github.com/kubernetes/minikube/releases/tag/v1.26.0
+💡  To disable this notice, run: &lt;span class=&quot;s1&quot;&gt;'minikube config set WantUpdateNotification false'&lt;/span&gt;
+
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;cluster minikube
+🚜  Pulling base image ...
+🔄  Restarting existing docker container &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minikube&quot;&lt;/span&gt; ...
+
+🧯  Docker is nearly out of disk space, which may cause deployments to fail! &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;92% of capacity&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+💡  Suggestion: 
+
+    Try one or more of the following to free up space on the device:
+    
+    1. Run &lt;span class=&quot;s2&quot;&gt;&quot;docker system prune&quot;&lt;/span&gt; to remove unused Docker data &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;optionally with &lt;span class=&quot;s2&quot;&gt;&quot;-a&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    2. Increase the storage allocated to Docker &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Desktop by clicking on:
+    Docker icon &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Preferences &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Resources &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Disk Image Size
+    3. Run &lt;span class=&quot;s2&quot;&gt;&quot;minikube ssh -- docker system prune&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;using the Docker container runtime
+🍿  Related issue: https://github.com/kubernetes/minikube/issues/9024
+
+🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+    ▪ Using image k8s.gcr.io/ingress-nginx/controller:v1.0.4
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+🔎  Verifying ingress addon...
+🌟  Enabled addons: storage-provisioner, default-storageclass, ingress
+🏄  Done! kubectl is now configured to use &lt;span class=&quot;s2&quot;&gt;&quot;minikube&quot;&lt;/span&gt; cluster and &lt;span class=&quot;s2&quot;&gt;&quot;default&quot;&lt;/span&gt; namespace by default
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Par défaut, &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; va générer un fichier de configuration pour &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; dans &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.kube/config&lt;/code&gt;. La commande &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; sera donc immédiatement utilisable:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;kubectl get nodes
+NAME       STATUS   ROLES                  AGE    VERSION
+minikube   Ready    control-plane,master   1d     v1.22.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Si la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; n’est pas installée, &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; l’intègre et elle est utilisable de cette manière:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;minikube kubectl get nodes
+NAME       STATUS   ROLES                  AGE    VERSION
+minikube   Ready    control-plane,master   1d     v1.22.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pour ma part, j’ai installé &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; avec l’outil de packaging de mon système en suivant &lt;a href=&quot;https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management&quot; target=&quot;_blank&quot;&gt;cette procédure&lt;/a&gt;.
+Une fois que &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; sont installés, démarrés et configurés, je peux passer à l’installation de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;installation-de-skaffold&quot;&gt;Installation de skaffold&lt;/h2&gt;
+&lt;p&gt;L’installation de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; est similaire à celle de &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt;.
+J’ai suivi la procédure sur &lt;a href=&quot;https://skaffold.dev/docs/install/&quot; target=&quot;_blank&quot;&gt;dans leur documentation&lt;/a&gt; et installé la version Linux avec ces commandes:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-Lo&lt;/span&gt; skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo install &lt;/span&gt;skaffold /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; est maintenant disponible sur mon poste:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;skaffold version
+v1.39.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;configuration-dun-projet&quot;&gt;Configuration d’un projet&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; se configure avec un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold.yml&lt;/code&gt; à positionner à la racine de votre projet.
+J’ai pris pour exemple un projet Micronaut avec lequel je suis en train d’expérimenter:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+├── micronaut-cli.yml
+├── mvnw
+├── mvnw.bat
+├── pom.xml
+├── README.md
+└── src
+    └── main
+        ├── java
+        │   └── com
+        │       └── example
+        │           ├── Application.java
+        │           └── pokemons
+        │               ├── PokemonController.java
+        │               ├── Pokemon.java
+        │               ├── PokemonRepository.java
+        │               └── PokemonService.java
+        └── resources
+            ├── application.yml
+            ├── bootstrap.yml
+            └── logback.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;La configuration initiale du projet se fait en utilisant la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold init&lt;/code&gt; . Cette commande propose différentes options (&lt;a href=&quot;https://skaffold.dev/docs/pipeline-stages/init/&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt;) en interactif pour créer son fichier de configuration. Cette étape est plus simple qu’écrire le fichier à la main.
+Comme je n’ai pas encore écrit de fichiers manifest Kubernetes pour mon application, &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; a une option pour les générer: &lt;code class=&quot;highlighter-rouge&quot;&gt;--generate-manifests&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;La première étape consiste à configurer la phase de &lt;em&gt;build&lt;/em&gt; de l’application, à savoir la construction de l’image docker. Plusieurs options seront proposées, en fonction de ce qui est déjà disponible dans le code : &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;, configuration de &lt;code class=&quot;highlighter-rouge&quot;&gt;jib&lt;/code&gt;, ou manifests Kubernetes.
+Mon projet Micronaut a déjà une configuration pour &lt;code class=&quot;highlighter-rouge&quot;&gt;jib&lt;/code&gt; dans son &lt;code class=&quot;highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.google.cloud.tools&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;jib-maven-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.2.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold init&lt;/code&gt; me propose alors de paramétrer ma phase de &lt;em&gt;build&lt;/em&gt; avec Buildpacks ou Jib:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;skaffold init &lt;span class=&quot;nt&quot;&gt;--generate-manifests&lt;/span&gt;
+? Which builders would you like to create Kubernetes resources &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;?  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Use arrows to move, space to &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt;, &amp;lt;right&amp;gt; to all, &amp;lt;left&amp;gt; to none, &lt;span class=&quot;nb&quot;&gt;type &lt;/span&gt;to filter]
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  Buildpacks &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;pom.xml&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  Jib Maven Plugin &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;com.example:demo-app-pokemon-micronaut, pom.xml&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Je choisis l’option &lt;em&gt;Jib&lt;/em&gt; étant donné que ce plugin est déjà configuré pour mon application.&lt;/p&gt;
+
+&lt;p&gt;L’étape suivante propose de configurer un port à forwarder pour mon image Docker, je saisis le port 8080 qui est le port par défaut de mon application:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;? Select port to forward &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;pom-xml-image &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;leave blank &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;none&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; me propose ensuite un manifest Kubernetes et me demande si je souhaite générer les fichiers:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;? Do you want to write this configuration, along with the generated k8s manifests, to skaffold.yaml? Yes
+Generated manifest deployment.yaml was written
+Configuration skaffold.yaml was written
+You can now run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;skaffold build] to build the artifacts
+or &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;skaffold run] to build and deploy
+or &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;skaffold dev] to enter development mode, with auto-redeploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;À noter que si des fichiers de déploiement Kubernetes sont déjà présents dans l’application, &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; les détecte et les ajoute à sa configuration automatiquement.
+Le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;deployment.yaml&lt;/code&gt; généré pour Kubernetes est simple:&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Service&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;TCP&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;clusterIP&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;None&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apps/v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Deployment&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;replicas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;matchLabels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;containers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ainsi que le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;skaffold/v2beta29&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Config&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;demo-app-pokemon-micronaut&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;artifacts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;jib&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;com.example:demo-app-pokemon-micronaut&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;kubectl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;manifests&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;deployment.yaml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;portForward&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resourceType&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;service&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;resourceName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pom-xml-image&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Le fichier généré contient de la configuration pour 3 étapes du pipeline de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;La phase de &lt;em&gt;build&lt;/em&gt; est bien configurée pour construire une image Docker en utilisant &lt;em&gt;Jib&lt;/em&gt;, l’image produite sera nommée &lt;code class=&quot;highlighter-rouge&quot;&gt;pom-xml-image&lt;/code&gt;. Ce nom par défaut pourra être changé en modifiant ce fichier de configuration.&lt;/p&gt;
+
+&lt;p&gt;La phase de &lt;em&gt;deploy&lt;/em&gt; est configurée pour déployer des manifests Kubernetes, ici le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;deployment.yaml&lt;/code&gt; qui a été généré par la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold init&lt;/code&gt;. Ces fichiers manifest référencent l’image &lt;code class=&quot;highlighter-rouge&quot;&gt;pom-xml-image&lt;/code&gt; dans la partie &lt;em&gt;Deployment&lt;/em&gt; du manifest.
+On voit donc ici comment on peut adapter cette configuration pour inclure d’autres fichiers, comme une &lt;em&gt;ConfigMap&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;J’ai pris le parti de déplacer les fichiers de manifest Kubernetes générés dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;src/main/Kubernetes&lt;/code&gt; de mon application et de renommer l’image générée.
+Voici la structure de mon application après ces opérations:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+├── micronaut-cli.yml
+├── mvnw
+├── mvnw.bat
+├── pom.xml
+├── README.md
+├── skaffold.yaml
+└── src
+    └── main
+        ├── java
+        │   └── com
+        │       └── example
+        │           ├── Application.java
+        │           └── pokemons
+        │               ├── PokemonController.java
+        │               ├── Pokemon.java
+        │               ├── PokemonRepository.java
+        │               └── PokemonService.java
+        ├── kubernetes
+        │   ├── configMap.yaml
+        │   ├── deployment.yaml
+        │   └── service.yaml
+        └── resources
+            ├── application.yml
+            ├── bootstrap.yml
+            └── logback.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ainsi que le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold.yaml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;skaffold/v2beta29&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Config&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;demo-skaffold&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;artifacts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;demo-skaffold&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;jib&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;kubectl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;manifests&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;src/main/kubernetes/*.yaml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;portForward&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resourceType&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;service&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;resourceName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;demo-skaffold&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;démarrage-de-mon-projet&quot;&gt;Démarrage de mon projet&lt;/h2&gt;
+&lt;p&gt;Une fois les fichiers générés, la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold dev&lt;/code&gt; va:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;construire l’image docker en utilisant le builder &lt;em&gt;Jib&lt;/em&gt; configuré&lt;/li&gt;
+  &lt;li&gt;déposer cette image directement dans l’environnement du &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;déployer les fichiers de configuration Kubernetes&lt;/li&gt;
+  &lt;li&gt;ouvrir un port-forward sur mon port d’écoute 8080&lt;/li&gt;
+  &lt;li&gt;afficher les logs de mon application dans mon shell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;skaffold dev   
+Listing files to watch...
+ - demo-skaffold
+Generating tags...
+ - demo-skaffold -&amp;gt; demo-skaffold:latest
+Some taggers failed. Rerun with &lt;span class=&quot;nt&quot;&gt;-vdebug&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;errors.
+Checking cache...
+ - demo-skaffold: Found Locally
+Tags used &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;deployment:
+ - demo-skaffold -&amp;gt; demo-skaffold:275bf648a141313e52f422d73ad69379be4f4d7c3e9e50fe3c16289da8391c33
+Starting deploy...
+ - configmap/demo-skaffold created
+ - deployment.apps/demo-skaffold created
+ - service/demo-skaffold created
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;deployments to stabilize...
+ - deployment/demo-skaffold is ready.
+Deployments stabilized &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;2.047 seconds
+Port forwarding service/demo-skaffold &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;namespace default, remote port 8080 -&amp;gt; http://127.0.0.1:8080
+Press Ctrl+C to &lt;span class=&quot;nb&quot;&gt;exit
+&lt;/span&gt;Watching &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;changes...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend]  __  __ _                                  _   
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] |  &lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;_&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ___ _ __ ___  _ __   __ _ _   _| |_ 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] | |&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;| | |/ __| &lt;span class=&quot;s1&quot;&gt;'__/ _ \| '&lt;/span&gt;_ &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;/ _&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; | | | | __|
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] | |  | | | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;__| | | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;_&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | | | | &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;_| | |_| | |_ 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] |_|  |_|_|&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;__|_|  &lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;__/|_| |_|&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;_,_|&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;_,_|&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;_|
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend]   Micronaut &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;v3.5.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] 14:15:41.202 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;main] INFO  i.m.context.env.DefaultEnvironment - Established active environments: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;k8s, cloud]
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;backend] 14:15:41.557 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;main] INFO  io.micronaut.runtime.Micronaut - Startup completed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;803ms. Server Running: http://demo-skaffold-5bfb47c8fc-cvld4:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/devops/skaffold-et-minikube//localhost.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;En quelques minutes, mon application est démarré sur mon cluster &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt; local.
+Je peux voir avec une commande &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl get all&lt;/code&gt; que mes manifests ont bien été déployés et que mon application tourne:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;kubectl get all
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod/demo-skaffold-5bfb47c8fc-cvld4   1/1     Running   0          19m
+
+NAME                    TYPE        CLUSTER-IP   EXTERNAL-IP   PORT&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;S&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;    AGE
+service/demo-skaffold   ClusterIP   None         &amp;lt;none&amp;gt;        8080/TCP   19m
+service/kubernetes      ClusterIP   10.96.0.1    &amp;lt;none&amp;gt;        443/TCP    1d
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/demo-skaffold   1/1     1            1           19m
+
+NAME                                       DESIRED   CURRENT   READY   AGE
+replicaset.apps/demo-skaffold-5bfb47c8fc   1         1         1       19m
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; est aussi capable de faire du &lt;em&gt;hot-reload&lt;/em&gt; sans configuration supplémentaire pour les applications buildées avec &lt;em&gt;jib&lt;/em&gt;.
+Il suffit de:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;modifier le code&lt;/li&gt;
+  &lt;li&gt;attendre quelques secondes que le code soit re-compilé et l’application est re-démarrée&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Watching &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;changes...
+Generating tags...
+ - pom-xml-image -&amp;gt; pom-xml-image:latest
+Some taggers failed. Rerun with &lt;span class=&quot;nt&quot;&gt;-vdebug&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;errors.
+Checking cache...
+ - pom-xml-image: Not found. Building
+Starting build...
+Found &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;minikube] context, using &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;docker daemon.
+Building &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pom-xml-image]...
+Target platforms: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;linux/amd64]
+
+...
+
+Build &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pom-xml-image] succeeded
+Tags used &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;deployment:
+ - pom-xml-image -&amp;gt; pom-xml-image:c6d646c3c9ba7ac130cfe23c31b2391584b4bddfce984b2cc1f1f2c711c9d509
+Starting deploy...
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;deployments to stabilize...
+ - deployment/pom-xml-image is ready.
+Deployments stabilized &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;1.038 second
+Port forwarding service/pom-xml-image &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;namespace default, remote port 8080 -&amp;gt; http://127.0.0.1:8080
+Watching &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;changes...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;C’est particulièrement pratique pour tester une application localement!
+Si je veux arrêter de développer, j’utilise la combinaison de touches &lt;em&gt;CTRL+C&lt;/em&gt;, qui va stopper l’application et faire le ménage sur le cluster Kubernetes:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;^C
+Cleaning up...
+ - configmap &lt;span class=&quot;s2&quot;&gt;&quot;demo-skaffold&quot;&lt;/span&gt; deleted
+ - deployment.apps &lt;span class=&quot;s2&quot;&gt;&quot;demo-skaffold&quot;&lt;/span&gt; deleted
+ - service &lt;span class=&quot;s2&quot;&gt;&quot;demo-skaffold&quot;&lt;/span&gt; deleted
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; permet de rendre accessible au développeur le déploiement sur un cluster Kubernetes, local ou distant. Cet article a présenté son usage sur un cluster local &lt;code class=&quot;highlighter-rouge&quot;&gt;minikube&lt;/code&gt;, mais &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; fonctionne de manière indifférenciée sur un cluster distant. Il permet aussi de réutiliser des fichiers de configuration Kubernetes, Kustomize ou Helm existants, ce qui est très pratique si l’application dispose déjà de ce type de fichiers.&lt;/p&gt;
+
+&lt;p&gt;Le port forward est très bien intégré et pratique à l’usage (pas besoin de taper une commande &lt;code class=&quot;highlighter-rouge&quot;&gt;kubectl&lt;/code&gt; supplémentaire).&lt;/p&gt;
+
+&lt;p&gt;La &lt;a href=&quot;https://skaffold.dev/docs/&quot; target=&quot;_blank&quot;&gt;documentation de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt;&lt;/a&gt; est très complète et indique tous les paramètres que chaque phase de son pipeline accepte et fourni aussi des liens vers des tutoriaux.&lt;/p&gt;
+
+&lt;p&gt;Enfin, &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt; est au coeur des plugins &lt;em&gt;Cloud Code&lt;/em&gt; de Google, pour IntelliJ IDEA et VSCode pour l’exécution et le déploiement des application sur Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;De nombreux &lt;a href=&quot;https://github.com/GoogleContainerTools/skaffold/tree/main/examples&quot; target=&quot;_blank&quot;&gt;exemples&lt;/a&gt; sont disponibles sur le repository Github de &lt;code class=&quot;highlighter-rouge&quot;&gt;skaffold&lt;/code&gt;, il y en aura surement un qui correspondra à votre type de projet si vous voulez expérimenter.&lt;/p&gt;
+
+&lt;h3 id=&quot;liens&quot;&gt;Liens&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;le repository Github de &lt;a href=&quot;https://github.com/GoogleContainerTools/skaffold&quot; target=&quot;_blank&quot;&gt;GoogleContainerTools/skaffold&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;le site web &lt;a href=&quot;https://skaffold.dev/&quot; target=&quot;_blank&quot;&gt;skaffold.dev&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;la &lt;a href=&quot;https://skaffold.dev/docs/&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;les &lt;a href=&quot;https://github.com/GoogleContainerTools/skaffold/tree/main/examples&quot; target=&quot;_blank&quot;&gt;exemples de code sur Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>[&quot;julien_wittouck&quot;]</name></author><category term="Devops" /><category term="kubernetes" /><category term="skaffold" /><category term="minikube" /><category term="docker" /><summary type="html">Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue: Développement Contruction de l’image Docker (quelques secondes/minutes) Push de l’image sur un registry Déploiement sur Kubernetes (quelques minutes) Cette boucle est généralement implémentée par des pipelines de CI/CD. Ces pipelines augmentent encore le temps entre le développement et une application démarrée sur Kubernetes. Ce temps est relativement long lorsqu’on compare un cycle de développement local auquel un développeur peut être habitué. skaffold, développé par Google, est un outil open-source en license Apache, qui permet d’implémenter cette boucle de développement sur un environnement Kubernetes local ou distant. La promesse de skaffold est de rendre le développement sur Kubernetes simple, rapide et reproductible.</summary></entry><entry><title type="html">Design Pattern</title><link href="/articles/other/design-pattern/" rel="alternate" type="text/html" title="Design Pattern" /><published>2022-06-15T02:00:00-05:00</published><updated>2022-06-15T02:00:00-05:00</updated><id>/articles/other/design-pattern</id><content type="html" xml:base="/articles/other/design-pattern/">&lt;h5 id=&quot;lart-de-savoir-utiliser-le-bon-outil-au-bon-moment&quot;&gt;L’art de savoir utiliser le bon outil au bon moment&lt;br /&gt;&lt;/h5&gt;
 
 &lt;p&gt;&lt;img src=&quot;/articles/other/design-pattern//image-pattern.jpg&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
 

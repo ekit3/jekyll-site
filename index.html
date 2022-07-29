@@ -347,6 +347,12 @@
                 
             </optgroup>
             
+                <optgroup label="Devops">
+                
+                    <option value="/articles/devops/skaffold-et-minikube/">Exécuter une application localement sur minikube avec skaffold</option>
+                
+            </optgroup>
+            
         </select>
     </div>
 </nav>
@@ -354,6 +360,44 @@
         <main class="page-content" aria-label="Content">
             
   <div class="posts">
+    
+        <article>
+            <h2>Exécuter une application localement sur minikube avec skaffold</h2>
+            <div class="post-header">
+                <span>Ecrit par</span>
+
+
+    
+    
+         <a href="http://twitter.com/codekaio">Julien Wittouck</a>,
+    
+
+
+                <span>Publié le 22 Jul 2022</span>
+            </div>
+            <div class="extract">
+                <span></span><p>Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue:</p>
+<ol>
+  <li>Développement</li>
+  <li>Contruction de l’image Docker (quelques secondes/minutes)</li>
+  <li>Push de l’image sur un registry</li>
+  <li>Déploiement sur Kubernetes (quelques minutes)</li>
+</ol>
+
+<p>Cette boucle est généralement implémentée par des pipelines de CI/CD. Ces pipelines augmentent encore le temps entre le développement et une application démarrée sur Kubernetes. Ce temps est relativement long lorsqu’on compare un cycle de développement local auquel un développeur peut être habitué.</p>
+
+<p><a href="https://skaffold.dev" target="_blank"><code class="highlighter-rouge">skaffold</code></a>, développé par Google, est un outil open-source en license Apache, qui permet d’implémenter cette boucle de développement sur un environnement Kubernetes local ou distant. La promesse de <code class="highlighter-rouge">skaffold</code> est de rendre le développement sur Kubernetes simple, rapide et reproductible.</p>
+
+<p><img src="/articles/devops/skaffold-et-minikube//skaffold.png" alt="la page d'accueil de skaffold" /></p>
+
+</span>
+                <!-- Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue:  Développement  Contruction de l’image Docker (quelques secondes/minutes)  Push de l’image sur un registry  Déploiement ... -->
+                <a class="read-more" href="/articles/devops/skaffold-et-minikube/">
+                    <span class="material-icons">arrow_forward_ios</span> 
+                    Lire la suite
+                </a>
+            </div>
+        </article>
     
         <article>
             <h2>Design Pattern</h2>
