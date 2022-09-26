@@ -19,3 +19,9 @@ gem install jekyll bundler
 bundle install
 bundle exec jekyll serve --force_polling --livereload --livereload-port 8888 --host 0.0.0.0
 ```
+
+### upadte folder `_posts` sub module 
+
+```shell
+git submodule update --remote                                                                             
+```
