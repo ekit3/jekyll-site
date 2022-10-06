@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-06T02:26:22-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Web Assembly</title><link href="/articles/front-end/web-assembly/" rel="alternate" type="text/html" title="Web Assembly" /><published>2022-10-06T02:00:00-05:00</published><updated>2022-10-06T02:00:00-05:00</updated><id>/articles/front-end/web-assembly</id><content type="html" xml:base="/articles/front-end/web-assembly/">&lt;h5 id=&quot;boostez-vos-applis-web-avec-web-assembly--&quot;&gt;Boostez vos applis web avec Web Assembly ! &lt;br /&gt;&lt;/h5&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-06T02:34:55-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Web Assembly</title><link href="/articles/front-end/web-assembly/" rel="alternate" type="text/html" title="Web Assembly" /><published>2022-10-06T02:00:00-05:00</published><updated>2022-10-06T02:00:00-05:00</updated><id>/articles/front-end/web-assembly</id><content type="html" xml:base="/articles/front-end/web-assembly/">&lt;h5 id=&quot;boostez-vos-applis-web-avec-web-assembly--&quot;&gt;Boostez vos applis web avec Web Assembly ! &lt;br /&gt;&lt;/h5&gt;
 
 &lt;p&gt;Web Assembly (ou WASM) est un standard du World Wide Web consistant en un &lt;a href=&quot;#bytecode&quot;&gt;bytecode&lt;/a&gt; exécuté côté navigateur dans un environnement dédié (sandbox) en complément du Javascript (JS).&lt;/p&gt;
 
@@ -84,7 +84,7 @@ Représente un module associé ainsi que ses états (la mémoire, la table ainsi
 &lt;p&gt;Comme expliqué en introduction, WASM permet un haut niveau de performances impossible en Javascript. Ces performances ouvrent la possibilité d’implémenter de nouveaux cas d’usage. Certains de ces cas d’usage sont concrets et déjà mis en place dans certaines applications et jeux. D’autres cas d’usage sont plutôt de l’ordre du POC (Proof Of Concept) ou de la démo : &lt;br /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Server-side rendering&lt;/li&gt;
-  &lt;li&gt;OCI (Open Container Initiative) *&lt;/li&gt;
+  &lt;li&gt;OCI (Open Container Initiative)&lt;/li&gt;
   &lt;li&gt;3D Web View Rendering&lt;/li&gt;
   &lt;li&gt;Étendre des fonctions JS&lt;/li&gt;
   &lt;li&gt;Extensions navigateurs (ublock origin)&lt;/li&gt;
@@ -132,8 +132,8 @@ Malgré une adoption encore faible, il n’en reste pas moins fiable que ce soit
 &lt;a href=&quot;https://fr.wikipedia.org/wiki/Bytecode&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;b&gt;&lt;a name=&quot;syntaxeTree&quot;&gt;Arbre de syntaxe abstraite:&lt;a&gt;&amp;lt;/b&amp;gt; Un arbre de syntaxe abstraite (AST) est une manière de représenter la syntaxe d’un langage de programmation sous la forme d’une structure arborescente hiérarchique. Cette structure est utilisée pour générer des tables de symboles pour les compilateurs et la génération de code ultérieure. L’arbre représente toutes les constructions du langage et leurs règles ultérieures.
-&lt;a href=&quot;https://definir-tech.com/arbre-de-syntaxe-abstraite-ast/&quot;&gt;Source&lt;/a&gt;&lt;/a&gt;&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;&lt;a name=&quot;syntaxeTree&quot;&gt;Arbre de syntaxe abstraite:&lt;/a&gt;&lt;/b&gt; Un arbre de syntaxe abstraite (AST) est une manière de représenter la syntaxe d’un langage de programmation sous la forme d’une structure arborescente hiérarchique. Cette structure est utilisée pour générer des tables de symboles pour les compilateurs et la génération de code ultérieure. L’arbre représente toutes les constructions du langage et leurs règles ultérieures.
+&lt;a href=&quot;https://definir-tech.com/arbre-de-syntaxe-abstraite-ast/&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;b&gt;&lt;a name=&quot;llvm&quot;&gt;LLVM:&lt;/a&gt;&lt;/b&gt; LLVM (anciennement appelé Low Level Virtual Machine en français : « machine virtuelle de bas niveau ») est une infrastructure de compilateur conçue pour l’optimisation du code à la compilation, à l’édition de liens, voire à l’exécution ou durant les « temps morts » d’un programme, quel que soit le langage d’origine.
