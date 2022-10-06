@@ -5,7 +5,7 @@
         <meta name="theme-color" content="#000000"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Blog | Tech</title>
+        <title>Web Assembly</title>
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/select2.min.css" />
         <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Bienvenue sur le Blog d'Ekite" />
@@ -244,7 +244,7 @@
             "ga"
         );
         ga("create", gaProperty, "auto"); // Replace with your property ID.
-        ga("send", "pageview", "/index.html");
+        ga("send", "pageview", "/articles/front-end/web-assembly/");
     }
 
     return {
@@ -361,12 +361,12 @@
 
         <main class="page-content" aria-label="Content">
             
-  <div class="posts">
-    
-        <article>
-            <h2>Web Assembly</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
+  <div class="posts single">
+    <button type="button" class="btn btn-dark btn-return" onclick="goBackHistory()">Retour</button>
+    <article>
+      <h2>Web Assembly</h2>
+      <div class="post-header">
+          <span>Ecrit par</span>
 
 
     
@@ -385,10 +385,10 @@
     
 
 
-                <span>Publié le 06 Oct 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><h5 id="boostez-vos-applis-web-avec-web-assembly--">Boostez vos applis web avec Web Assembly ! <br /></h5>
+          <span>Publié le 06 Oct 2022</span>
+      </div>
+      <div class="extract">
+          <span></span><h5 id="boostez-vos-applis-web-avec-web-assembly--">Boostez vos applis web avec Web Assembly ! <br /></h5>
 
 <p>Web Assembly (ou WASM) est un standard du World Wide Web consistant en un <a href="#bytecode">bytecode</a> exécuté côté navigateur dans un environnement dédié (sandbox) en complément du Javascript (JS).</p>
 
@@ -400,285 +400,167 @@
 
 <p>Pour résumer, WASM a été créé pour tirer parti de la puissance des langages de bas niveau, couplé à la flexibilité de Javascript afin de créer des applications Web plus performantes.</p>
 
+<!--END_SUMMARY-->
+
+<h2 id="un-peu-de-contexte">Un peu de contexte</h2>
+
+<p>WASM fut officiellement lancé en 2015 pour la première fois sous forme d’une démonstration faite sous Unity (moteur de jeu multi plateforme) afin de démontrer les performances et les possibilités de l’outil.</p>
+
+<p>Mozilla a sorti asm.js, le 21 mars 2013, un sous-ensemble du langage JS pour améliorer les performances grâce à une couche de traitement binaire. 
+Google et Lars Bak ont mis en place un moteur JS V8, le 2 septembre 2008, qui peut compiler nativement vers de l’assembleur.
+Ces deux derniers événements sont surtout des améliorations liées à la gestion du langage.</p>
+
+<h2 id="objectifs">Objectifs</h2>
+
+<p>Les objectifs du WASM sont:</p>
+
+<ul>
+  <li><b>la rapidité</b> : avoir des performances proches des applications natives (C/C++/Rust) tout en fonctionnant sur un navigateur Web..</li>
+  <li><b>la portabilité</b> : WebAssembly est conçu de manière à s’associer aux autres technologies web mais aussi de garantir une rétro compatibilité ascendante entre les différentes versions.<br />
+Il existe aussi des polyfills pour les navigateurs plus anciens.</li>
+  <li><b>la sécurité</b> : l’environnement dédié permet de garantir une isolation totale du code et de la machine de l’utilisateur.
+Par exemple, la partie entrée / sortie (réseau et fichier) est totalement inaccessible (en dehors du module qui l’embarque).</li>
+</ul>
+
+<h2 id="la-compilation">La compilation</h2>
+
+<p><img src="/articles/front-end/web-assembly//image-1.jpg" alt="image" /><br /></p>
+
+<p>Fig: Le processus de compilation Web Assembly <br /><br /></p>
+
+<p>Afin d’exécuter du Web Assembly dans une page web, il faut compiler du code écrit dans un langage source (écrit en C, C++, Rust ou autre) vers un code intermédiaire (le bytecode WASM). Le bytecode est situé entre le code d’un langage source et le code machine (binaire).
+Cela est rendu possible grâce à une infrastructure de compilation <a href="#llvm">LLVM</a>, qui implémente la traduction d’un AST (<a href="#syntaxeTree">arbre de syntaxe abstraite</a>) en bytecode WASM. <br />
+Le fichier ainsi compilé aura pour extension ‘.wasm’.</p>
+
+<p>L’utilisation d’une LLVM permet d’isoler et d’uniformiser la compilation de tous les langages sources supportés vers ce format. Pour ajouter le support d’un langage, il suffit d’implémenter un programme capable de lire un AST pour le transmettre à la LLVM (transpilateur).<br />
+Il est donc possible de créer des compilateurs pour n’importe quel langage. (une liste des langages principaux déjà supportés par WASM se trouve sur le Discord de sa communauté.)</p>
+
+<p>Fonctionnement général du Web Assembly</p>
+
+<p><img src="/articles/front-end/web-assembly//image-2.jpg" alt="image" /><br /></p>
+
+<p>Le code initialement écrit dans un langage haut-niveau est donc compilé dans en un module web-assembly. La compilation produit un fichier binaire ‘.wasm’ contenant le bytecode devant être exécuté dans le navigateur web de l’utilisateur. Les fichiers ‘.wasm’ peuvent alors être distribués aux utilisateurs comme le reste des ressources statiques d’une application web.</p>
+
+<p>Lorsqu’un utilisateur consulte l’application web, les ressources statiques (HTML, CSS, Images) sont téléchargées par son navigateur, ainsi que le code Javascript et les binaires ‘.wasm’. Le navigateur se charge de décoder, compiler et exécuter le code WASM, en parallèle du code Javascript habituel.</p>
+
+<h2 id="les-concepts">Les concepts</h2>
+
+<ul>
+  <li>Intégration sur le web
+WebAssembly est conçu de manière à facilement s’associer aux autres technologies web et de garantir une rétrocompatibilité.</li>
+  <li>Le fichier compilé est téléchargé, l’exécution est faite nativement sur le poste de l’utilisateur et la mémoire est gérée de manière linéaire.</li>
+  <li>
+    <p>Bien que l’exécution ait lieu sur le poste de l’utilisateur, WASM ne permet pas l’accès à certains composants du <a href="#kernel">kernel</a> : Il existe une limite sur la gestion des entrées/sorties. (pour des raisons de sécurité)</p>
+  </li>
+  <li>Mémoire linéaire
+La mémoire linéaire est une seule plage d’adresse mémoire sur laquelle on peut agir au fil de l’eau. Vu l’abstraction du sujet, il est mieux de pouvoir se représenter tout ça. Voici un parallèle entre la manière dont est gérée la mémoire en Java (de Jakob Jenkov) et un schéma de la mémoire linéaire (de Meghalee Goswami) :</li>
+</ul>
+
+<p><img src="/articles/front-end/web-assembly//image-3.jpg" alt="image" /><br /></p>
+
+<p>Avant d’aller à la suite un petit aparté : WASM a mis en place un traducteur du fichier compilé nommé <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format">Web Assembly Text (WAT)</a>. Le fichier compilé est donc lisible</p>
+
+<ul>
+  <li>Module 
+Représente un binaire WASM qui a été compilé en code exécutable par le navigateur.</li>
+  <li>Table 
+Représente un tableau typé de référence ne pouvant être stocké de manière brute en mémoire (pour des raisons de sécurité et de portabilité).</li>
+  <li>Instance
+Représente un module associé ainsi que ses états (la mémoire, la table ainsi qu’un ensemble de données importées).</li>
+</ul>
+
+<h2 id="les-cas-dusage-de-wasm">Les cas d’usage de WASM</h2>
+
+<p>Comme expliqué en introduction, WASM permet un haut niveau de performances impossible en Javascript. Ces performances ouvrent la possibilité d’implémenter de nouveaux cas d’usage. Certains de ces cas d’usage sont concrets et déjà mis en place dans certaines applications et jeux. D’autres cas d’usage sont plutôt de l’ordre du POC (Proof Of Concept) ou de la démo : <br /></p>
+<ul>
+  <li>Server-side rendering</li>
+  <li>OCI (Open Container Initiative) *</li>
+  <li>3D Web View Rendering</li>
+  <li>Étendre des fonctions JS</li>
+  <li>Extensions navigateurs (ublock origin)</li>
+  <li>Utilisation de la 3D</li>
+</ul>
+
+<p>Voici des exemples d’applications connues faites à l’aide de WASM : <br />
+<a href="https://www.figma.com/fr/blog/webassembly-cut-figmas-load-time-by-3x/">Figma</a>, <a href="https://madewithwebassembly.com/showcase/google-earth">Google Earth</a>, <a href="https://madewithwebassembly.com/showcase/unity">Unity</a>, <a href="https://madewithwebassembly.com/showcase/tensorflow">Unity</a>, etc.</p>
+
+<h3 id="pros">Pros</h3>
+<ul>
+  <li>Performance</li>
+  <li>Cross platform</li>
+  <li>Sécurisation</li>
+  <li>multiples langages Rust / C++ / C etc.</li>
+  <li>Portabilité</li>
+</ul>
+
+<h3 id="cons">Cons</h3>
+<ul>
+  <li>Communauté faible</li>
+  <li>Beaucoups de concepts complexe à appréhender avant de pouvoir faire la moindre chose</li>
+  <li>N’a pas encore percé malgré son “âge”</li>
+  <li>Installation plus ou moins aisée en fonction de la plateforme de développement</li>
+  <li>Pas “user friendly”</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Le principal but de WASM est d’apporter un enrichissement de la stack technique de Javascript avec un haut niveau de performances.
+La plus grande difficulté de WASM reste d’assimiler ses différents principes et concepts généraux</p>
+<ul>
+  <li>devoir utiliser un langage de bas niveau</li>
+  <li>utiliser un compilateur</li>
+  <li>avoir affaire à une communauté de niche</li>
+  <li>assez complexe à appréhender
+Malgré une adoption encore faible, il n’en reste pas moins fiable que ce soit en termes de sécurité, de performance, de lisibilité et dans certains domaines la seule solution possible afin de garantir un haut niveau de performance sur une application Web.</li>
+</ul>
+
+<h2 id="lexique">Lexique</h2>
+
+<ul>
+  <li>
+    <p><b><a name="bytecode">bytecode:</a></b> En informatique, le bytecode (terme anglais signifiant « code en bytes ») est un code intermédiaire entre les instructions machines et le code source, qui n’est pas directement exécutable. Le bytecode (également appelé code portable ou p-code) peut être créé à la volée et résider en mémoire (compilation à la volée, JIT en anglais) ou bien résider dans un fichier, généralement binaire qui représente le programme, tout comme un fichier de code objet produit par un compilateur.
+<a href="https://fr.wikipedia.org/wiki/Bytecode">Source</a></p>
+  </li>
+  <li>
+    <p><b><a name="syntaxeTree">Arbre de syntaxe abstraite:<a>&lt;/b&gt; Un arbre de syntaxe abstraite (AST) est une manière de représenter la syntaxe d’un langage de programmation sous la forme d’une structure arborescente hiérarchique. Cette structure est utilisée pour générer des tables de symboles pour les compilateurs et la génération de code ultérieure. L’arbre représente toutes les constructions du langage et leurs règles ultérieures.
+<a href="https://definir-tech.com/arbre-de-syntaxe-abstraite-ast/">Source</a></a></a></b></p>
+  </li>
+  <li>
+    <p><b><a name="llvm">LLVM:</a></b> LLVM (anciennement appelé Low Level Virtual Machine en français : « machine virtuelle de bas niveau ») est une infrastructure de compilateur conçue pour l’optimisation du code à la compilation, à l’édition de liens, voire à l’exécution ou durant les « temps morts » d’un programme, quel que soit le langage d’origine.
+LLVM permet de créer une machine virtuelle pour des langages similaires à Java et sa JVM, un générateur de code pour une architecture matérielle spécifique, et des optimiseurs de compilation indépendants de toute plate-forme et de tout langage.
+<a href="https://fr.wikipedia.org/wiki/LLVM">Source</a></p>
+  </li>
+  <li>
+    <p><b><a name="kernel">Kernel:</a></b> terme anglais signifiant « noyau ». Il constitue le cœur du système qui exploite un ordinateur. Il établit la communication entre la partie matérielle et la partie logicielle de l’appareil.
+<a href="https://www.jedha.co/blog/kernel-definition-utilite">Source</a></p>
+  </li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+
+<p>The state of WebAssembly (2022)</p>
+<ul>
+  <li><a href="https://tech.mozfr.org/post/2017/03/08/D-ou-vient-la-rapidite-de-WebAssembly">https://tech.mozfr.org/post/2017/03/08/D-ou-vient-la-rapidite-de-WebAssembly</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/">https://developer.mozilla.org/fr/docs/</a></li>
+  <li><a href="https://emscripten.org/">https://emscripten.org/</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/">https://developer.mozilla.org/fr/docs/</a></li>
+  <li><a href="https://jenkov.com/tutorials/java-concurrency/java-memory-model.html">https://jenkov.com/tutorials/java-concurrency/java-memory-model.html</a></li>
+  <li><a href="https://www.youtube.com/watch?v=hSeB9I_mK6A&amp;t=4s">Angry Bots Démo</a></li>
+</ul>
+
+<p>Pour aller plus loin :
+3 Big Projects That Are Already Embracing WebAssembly
+focus à faire sur extension navigateur ublock et son bench</p>
+<ul>
+  <li><a href="https://discord.gg/3B8QFXkYTc">lien discord</a></li>
+  <li><a href="https://madewithwebassembly.com/">Applications faite en WASM</a></li>
+  <li><a href="https://radu-matei.com/blog/wasm-to-oci/">OCI (Open Container Initiative)</a></li>
+  <li><a href="https://study.com/academy/lesson/what-is-the-linear-memory-model-definition-constraints.html">schéma mémoire linéaire de Meghalee Goswami</a></li>
+</ul>
 </span>
-                <!-- Boostez vos applis web avec Web Assembly ! Web Assembly (ou WASM) est un standard du World Wide Web consistant en un bytecode exécuté côté navigateur dans un environnement dédié (sandbox) en complément du Javascript (JS).Ce code bas niveau étant i... -->
-                <a class="read-more" href="/articles/front-end/web-assembly/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Exécuter une application localement sur minikube avec skaffold</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="http://twitter.com/codekaio">Julien Wittouck</a>,
-    
-
-
-                <span>Publié le 29 Jul 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><p>Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue:</p>
-<ol>
-  <li>Développement</li>
-  <li>Contruction de l’image Docker (quelques secondes/minutes)</li>
-  <li>Push de l’image sur un registry</li>
-  <li>Déploiement sur Kubernetes (quelques minutes)</li>
-</ol>
-
-<p>Cette boucle est généralement implémentée par des pipelines de CI/CD. Ces pipelines augmentent encore le temps entre le développement et une application démarrée sur Kubernetes. Ce temps est relativement long lorsqu’on compare un cycle de développement local auquel un développeur peut être habitué.</p>
-
-<p><a href="https://skaffold.dev" target="_blank"><code class="highlighter-rouge">skaffold</code></a>, développé par Google, est un outil open-source en license Apache, qui permet d’implémenter cette boucle de développement sur un environnement Kubernetes local ou distant. La promesse de <code class="highlighter-rouge">skaffold</code> est de rendre le développement sur Kubernetes simple, rapide et reproductible.</p>
-
-<p><img src="/articles/devops/skaffold-et-minikube//skaffold.png" alt="la page d'accueil de skaffold" /></p>
-
-</span>
-                <!-- Lors du développement d’une application pour Kubernetes, le développeur est souvent lié à une boucle de feedback assez longue:  Développement  Contruction de l’image Docker (quelques secondes/minutes)  Push de l’image sur un registry  Déploiement ... -->
-                <a class="read-more" href="/articles/devops/skaffold-et-minikube/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Design Pattern</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="http://twitter.com/m3stash">Laurent Duchaussoy</a>,
-    
-
-
-                <span>Publié le 15 Jun 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><h5 id="lart-de-savoir-utiliser-le-bon-outil-au-bon-moment">L’art de savoir utiliser le bon outil au bon moment<br /></h5>
-
-<p><img src="/articles/other/design-pattern//image-pattern.jpg" alt="image" /><br /></p>
-
-<p>Les “Design Patterns”, ou “patrons de conception”, sont un ensemble de solutions reconnues, particulièrement dans la programmation orientée objet, comme étant la meilleure réponse afin de résoudre un problème de conception récurrent.</p>
-
-<p>Les exemples de patrons peuvent être faits de différentes façons: par le biais de schémas, de pseudo code, la manière d’organiser ses modules ou classes ou à l’aide d’une implémentation proposée.</p>
-
-</span>
-                <!-- L’art de savoir utiliser le bon outil au bon momentLes “Design Patterns”, ou “patrons de conception”, sont un ensemble de solutions reconnues, particulièrement dans la programmation orientée objet, comme étant la meilleure réponse afin de résoudre... -->
-                <a class="read-more" href="/articles/other/design-pattern/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Les structures algébriques</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Florian Barbet</a>,
-    
-
-
-                <span>Publié le 18 May 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><p>Les premiers algorithmes ont été réalisés bien avant que le premier ordinateur ne soit conceptualisé.<br /> 
-Le tout premier algorithme connu a été écrit en -300 avant notre ère par Euclide (PGCD).<br />
-Aujourd’hui les mathématiques font rêver, font peur et semblent parfois inaccessibles. Une chose est sûre, elles sont partout.<br />
-Comptables, développeurs, boulangers ou même politiques, tous utilisent les mathématiques : le langage suit un ensemble de règles mathématiques.<br />
-Les structures du langage sont réalisées par l’application d’un arbre de la syntaxe abstraite.<br /></p>
-
-<p>Les structures algébriques font partie des bases des mathématiques. C’est un socle sur lequel de nombreuses règles sont construites.<br />
-En particulier, pour réaliser des applications robustes, performantes et maintenables. Elles peuvent apporter une aide précieuse.</p>
-
-</span>
-                <!-- Les premiers algorithmes ont été réalisés bien avant que le premier ordinateur ne soit conceptualisé. Le tout premier algorithme connu a été écrit en -300 avant notre ère par Euclide (PGCD).Aujourd’hui les mathématiques font rêver, font peur et se... -->
-                <a class="read-more" href="/articles/front-end/algebraic-structure/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Micro Front End</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Yohann Gueguin</a>,
-    
-
-    
-    
-         <a href="">Florian Barbet</a>,
-    
-
-    
-    
-         <a href="http://twitter.com/m3stash">Laurent Duchaussoy</a>,
-    
-
-
-                <span>Publié le 02 Mar 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><p>Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ».<br />
-Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE.
-Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”.<br />
-Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun.
-Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs.<br />
-Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun.<br />
-Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…</p>
-
-</span>
-                <!-- Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ».Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE.Ces composants peuvent êt... -->
-                <a class="read-more" href="/articles/front-end/micro-front-end/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Eco Conception</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Pauline Vandame</a>,
-    
-
-    
-    
-         <a href="">Romain Vermeeren</a>,
-    
-
-    
-    
-         <a href="">Mehdi Kheir</a>,
-    
-
-
-                <span>Publié le 02 Feb 2022</span>
-            </div>
-            <div class="extract">
-                <span></span><p><img src="/articles/green-it/eco-conception//image4.gif" alt="image" /></p>
-
-<p>L’éco-design, l’éco-conception, le green it ou dernièrement <code class="highlighter-rouge">la conception responsable de service numérique</code> sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire.</p>
-
-<p>“Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)</p>
-
-</span>
-                <!-- L’éco-design, l’éco-conception, le green it ou dernièrement la conception responsable de service numérique sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions po... -->
-                <a class="read-more" href="/articles/green-it/eco-conception/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>Mutation testing</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Yoann Bouquet</a>,
-    
-
-
-                <span>Publié le 27 Oct 2021</span>
-            </div>
-            <div class="extract">
-                <span></span><p>Le mutation testing a été inventé en 1971 par Richard Lipton.
-Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
-Le programmeur devait se contenter de tester intelligemment à moindre coût.
-Pour lui, l’avantage des programmeurs est qu’ils créent des programmes qui sont presque corrects.
-Les erreurs sont principalement dues à des actions inappropriées ou manquantes dans les spécifications. 
-Ces erreurs devraient être détectables comme des déviations du programme prévu d’où le mutation testing.</p>
-
-<p>Cette technique a pour but d’évaluer l’efficacité des tests unitaires des applications.</p>
-
-<p>Son expansion a, en grande partie, été restreinte à cause de la lourdeur du processus,
-mais l’augmentation de la puissance des machines permet de rendre le “mutation testing” plus accessible.</p>
-
-</span>
-                <!-- Le mutation testing a été inventé en 1971 par Richard Lipton.Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.Le programmeur devait se contenter de tester intelli... -->
-                <a class="read-more" href="/articles/testing/mutation-testing/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-        <article>
-            <h2>PWA : Innovation ou solution de consolation ?</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Romain Vermeeren</a>,
-    
-
-    
-    
-         <a href="">Yohann Gueguin</a>,
-    
-
-    
-    
-         <a href="http://twitter.com/m3stash">Laurent Duchaussoy</a>,
-    
-
-
-                <span>Publié le 29 Sep 2021</span>
-            </div>
-            <div class="extract">
-                <span></span><p><img src="/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg" alt="image" /></p>
-
-<p>Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
-Mais qu’est ce qu’une <code class="highlighter-rouge">Progressive Web App</code> ?</p>
-
-<p>Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de votre téléphone. Elle serait facile à mettre en place, de faible coût et elle n’aurait plus rien à envier aux applications natives.</p>
-
-<p>Afin de vous éclairer sur le sujet et de vous permettre de vous faire votre propre avis, vous trouverez ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</p>
-
-</span>
-                <!-- Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.Mais qu’est ce qu’une Progressive Web App ?Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de ... -->
-                <a class="read-more" href="/articles/front-end/pwa-innovation-or-consolation/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
-    <!-- Pagination links -->
-    
-    <nav aria-label="Page navigation">
-    
-  </nav>
-</div>
+      </div>
+    </article>
+  </div>
 
             <footer class="footer">
     <div class="footer-content">
