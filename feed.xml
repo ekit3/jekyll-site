@@ -1,4 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-29T01:24:14-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Web Assembly</title><link href="/articles/front-end/web-assembly/" rel="alternate" type="text/html" title="Web Assembly" /><published>2022-10-06T02:00:00-05:00</published><updated>2022-10-06T02:00:00-05:00</updated><id>/articles/front-end/web-assembly</id><content type="html" xml:base="/articles/front-end/web-assembly/">&lt;h5 id=&quot;boostez-vos-applis-web-avec-web-assembly--&quot;&gt;Boostez vos applis web avec Web Assembly ! &lt;br /&gt;&lt;/h5&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-11-02T02:11:43-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">direnv pour booster votre shell</title><link href="/articles/devops/direnv-pour-votre-shell/" rel="alternate" type="text/html" title="direnv pour booster votre shell" /><published>2022-11-02T00:00:00-05:00</published><updated>2022-11-02T00:00:00-05:00</updated><id>/articles/devops/direnv-pour-votre-shell</id><content type="html" xml:base="/articles/devops/direnv-pour-votre-shell/">&lt;p&gt;Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE.
+Je lance souvent des commandes &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn&lt;/code&gt; pour m’assurer que mon projet compile et que mes tests s’exécutent correctement. C’est un vieux réflexe qui date de l’époque où les IDE n’avaient qu’un support limité de &lt;em&gt;Maven&lt;/em&gt;. Lancer ces commandes hors-IDE m’aide souvent à valider que tout fonctionnera bien dans un environnement de CI par exemple.
+J’ai donc parfois besoin de changer de version de &lt;em&gt;Java&lt;/em&gt; en fonction du projet dans lequel je me trouve.
+&lt;em&gt;Maven&lt;/em&gt; utilise la variable d’environnement &lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt; pour localiser l’installation de &lt;em&gt;Java&lt;/em&gt; à utiliser. Donc être capable de charger des variables d’environnement différentes en fonction d’un projet peut s’avérer pratique.
+Un autre usage courant consiste à venir charger des clé d’API ou des secrets d’accès cloud comme des variables &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS_ACCESS_KEY&lt;/code&gt; ou autres en fonction de mes différents projets.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; (&lt;a href=&quot;https://direnv.net/&quot; target=&quot;_blank&quot;&gt;lien&lt;/a&gt;) est un outil écrit en go qui permet de charger des variables d’environnement dans la session courante du terminal, lorsqu’on change de répertoire en effectuant un &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; .&lt;/p&gt;
+
+&lt;!--END_SUMMARY--&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; est disponible dans les dépots de nombreuses distributions Linux, l’installation sur Ubuntu se fait avec les commandes habituelles, à savoir &lt;code class=&quot;highlighter-rouge&quot;&gt;apt install direnv&lt;/code&gt;.
+L’installation pour d’autres distributions se fait à partir des dépôts, ou bien directement à partir de binaires pré-compilés à récupérer sur Github dans &lt;a href=&quot;https://github.com/direnv/direnv/releases&quot; target=&quot;_blank&quot;&gt;les releases de direnv&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
+&lt;p&gt;Une fois installé, il faut indiquer au shell d’appeler le binaire &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; à chaque changement de répertoire.
+Le shell que j’utilise au quotidien est &lt;code class=&quot;highlighter-rouge&quot;&gt;zsh&lt;/code&gt;. Pour &lt;code class=&quot;highlighter-rouge&quot;&gt;zsh&lt;/code&gt;, la configuration de &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; consiste à venir modifier mon fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; pour y ajouter la ligne suivante:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;direnv hook zsh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Les procédures de configuration pour les autres shells sont détaillées &lt;a href=&quot;https://direnv.net/docs/hook.html&quot; target=&quot;_blank&quot;&gt;sur le site de direnv&lt;/a&gt; et sont du même ordre que la procédure ci-dessus.&lt;/p&gt;
+&lt;h2 id=&quot;utilisation-basique&quot;&gt;Utilisation basique&lt;/h2&gt;
+&lt;p&gt;L’utilisation de &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; se fait au travers d’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; à positionner dans le répertoire souhaité.
+Ce fichier peut contenir:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;des commandes &lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt; pour déclarer des variables d’environnement&lt;/li&gt;
+  &lt;li&gt;des appels de fonction de la stdlib &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;des appels de fonction customisés&lt;/li&gt;
+  &lt;li&gt;du code shell (bash)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Un exemple de fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; déposé dans un répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;~/workspaces/demo-direnv&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/jdk-17.0.1+12
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MAVEN_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/apache-maven-3.8.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ce fichier déclare deux variables d’environnement qui me sont utiles dans un projet Java.
+À l’entrée dans le répertoire contenant ce fichier, &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; va tenter de charger le fichier. Les variables d’environnement exportées par le fichier seront alors chargées dans la session shell courante.
+Au premier chargement d’un fichier, ou après une modification, &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; demandera une validation explicite pour autoriser le fichier.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/workspaces &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;demo-direnv
+direnv: error /home/jwittouck/workspaces/demo-direnv/.envrc is blocked. Run &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;direnv allow&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; to approve its content
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;J’exécute donc &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv allow&lt;/code&gt; pour autoriser le chargement de mon fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; direnv allow
+direnv: loading ~/workspaces/demo-direnv/.envrc
+direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; +JAVA_HOME +MAVEN_HOME
+~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; nous indique qu’il a chargé notre fichier, ainsi que nos deux variables d’environnement.
+Nous pouvons maintenant les utiliser:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;
+/opt/jdk-17.0.1+12
+~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$MAVEN_HOME&lt;/span&gt;
+/opt/apache-maven-3.8.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Si on quitte le répertoire, les variables sont déchargées:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+direnv: unloading
+~/workspaces &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# rien ici !&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;modification-du-path&quot;&gt;Modification du PATH&lt;/h2&gt;
+&lt;p&gt;Pour nous simplifier la vie, &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; propose des fonctions qui permettent de manipuler le &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; facilement. La fonction &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH_add&lt;/code&gt; permet d’ajouter simplement une nouvelle valeur au &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;. En voici un exemple dans mon fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; précédent:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/jdk-17.0.1+12
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MAVEN_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/apache-maven-3.8.4
+
+PATH_add &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin
+PATH_add &lt;span class=&quot;nv&quot;&gt;$MAVEN_HOME&lt;/span&gt;/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Avec cette nouvelle version de mon fichier, j’ai donc ajouté mes versions de &lt;code class=&quot;highlighter-rouge&quot;&gt;java&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;maven&lt;/code&gt; au &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;.  Ces ajouts seront retirés à la sortie du répertoire:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# je rentre dans mon répertoire demo-direnv&lt;/span&gt;
+~/workspaces &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;demo-direnv
+direnv: loading ~/workspaces/demo-direnv/.envrc
+direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; +JAVA_HOME +MAVEN_HOME ~PATH
+
+&lt;span class=&quot;c&quot;&gt;# le $PATH a été modifié&lt;/span&gt;
+~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; java &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+openjdk 17.0.1 2021-10-19
+OpenJDK Runtime Environment Temurin-17.0.1+12 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;build 17.0.1+12&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+OpenJDK 64-Bit Server VM Temurin-17.0.1+12 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;build 17.0.1+12, mixed mode, sharing&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# je sors du répertoire&lt;/span&gt;
+~/workspaces/demo-direnv &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+direnv: unloading
+
+&lt;span class=&quot;c&quot;&gt;# le $PATH ne contient plus la commande java&lt;/span&gt;
+~/workspaces &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; java &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+zsh: &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;not found: java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Avec &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt;, je peux donc changer de version de &lt;code class=&quot;highlighter-rouge&quot;&gt;java&lt;/code&gt; dans mon &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;, simplement en changeant de répertoire.&lt;/p&gt;
+&lt;h2 id=&quot;utilisation-avancée&quot;&gt;Utilisation avancée&lt;/h2&gt;
+&lt;p&gt;Pour aller plus loin, &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; propose une librairie de fonctions qu’ils nomment &lt;em&gt;stdlib&lt;/em&gt;. Ces fonctions sont listées et documentées dans la documentation de direnv &lt;a href=&quot;https://direnv.net/man/direnv-stdlib.1.html&quot; target=&quot;_blank&quot;&gt;man/direnv-stdlib.1&lt;/a&gt;.
+Voici quelques unes de ces commandes que j’utilise régulièrement.&lt;/p&gt;
+&lt;h3 id=&quot;source_up&quot;&gt;&lt;a href=&quot;https://direnv.net/man/direnv-stdlib.1.html#codesourceup-ltfilenamegtcode&quot; target=&quot;_blank&quot;&gt;source_up&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Cette commande permet d’aller chercher et exécuter le premier fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; dans l’arborescence remontante des fichiers, ce qui permet de factoriser un peu le contenu de mes fichiers &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt;.
+Un exemple concret d’arborescence de fichiers:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+└── workspaces
+    ├── .envrc
+    ├── projet-java-11
+    │   └── .envrc
+    └── projet-java-17
+        └── .envrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;~/workspaces/.envrc&lt;/code&gt; contient les variables communes à mes deux projets:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MAVEN_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/apache-maven-3.8.4
+PATH_add &lt;span class=&quot;nv&quot;&gt;$MAVEN_HOME&lt;/span&gt;/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Le fichier  &lt;code class=&quot;highlighter-rouge&quot;&gt;~/workspaces/projet-java-11/.envrc&lt;/code&gt; contient une configuration pour &lt;em&gt;Java&lt;/em&gt; 11, ainsi que la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;source_up&lt;/code&gt; qui permet de charger le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;~/workspaces/.envrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source_up
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/jdk-11.0.13+8
+PATH_add &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Le fichier  &lt;code class=&quot;highlighter-rouge&quot;&gt;~/workspaces/projet-java-17/.envrc&lt;/code&gt; contient une configuration similaire pour &lt;em&gt;Java&lt;/em&gt; 17:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source_up
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/jdk-17.0.1+12
+PATH_add &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Avec cette utilisation, la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;MAVEN_HOME&lt;/code&gt; est disponible dans les sous-répertoires. Cette configuration permet de factoriser mes fichiers &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; pour tous mes projets.&lt;/p&gt;
+&lt;h3 id=&quot;dotenv&quot;&gt;&lt;a href=&quot;https://direnv.net/man/direnv-stdlib.1.html#codedotenv-ltdotenvpathgtcode&quot; target=&quot;_blank&quot;&gt;dotenv&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; peut aussi scruter les fichiers &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, qui doivent exposer les variables d’environnement sous forme de clé/valeur. Les fichiers &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; sont moins souple car aucun script ne peut y être écrit. La commande &lt;code class=&quot;highlighter-rouge&quot;&gt;dotenv&lt;/code&gt; peut néanmoins aider si des &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; existent déjà sur un projet.
+Voici un exemple de fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xxxx-xxx-xxx-xxxx
+&lt;span class=&quot;nv&quot;&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xxxx-xxx-xxx-xxxx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Et un exemple de fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; qui charge le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Dans le cas où beaucoup de projets utilisent des &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;, on peut aussi configurer &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; pour charger ces fichiers automatiquement, en plus des &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; (qui restent chargés en priorité)
+Cette configuration se fait dans &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/direnv/direnv.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[global]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;load_dotenv&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;whitelist&quot;&gt;&lt;a href=&quot;https://direnv.net/man/direnv.toml.1.html#whitelist&quot; target=&quot;_blank&quot;&gt;whitelist&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Par défaut, pour chaque fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt;, nouveau ou modifié, &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; affichera ce message:&lt;/p&gt;
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;direnv: error .envrc is blocked. Run `direnv allow` to approve its content
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Il faut donc utiliser la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv allow&lt;/code&gt; pour autoriser ces fichiers. Cela peut être assez rébarbatif quand cela arrive sur de nombreux projets.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; fournit une configuration permettant de whitelister les fichiers et de les autoriser automatiquement. J’y ai ajouté mon répertoire de travail. Cette configuration se fait dans &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/direnv/direnv.toml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[whitelist]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;[&quot;/home/jwittouck/workspaces&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;fonction-customisées&quot;&gt;Fonction customisées&lt;/h3&gt;
+&lt;p&gt;Pour améliorer l’exemple plus haut concernant la gestion de la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt;, il est aussi possible d’enrichir les fonctions disponibles de &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt;.
+Pour cela, il faut les ajouter au fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/direnv/direnvrc&lt;/code&gt;.
+Pour mon usage, j’ai créé cette fonction :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;use_java&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Using Java version &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;find /opt &lt;span class=&quot;nt&quot;&gt;-maxdepth&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; d &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jdk-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;*&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Loading JAVA_HOME &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    PATH_add &lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Tous mes JDK sont installés dans &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt&lt;/code&gt;. Cette fonction permet de trouver le JDK qui correspond au premier paramètre de la fonction et de positionner les variables &lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;.
+Elle s’utilise dans un &lt;code class=&quot;highlighter-rouge&quot;&gt;.envrc&lt;/code&gt; de cette manière:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;use_java 17
+&lt;span class=&quot;c&quot;&gt;# ou&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# use_java 11&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;et voici ce que loggue &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; à l’entrée du répertoire :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/workspaces &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;demo-direnv
+direnv: loading ~/workspaces/demo-direnv/.envrc
+direnv: using java 17
+Using Java version 17
+Loading JAVA_HOME /opt/jdk-17.0.1+12
+direnv: &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; +JAVA_HOME +MAVEN_HOME ~PATH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; est un outil très pratique pour manipuler les variables d’environnement. Il s’adresse avant tout à ceux qui passent du temps dans un shell, devs ou sysadmins.
+Cet article a présenté principalement les usages que j’en ai pour mes projets &lt;em&gt;Java&lt;/em&gt;, mais &lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; propose aussi des fonctions pour les projets &lt;code class=&quot;highlighter-rouge&quot;&gt;node&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt; et d’autres.
+C’est vite devenu un indispensable dans mes shells.&lt;/p&gt;
+&lt;h3 id=&quot;liens&quot;&gt;Liens&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;la page d’accueil du projet sur &lt;a href=&quot;https://direnv.net/&quot; target=&quot;_blank&quot;&gt;direnv.net&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;le repository Github du projet &lt;a href=&quot;https://github.com/direnv/direnv&quot; target=&quot;_blank&quot;&gt;direnv/direnv&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;la documentation d’install &lt;a href=&quot;https://direnv.net/docs/installation.html&quot; target=&quot;_blank&quot;&gt;docs/installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;la documentation de la stdlib &lt;a href=&quot;https://direnv.net/man/direnv-stdlib.1.html&quot; target=&quot;_blank&quot;&gt;man/direnv-stdlib&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>[&quot;julien_wittouck&quot;]</name></author><category term="Devops" /><summary type="html">Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE. Je lance souvent des commandes mvn pour m’assurer que mon projet compile et que mes tests s’exécutent correctement. C’est un vieux réflexe qui date de l’époque où les IDE n’avaient qu’un support limité de Maven. Lancer ces commandes hors-IDE m’aide souvent à valider que tout fonctionnera bien dans un environnement de CI par exemple. J’ai donc parfois besoin de changer de version de Java en fonction du projet dans lequel je me trouve. Maven utilise la variable d’environnement JAVA_HOME pour localiser l’installation de Java à utiliser. Donc être capable de charger des variables d’environnement différentes en fonction d’un projet peut s’avérer pratique. Un autre usage courant consiste à venir charger des clé d’API ou des secrets d’accès cloud comme des variables AWS_ACCESS_KEY ou autres en fonction de mes différents projets. direnv (lien) est un outil écrit en go qui permet de charger des variables d’environnement dans la session courante du terminal, lorsqu’on change de répertoire en effectuant un cd .</summary></entry><entry><title type="html">Web Assembly</title><link href="/articles/front-end/web-assembly/" rel="alternate" type="text/html" title="Web Assembly" /><published>2022-10-06T02:00:00-05:00</published><updated>2022-10-06T02:00:00-05:00</updated><id>/articles/front-end/web-assembly</id><content type="html" xml:base="/articles/front-end/web-assembly/">&lt;h5 id=&quot;boostez-vos-applis-web-avec-web-assembly--&quot;&gt;Boostez vos applis web avec Web Assembly ! &lt;br /&gt;&lt;/h5&gt;
 
 &lt;p&gt;Web Assembly (ou WASM) est un standard du World Wide Web consistant en un &lt;a href=&quot;#bytecode&quot;&gt;bytecode&lt;/a&gt; exécuté côté navigateur dans un environnement dédié (sandbox) en complément du Javascript (JS).&lt;/p&gt;
 

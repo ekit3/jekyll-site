@@ -351,6 +351,8 @@
             
                 <optgroup label="Devops">
                 
+                    <option value="/articles/devops/direnv-pour-votre-shell/">direnv pour booster votre shell</option>
+                
                     <option value="/articles/devops/skaffold-et-minikube/">Exécuter une application localement sur minikube avec skaffold</option>
                 
             </optgroup>
@@ -362,6 +364,38 @@
         <main class="page-content" aria-label="Content">
             
   <div class="posts">
+    
+        <article>
+            <h2>direnv pour booster votre shell</h2>
+            <div class="post-header">
+                <span>Ecrit par</span>
+
+
+    
+    
+         <a href="http://twitter.com/codekaio">Julien Wittouck</a>,
+    
+
+
+                <span>Publié le 02 Nov 2022</span>
+            </div>
+            <div class="extract">
+                <span></span><p>Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE.
+Je lance souvent des commandes <code class="highlighter-rouge">mvn</code> pour m’assurer que mon projet compile et que mes tests s’exécutent correctement. C’est un vieux réflexe qui date de l’époque où les IDE n’avaient qu’un support limité de <em>Maven</em>. Lancer ces commandes hors-IDE m’aide souvent à valider que tout fonctionnera bien dans un environnement de CI par exemple.
+J’ai donc parfois besoin de changer de version de <em>Java</em> en fonction du projet dans lequel je me trouve.
+<em>Maven</em> utilise la variable d’environnement <code class="highlighter-rouge">JAVA_HOME</code> pour localiser l’installation de <em>Java</em> à utiliser. Donc être capable de charger des variables d’environnement différentes en fonction d’un projet peut s’avérer pratique.
+Un autre usage courant consiste à venir charger des clé d’API ou des secrets d’accès cloud comme des variables <code class="highlighter-rouge">AWS_ACCESS_KEY</code> ou autres en fonction de mes différents projets.</p>
+
+<p><code class="highlighter-rouge">direnv</code> (<a href="https://direnv.net/" target="_blank">lien</a>) est un outil écrit en go qui permet de charger des variables d’environnement dans la session courante du terminal, lorsqu’on change de répertoire en effectuant un <code class="highlighter-rouge">cd</code> .</p>
+
+</span>
+                <!-- Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE.Je lance souvent des commandes mvn pour m’assurer que mon projet compile et que mes tests s’exécutent correctement. C’est un vieux réfle... -->
+                <a class="read-more" href="/articles/devops/direnv-pour-votre-shell/">
+                    <span class="material-icons">arrow_forward_ios</span> 
+                    Lire la suite
+                </a>
+            </div>
+        </article>
     
         <article>
             <h2>Web Assembly</h2>
