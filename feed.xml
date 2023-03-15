@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-03-13T15:26:24-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">direnv pour booster votre shell</title><link href="/articles/devops/direnv-pour-votre-shell/" rel="alternate" type="text/html" title="direnv pour booster votre shell" /><published>2022-11-02T00:00:00-05:00</published><updated>2022-11-02T00:00:00-05:00</updated><id>/articles/devops/direnv-pour-votre-shell</id><content type="html" xml:base="/articles/devops/direnv-pour-votre-shell/">&lt;p&gt;Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-03-15T02:07:27-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Abstract Data Types</title><link href="/articles/common/abstract-data-types/" rel="alternate" type="text/html" title="Abstract Data Types" /><published>2023-03-15T02:00:00-05:00</published><updated>2023-03-15T02:00:00-05:00</updated><id>/articles/common/abstract-data-types</id><content type="html" xml:base="/articles/common/abstract-data-types/">&lt;h5 id=&quot;les-types-abstraits-ou-pourquoi-vous-devez-utiliser-optional&quot;&gt;Les types abstraits, ou pourquoi vous devez utiliser Optional&lt;/h5&gt;
+
+&lt;p&gt;En tant que développeur, nous cherchons souvent des moyens d’améliorer nos applications. Les rendre plus robustes, plus normées, ou encore anéantir les potentiels effets de bord. La montée des langages fonctionnels a pu faire réapparaître certains concepts mathématiques pour améliorer tout ça.
+C’est le cas des types abstraits (en anglais, abstract data type ou ADT). Au-delà des gains cités, certains ADT permettent d’améliorer la gestion de certains langages.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/common/abstract-data-types//henry_1.png&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;L’illustre Henri, qui aime tant les mathématiques, semble être très intéressé par le sujet, mais surtout parce qu’il existe un ADT pour optimiser &lt;a href=&quot;https://ekite.tech/articles/front-end/algebraic-structure/&quot;&gt;son application du plus fort cailloux&lt;/a&gt;. Cela permettra d’illustrer les explications qui suivent.
+&lt;!--END_SUMMARY--&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;définitions&quot;&gt;Définitions&lt;/h5&gt;
+
+&lt;p&gt;Pour créer un type de donnée il faut réunir un ensemble de valeurs et des opérations à appliquer sur cet ensemble. On peut prendre exemple sur les nombres entiers (int, integer).
+Il est possible d’appliquer une multitude d’opérations sur les entiers : additions, soustractions, multiplications, etc.&lt;/p&gt;
+
+&lt;p&gt;Une des analogies les plus reprises en informatique des types de données sont les primitives, comme les entiers, les booléens, ou les float par exemple.
+N.B : Les types primitifs sont nativement gérés par le langage, qui stocke directement les valeurs des variables en mémoire, parfois dans une zone mémoire dédiée (la stack).&lt;/p&gt;
+
+&lt;p&gt;L’évolution d’un type de donnée, ce sont les types de données définis par utilisateur. Pour vulgariser il s’agit d’une structure nommée et composée de type de données. Il est possible de les représenter par des structures, des énumérations ou encore des unions. Pour illustrer la représentation d’un point est un type de données définies par utilisateur : Point(int x, int y).&lt;/p&gt;
+
+&lt;p&gt;Les types de données défini par utilisateur ne sont pas définis par la machine contrairement aux primitives. Les opérations sous-jacentes de ce type de données sont elles aussi définies par l’utilisateur (le développeur).&lt;/p&gt;
+
+&lt;p&gt;Un type abstrait peut être représenté comme le moule d’un type de données définis par utilisateur à la différence près que ce type doit amener une certaine robustesse dans l’écriture de types. 
+Ce type de données doit répondre à trois contraintes pour subsister dans un système de type. Il doit être capable de définir des types sommes, produits et récursifs.&lt;/p&gt;
+
+&lt;h5 id=&quot;pré-requis-du-système-de-type-pour-faire-des-adt&quot;&gt;Pré-requis du système de type pour faire des ADT&lt;/h5&gt;
+
+&lt;p&gt;1 - Le type somme (tagged-union, variant) c’est la capacité de définir un type pouvant se définir par un sous-ensemble fini de types. En Java cela correspond aux sealed-interface, en OCaml ce sont les variants, en Rust les enum.
+Exemple en OCaml :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; type month_type = 
+  | PLEIN 
+  | CREUX 
+  | BIS of int
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2 - Le type produit (record) correspond à la capacité de créer des structures dans un langage. En Java, on peut créer des objets ou des records, en Rust ou en C on peut créer des structures (struct).&lt;/p&gt;
+
+&lt;p&gt;3 - Le type récursif correspond à la capacité pour un type de s’appeler lui-même. 
+Exemple avec les variants :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; type List = 
+  | Item of int * List
+  | Empty
+
+Item (1, Item (2, Item ( 3, Empty)))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Voici une liste de quelques langages permettant de faire des ADT :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Caml&lt;/li&gt;
+  &lt;li&gt;Rust&lt;/li&gt;
+  &lt;li&gt;Haskell&lt;/li&gt;
+  &lt;li&gt;Java 17+&lt;/li&gt;
+  &lt;li&gt;Typescript&lt;/li&gt;
+  &lt;li&gt;Python&lt;/li&gt;
+  &lt;li&gt;Scala&lt;/li&gt;
+  &lt;li&gt;Kotlin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;cas-dutilisations&quot;&gt;Cas d’utilisations&lt;/h5&gt;
+
+&lt;p&gt;Les types de données abstraits permettent d’acquérir de la robustesse applicative ET conceptuelle. Cela permet également de pouvoir créer des &lt;a href=&quot;https://ekite.tech/articles/other/design-pattern/&quot;&gt;design pattern&lt;/a&gt; purs et de simplifier la mise en place de machine à état.
+Enfin les ADT permettent de rapprocher les données d’un programme lié aux &lt;a href=&quot;https://ekite.tech/articles/front-end/algebraic-structure/&quot;&gt;structures algébriques&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Voici une liste de quelques types abstraits connus, liés aux structures algébriques:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;La présence de valeur (Option)&lt;/li&gt;
+  &lt;li&gt;La réussite d’un programme (Try)&lt;/li&gt;
+  &lt;li&gt;La réussite ou l’erreur d’un programme (Result)&lt;/li&gt;
+  &lt;li&gt;La possibilité d’afficher une donnée (Show)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Henri a préparé quelques cartes que vous pourrez trouver &lt;a href=&quot;https://docs.google.com/presentation/u/0/d/1P06bSfyXNix0k740iRl1LyyqNyRibcAOsTWn9lomjUo/edit&quot;&gt;ici&lt;/a&gt; !&lt;/p&gt;
+
+&lt;h5 id=&quot;la-parole-à-henri&quot;&gt;La parole à Henri&lt;/h5&gt;
+
+&lt;p&gt;Henri nous rappelle que son application a été codée en Java 17.
+La gestion d’erreur dans certains langages peut-être très gourmande en termes de ressources. Ce &lt;a href=&quot;https://www.infoworld.com/article/2076868/how-the-java-virtual-machine-handles-exceptions.html&quot;&gt;lien&lt;/a&gt; explique en détails le bytecode derrière un try-catch. Pour résumer, lorsqu’une exception survient il faut pouvoir dire à la machine de revenir en arrière et exécuter le code dans la partie “catch”.
+Plusieurs années se sont écoulées depuis et Henri trouve que son application est obsolète
+Il demande à son ami de faire évoluer son application, mais se retrouve depuis quelques temps confronté à une multitude de problème qu’il ne comprend pas :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    java.lang.IllegalArgumentException: D20160229 is not a Caillou
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/common/abstract-data-types//henry_2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Henri est venu nous voir en nous expliquant qu’il a ce problème à chaque fois qu’il enregistre un de ses cailloux un 29 février. Cela fait déjà 6 ans qu’Henri n’arrive pas à enregistrer son caillou préféré.
+Prenons notes de l’existant :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Les fonctionnalités sont rétro-compatibles avec l’ancien modèle.&lt;/li&gt;
+  &lt;li&gt;La structure de données d’un caillou a changé comme suit :
+    &lt;ul&gt;
+      &lt;li&gt;Un caractère et 8 chiffres.
+Nous décidons de corriger l’ensemble tel qu’il soit constitué d’un caractère et d’une date au format yyyyMMdd. (Cela corrigera en parti les problèmes de la nouvelle application d’Henri)
+Nous ne pouvons donc plus nous fier à l’ensemble CPH (Cailloux Potentiels d’Henri), nous sommes sur un ensemble différent que nous nommerons NCPH (Nouveaux Cailloux Potentiels d’Henri) .
+Notons que cet ensemble est composé de l’ensemble CPH et de toute chaîne de caractères avec les caractéristiques susmentionnées (nommons cet ensemble CPGH pour Cailloux Potentiels du Grand Henri). On obtient donc CPGH = CPH + NPCH.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/common/abstract-data-types//henry_3.png&quot; alt=&quot;image&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Malgré notre précédente correction Henri nous a remonté qu’il subsiste quelques lenteurs et nous fait part de ses besoins :&lt;br /&gt;
+1 - Il veut pouvoir basculer sur son ancien modèle à tout moment.&lt;br /&gt;
+2 - Faire en sorte que son application ne subisse plus de lenteurs / erreurs incompréhensibles.&lt;br /&gt;
+Pour le premier point nous verrons une prochaine fois l’application de la théorie des catégories (plus particulièrement la flèche).
+Pour le second ça tombe bien, car nous avons investigué et sommes tombé sur quelques imbrications de try-catch dignes d’une &lt;a href=&quot;https://en.wikipedia.org/wiki/Defensive_programming&quot;&gt;bonne programmation défensive&lt;/a&gt;. Cela s’explique par le fait de devoir convertir les éléments de CPH vers CPGH.
+/!\ N’oublions pas qu’Henri procède à des millions d’enregistrements de cailloux par jour.&lt;/p&gt;
+
+&lt;p&gt;La solution au problème &lt;img src=&quot;/articles/common/abstract-data-types//henry_4.png&quot; alt=&quot;image&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s is not a Cailloux&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;365&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s is not a Cailloux&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handleCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;doSomethingWithCaillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;(L’ancien code.)&lt;/p&gt;
+
+&lt;p&gt;Ces imbrications nous privent de précieuses performances. Une des solutions à ce problème c’est l’ADT Result. 
+Malheureusement pour Henri en Java 17 il n’existe pas d’implémentation de Result. Cependant il y a eu une grande avancée permettant de créer ce genre de typage :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Les interfaces scellées&lt;/li&gt;
+  &lt;li&gt;Les records&lt;/li&gt;
+  &lt;li&gt;Le switch-pattern-matching
+Voici comment on pourrait représenter le Result en Java 17&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sealed&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;permits&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;record&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;requireNonNull&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;record&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;requireNonNull&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ok&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Err&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;(source: &lt;a href=&quot;https://oteku.github.io/&quot;&gt;Thomas Haesslé&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Voici comment Henri l’utilise aujourd’hui&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s is not a Cailloux&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;365&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s is not a Cailloux&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;letter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dayOfYear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handleCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Caillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doSomethingWithCaillou&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;(Le nouveau code)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/common/abstract-data-types//henry_5.png&quot; alt=&quot;image&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Maintenant Henri est heureux, il propose pour conclure quelques cartes pour mémoriser certains ADT et leurs particularités.&lt;/p&gt;
+
+&lt;p&gt;Sources&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Tagged_union&quot;&gt;https://en.wikipedia.org/wiki/Tagged_union&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es&quot;&gt;https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Type_abstrait&quot;&gt;https://fr.wikipedia.org/wiki/Type_abstrait&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.realworldocaml.org/variants.html&quot;&gt;https://dev.realworldocaml.org/variants.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jpintelli.com/2020/12/28/adt-with-java-sealed-classes-pattern-matching-records/&quot;&gt;https://jpintelli.com/2020/12/28/adt-with-java-sealed-classes-pattern-matching-records/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Record_(computer_science)&quot;&gt;https://en.wikipedia.org/wiki/Record_(computer_science)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Type_r%C3%A9cursif&quot;&gt;https://fr.wikipedia.org/wiki/Type_r%C3%A9cursif&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.shangjiaming.com/vavr-introduction/&quot;&gt;https://blog.shangjiaming.com/vavr-introduction/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vavr.io/&quot;&gt;https://www.vavr.io/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://v2.ocaml.org/manual/gadts-tutorial.html&quot;&gt;https://v2.ocaml.org/manual/gadts-tutorial.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.wellesley.edu/~cs251/s12/handouts/modules.pdf&quot;&gt;https://cs.wellesley.edu/~cs251/s12/handouts/modules.pdf&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@aoturan/commonly-used-abstract-data-types-d9470b14f864&quot;&gt;https://medium.com/@aoturan/commonly-used-abstract-data-types-d9470b14f864&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>[&quot;florian_barbet&quot;]</name></author><category term="Common" /><summary type="html">Les types abstraits, ou pourquoi vous devez utiliser Optional En tant que développeur, nous cherchons souvent des moyens d’améliorer nos applications. Les rendre plus robustes, plus normées, ou encore anéantir les potentiels effets de bord. La montée des langages fonctionnels a pu faire réapparaître certains concepts mathématiques pour améliorer tout ça. C’est le cas des types abstraits (en anglais, abstract data type ou ADT). Au-delà des gains cités, certains ADT permettent d’améliorer la gestion de certains langages. L’illustre Henri, qui aime tant les mathématiques, semble être très intéressé par le sujet, mais surtout parce qu’il existe un ADT pour optimiser son application du plus fort cailloux. Cela permettra d’illustrer les explications qui suivent.</summary></entry><entry><title type="html">direnv pour booster votre shell</title><link href="/articles/devops/direnv-pour-votre-shell/" rel="alternate" type="text/html" title="direnv pour booster votre shell" /><published>2022-11-02T00:00:00-05:00</published><updated>2022-11-02T00:00:00-05:00</updated><id>/articles/devops/direnv-pour-votre-shell</id><content type="html" xml:base="/articles/devops/direnv-pour-votre-shell/">&lt;p&gt;Je suis le genre de développeur qui travaille toujours avec un terminal ouvert sur le côté, en plus de mon IDE.
 Je lance souvent des commandes &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn&lt;/code&gt; pour m’assurer que mon projet compile et que mes tests s’exécutent correctement. C’est un vieux réflexe qui date de l’époque où les IDE n’avaient qu’un support limité de &lt;em&gt;Maven&lt;/em&gt;. Lancer ces commandes hors-IDE m’aide souvent à valider que tout fonctionnera bien dans un environnement de CI par exemple.
 J’ai donc parfois besoin de changer de version de &lt;em&gt;Java&lt;/em&gt; en fonction du projet dans lequel je me trouve.
 &lt;em&gt;Maven&lt;/em&gt; utilise la variable d’environnement &lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt; pour localiser l’installation de &lt;em&gt;Java&lt;/em&gt; à utiliser. Donc être capable de charger des variables d’environnement différentes en fonction d’un projet peut s’avérer pratique.
