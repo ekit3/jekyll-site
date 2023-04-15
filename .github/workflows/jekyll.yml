@@ -4,9 +4,9 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-    # schedule a rebuild at 07:01 UTC every wednesday (articles should be published at 09:01 UTC+2)
+    # schedule a rebuild at 08:01 UTC every day (articles should be published at 09:01 UTC+1)
   schedule:
-    - cron: '1 7 * * WED'
+    - cron: '1 8 * * *'
 
 jobs:
   build:
