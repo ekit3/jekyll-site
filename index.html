@@ -359,6 +359,8 @@
             
                 <optgroup label="Common">
                 
+                    <option value="/articles/common/mkdocs-material/">Créer un site web de documentation statique avec MkDocs</option>
+                
                     <option value="/articles/common/abstract-data-types/">Abstract Data Types</option>
                 
             </optgroup>
@@ -370,6 +372,50 @@
         <main class="page-content" aria-label="Content">
             
   <div class="posts">
+    
+        <article>
+            <h2>Créer un site web de documentation statique avec MkDocs</h2>
+            <div class="post-header">
+                <span>Ecrit par</span>
+
+
+    
+    
+         <a href="http://twitter.com/codekaio">Julien Wittouck</a>,
+    
+
+
+                <span>Publié le 27 Apr 2023</span>
+            </div>
+            <div class="extract">
+                <span></span><h1 id="créer-un-site-web-de-documentation-statique-avec-mkdocs">Créer un site web de documentation statique avec MkDocs</h1>
+
+<p>Que ce soit pour un projet d’entreprise ou un projet open-source, la documentation utilisateur et technique est cruciale.
+Dans une documentation d’usage, les utilisateurs doivent pouvoir retrouver les instructions leur permettant d’accomplir les gestes métier de tous les jours.
+Pour la documentation technique, les administrateurs, opérateurs et développeurs doivent pouvoir retrouver les opérations d’installation, de mise à jour, ou encore de développement du produit.</p>
+
+<p>La documentation peut prendre plusieurs formes:</p>
+
+<ul>
+  <li>un document bureautique, de type LibreOffice Writer ou Microsoft Word</li>
+  <li>des pages dans un référentiel documentaire de type <em>wiki</em>, ou <em>Atlassian Confluence</em></li>
+  <li>un site web dédié</li>
+</ul>
+
+<p>Les documents bureautique sont bien adaptés à la documentation de procédures, ou de spécifications. Cependant, ils souffrent de nombreux défauts comme le manque d’archivage des modifications, une recherche compliquée, un fort liant entre le format et le contenu et sont souvent portés par des formats propriétaires (le fameux <code class="highlighter-rouge">.docx</code>).</p>
+
+<p>Les référentiels de type <em>wiki</em> répondent au problèmes de recherche et d’archivage des historiques de modifications. Cependant, ils nécessitent souvent une infrastructure avec une base de données, et ont donc un coût d’hébergement et de maintenance.</p>
+
+<p>Le cas du site web statique dédié est le plus adapté à un projet open-source. Le site sera exposé sur internet, aidant à mettre en visibilité le projet. Un site web statique nécessite un hébergement minimum, sans base de données, et sera donc plus simple à mettre en place.</p>
+
+</span>
+                <!-- Créer un site web de documentation statique avec MkDocsQue ce soit pour un projet d’entreprise ou un projet open-source, la documentation utilisateur et technique est cruciale.Dans une documentation d’usage, les utilisateurs doivent pouvoir retrou... -->
+                <a class="read-more" href="/articles/common/mkdocs-material/">
+                    <span class="material-icons">arrow_forward_ios</span> 
+                    Lire la suite
+                </a>
+            </div>
+        </article>
     
         <article>
             <h2>Abstract Data Types</h2>
@@ -703,52 +749,68 @@ mais l’augmentation de la puissance des machines permet de rendre le “mutati
             </div>
         </article>
     
-        <article>
-            <h2>PWA : Innovation ou solution de consolation ?</h2>
-            <div class="post-header">
-                <span>Ecrit par</span>
-
-
-    
-    
-         <a href="">Romain Vermeeren</a>,
-    
-
-    
-    
-         <a href="">Yohann Gueguin</a>,
-    
-
-    
-    
-         <a href="http://twitter.com/m3stash">Laurent Duchaussoy</a>,
-    
-
-
-                <span>Publié le 29 Sep 2021</span>
-            </div>
-            <div class="extract">
-                <span></span><p><img src="/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg" alt="image" /></p>
-
-<p>Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
-Mais qu’est ce qu’une <code class="highlighter-rouge">Progressive Web App</code> ?</p>
-
-<p>Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de votre téléphone. Elle serait facile à mettre en place, de faible coût et elle n’aurait plus rien à envier aux applications natives.</p>
-
-<p>Afin de vous éclairer sur le sujet et de vous permettre de vous faire votre propre avis, vous trouverez ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</p>
-
-</span>
-                <!-- Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.Mais qu’est ce qu’une Progressive Web App ?Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de ... -->
-                <a class="read-more" href="/articles/front-end/pwa-innovation-or-consolation/">
-                    <span class="material-icons">arrow_forward_ios</span> 
-                    Lire la suite
-                </a>
-            </div>
-        </article>
-    
     <!-- Pagination links -->
     
     <nav aria-label="Page navigation">
+    
+    <ul class="pagination justify-content-center">
+      <!-- First Page. -->
+      
+        <li class="page-item disabled">
+          <span class="page-link">
+            <span class="material-icons">
+              first_page
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Première">Première</span>
+          </span>
+        </li>
+      
+
+      <!-- Previous Page. -->
+      
+        <li class="page-item disabled">
+          <span class="page-link">
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Précédent">Précédente</span>
+          </span>
+        </li>
+      
+
+      <!-- Indicator Number. -->
+      <li class="page-item nb-pages disabled">
+        <span class="page-link">
+          Page: 1 sur 2</span>
+      </li>
+
+      <!-- Next Page. -->
+      
+        <li class="page-item">
+          <a class="page-link" 
+            href="/page/2/" 
+            rel="next">
+            <span class="text-link" aria-hidden="true" aria-label="Suivante">Suivante</span>
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </span>
+          </a>
+        </li>
+      
+      <!-- Last Page. -->
+      
+        <li class="page-item">
+          <a class="page-link"
+            href="/page/2/"
+            rel="last">
+            <span class="text-link" aria-hidden="true" aria-label="Dernière">Dernière</span>
+            <span class="material-icons">
+              last_page
+            </span>
+          </a>
+        </li>
+      
+    </ul>
     
   </nav>
 </div>

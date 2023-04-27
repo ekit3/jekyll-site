@@ -5,7 +5,7 @@
         <meta name="theme-color" content="#000000"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Design Pattern</title>
+        <title> - page 2</title>
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/select2.min.css" />
         <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Bienvenue sur le Blog d'Ekite" />
@@ -244,7 +244,7 @@
             "ga"
         );
         ga("create", gaProperty, "auto"); // Replace with your property ID.
-        ga("send", "pageview", "/articles/other/design-pattern/");
+        ga("send", "pageview", "/page/2/index.html");
     }
 
     return {
@@ -371,13 +371,23 @@
 
         <main class="page-content" aria-label="Content">
             
-  <div class="posts single">
-    <button type="button" class="btn btn-dark btn-return" onclick="goBackHistory()">Retour</button>
-    <article>
-      <h2>Design Pattern</h2>
-      <div class="post-header">
-          <span>Ecrit par</span>
+  <div class="posts">
+    
+        <article>
+            <h2>PWA : Innovation ou solution de consolation ?</h2>
+            <div class="post-header">
+                <span>Ecrit par</span>
 
+
+    
+    
+         <a href="">Romain Vermeeren</a>,
+    
+
+    
+    
+         <a href="">Yohann Gueguin</a>,
+    
 
     
     
@@ -385,208 +395,93 @@
     
 
 
-          <span>Publié le 15 Jun 2022</span>
-      </div>
-      <div class="extract">
-          <span></span><h5 id="lart-de-savoir-utiliser-le-bon-outil-au-bon-moment">L’art de savoir utiliser le bon outil au bon moment<br /></h5>
+                <span>Publié le 29 Sep 2021</span>
+            </div>
+            <div class="extract">
+                <span></span><p><img src="/articles/front-end/pwa-innovation-or-consolation//pwa-dbz-img.jpg" alt="image" /></p>
 
-<p><img src="/articles/other/design-pattern//image-pattern.jpg" alt="image" /><br /></p>
+<p>Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
+Mais qu’est ce qu’une <code class="highlighter-rouge">Progressive Web App</code> ?</p>
 
-<p>Les “Design Patterns”, ou “patrons de conception”, sont un ensemble de solutions reconnues, particulièrement dans la programmation orientée objet, comme étant la meilleure réponse afin de résoudre un problème de conception récurrent.</p>
+<p>Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de votre téléphone. Elle serait facile à mettre en place, de faible coût et elle n’aurait plus rien à envier aux applications natives.</p>
 
-<p>Les exemples de patrons peuvent être faits de différentes façons: par le biais de schémas, de pseudo code, la manière d’organiser ses modules ou classes ou à l’aide d’une implémentation proposée.</p>
+<p>Afin de vous éclairer sur le sujet et de vous permettre de vous faire votre propre avis, vous trouverez ici les informations qui nous paraissent pertinentes pour une première approche fonctionnelle du sujet.</p>
 
-<!--END_SUMMARY-->
-
-<h2 id="doù-viennent-ils-">D’où viennent-ils ?</h2>
-
-<p>Nous pouvons être redevable à Christopher Alexander, anthropologue et architecte Américain pour avoir travaillé sur “la théorie des Pattern Languages” permettant des déclinaisons dans des domaines aussi divers que l’histoire de l’art, l’anthropologie…<br />
-Cette façon d’aborder le modèle de conception a été reprise en 1987 par Kent Beck (concepteur d’extrême programming) et Ward Cunningham (inventeur du concept de Wiki) , qui ont décidé d’appliquer ce type de design architectural à l’informatique.<br />
-C’est en 1994, à la suite d’un livre nommé <b>Design Patterns: Elements of Reusable Software</b> co-écrit par un collectif (GoF pour Gang of Four) et décrivant plus d’une vingtaine de patrons que ce principe fut réellement reconnu.</p>
-
-<h2 id="voici-les-différents-types-de-patrons-de-conception-">Voici les différents types de patrons de conception :</h2>
-
-<h3 id="le-patron-de-création-creational-pattern"><b>Le patron de création</b> (Creational Pattern)<br /></h3>
-<p>Il a pour but d’aider à résoudre les problèmes d’instanciation de classes.</p>
-
-<p>Quelques exemples:<br /></p>
-<ul>
-  <li>Singleton</li>
-  <li>Prototype</li>
-  <li>Fabrique (Factory)</li>
-  <li>Fabrique Abstraite (Abstract Factory)</li>
-  <li>Monteur (Builder)</li>
-</ul>
-
-<h3 id="le-patron-de-structure-structural-pattern"><b>Le patron de structure</b> (Structural Pattern)</h3>
-<p>Structurer les classes et objets afin de garder ceux-ci flexibles et efficaces au travers de leur 
-structuration et leur interface.</p>
-
-<p>Quelques exemples:<br /></p>
-<ul>
-  <li>Pont (Bridge)</li>
-  <li>Façade</li>
-  <li>Adaptateur (Adapter)</li>
-  <li>Objet composite</li>
-  <li>Proxy</li>
-  <li>Poids-mouche (Flyweight pattern)</li>
-  <li>Décorateur (Decorator)</li>
-</ul>
-
-<h3 id="le-patron-de-comportement-behavioral-pattern"><b>Le patron de comportement</b> (Behavioral Pattern)</h3>
-<p>Permet de modéliser et répartir les responsabilités entre les objets.</p>
-
-<p>Quelques exemples:<br /></p>
-<ul>
-  <li>Chaîne de responsabilité (Chain of Responsibility)</li>
-  <li>Commande (Command)</li>
-  <li>Interpréteur (Interpreter)</li>
-  <li>Itérateur (Iterator)</li>
-  <li>Médiateur (Mediator)</li>
-  <li>Mémento</li>
-  <li>Observateur (Observer)</li>
-  <li>Etat (State)</li>
-  <li>Stratégie (Strategy)</li>
-  <li>Patron de méthode (Template Method Pattern)</li>
-  <li>Visiteur (Visitor)</li>
-</ul>
-
-<h2 id="quand-et-pourquoi-les-utiliser-">Quand et pourquoi les utiliser ?</h2>
-
-<p>Un développeur ayant une culture du Design Pattern (et sachant quand c’est le moment d’en utiliser un) pourra trouver plus rapidement une solution grâce aux différents paradigmes proposés et ayant déjà fait leurs preuves.</p>
-
-<p>Il permet donc :</p>
-<ul>
-  <li>d’accélérer le processus de développement,</li>
-  <li>de réduire les bugs potentiels,</li>
-  <li>de connaître les bonnes pratiques et les pièges à éviter</li>
-  <li>de s’appuyer sur la capitalisation de l’expérience de la communauté.</li>
-</ul>
-
-<p>Il est donc vraiment important de l’intégrer le plus tôt possible dans le processus de conception / développement.<br />
-Un bon développeur devra savoir s’arrêter et remettre en question son code lorsqu’il se retrouve face à un problème.<br />
-Il faudra se demander “Ne suis-je pas en train de réinventer la roue ? N’existe t’il pas un patron qui pourrait répondre à ma problématique ?”</p>
-
-<h3 id="quelques-exemples">Quelques exemples</h3>
-
-<p>Il existe de nombreux modèles qui sont souvent très utilisés. La plupart du temps beaucoup de développeurs en utilisent sans savoir qu’il s’agit de modèles de patrons de conception.
-Voici quelques cas parmis ceux que vous utilisez peut-être sans même le savoir.</p>
-
-<p>Le <b>Modèle Composite</b> : pour représenter des structures arborescentes pour présenter des hiérarchies de composants / composés.</p>
-
-<p><img src="/articles/other/design-pattern//dp-1.jpg" alt="image" /><br /></p>
-
-<p>Le <b>Singleton</b> qui permet de limiter l’instanciation d’une classe à un seul objet.</p>
-
-<p><img src="/articles/other/design-pattern//dp-2.jpg" alt="image" /><br /></p>
-
-<p>Les <b>itérateurs</b> qui permettent de parcourir les éléments d’une collection (liste, arbre etc.).</p>
-
-<p>Le <b>Proxy</b> : substitue une classe à une autre en utilisant la même interface permettant entre autres la sécurité ou l’appel de méthodes à distance.</p>
-
-<p><img src="/articles/other/design-pattern//dp-3.jpg" alt="image" /><br /></p>
-
-<p>Le <b>Décorateur</b> : attacher dynamiquement des nouvelles responsabilités à un objet</p>
-
-<p><img src="/articles/other/design-pattern//dp-4.jpg" alt="image" /><br /></p>
-
-<p>Le <b>Façade</b> pour simplifier l’utilisation d’une interface complète.</p>
-
-<p>L’<b>Observateur</b> : mécanisme de souscription afin d’envoyer des notifications à plusieurs objets qui sont observés.</p>
-
-<p><img src="/articles/other/design-pattern//dp-5.jpg" alt="image" /><br /></p>
-
-<p>Le <b>Stratégie</b> qui permet de créer des algorithmes séparés dans plusieurs classes autonomes / interchangeables.</p>
-
-<p><img src="/articles/other/design-pattern//dp-6.jpg" alt="image" /><br /></p>
-
-<p>Voici un cas d’usage écrit en Typescript pour savoir quand l’utiliser. Imaginons que l’on souhaite faire plusieurs actions différentes mais avec le même objet, nous pourrions être tenté de faire une classe qui contiendrait toutes ces actions? Oui et non, car celà reviendrait à ne pas respecter un des principes du <a href="https://fr.wikipedia.org/wiki/SOLID_(informatique)">SOLID</a> à savoir le “S” pour Single Responsibility Principe.
-Prenons le cas d’un site, nous voulons développer une classe qui permet de gérer le paiement.</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Interface</span> <span class="nx">PaymentStrategy</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="nx">doPay</span><span class="p">(</span><span class="nx">amount</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>nous allons ensuite créer plusieurs classes correspondant aux différents moyens de paiement :</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">CreditCardStrategy</span> <span class="k">implements</span> <span class="nx">PaymentStrategy</span> <span class="p">{</span>
-
-    <span class="c1">//  ici on fait des traitements différents</span>
-
-    <span class="k">public</span> <span class="nx">doPay</span><span class="p">(</span><span class="nx">total</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">je paye en carte de crédit un total de</span><span class="dl">'</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>
-    <span class="p">}</span>		
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">OtherPaymentStrategy</span> <span class="k">implements</span> <span class="nx">PaymentStrategy</span> <span class="p">{</span>
-
-
-    <span class="c1">//  ici on fait des traitements différents</span>
-
-    <span class="k">public</span> <span class="nx">doPay</span><span class="p">(</span><span class="nx">total</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">je paye en X moyen de paiement un total de</span><span class="dl">'</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>
-	<span class="p">}</span>		
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Pour finir nous créerons une classe finale qui va permettre d’utiliser notre stratégie.</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Cart</span> <span class="p">{</span>
-
-	<span class="k">private</span> <span class="nx">total</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
-
-	<span class="kd">constructor</span><span class="p">(</span><span class="nx">total</span><span class="p">:</span> <span class="kr">number</span><span class="p">){</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">total</span> <span class="o">=</span> <span class="nx">total</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="k">public</span> <span class="nx">getTotalCart</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">total</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="nx">doPay</span><span class="p">(</span><span class="nx">PaymentStrategyMethod</span> <span class="nx">methodToPay</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-		<span class="nx">methodToPay</span><span class="p">.</span><span class="nx">doPay</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getTotalCart</span><span class="p">());</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Afin d’utiliser tout ça on pourrait imaginer un sélecteur lorsque l’on passe à l’étape du paiement qui permettrait de sélectionner son moyen de paiement préféré.</p>
-
-<p>exemple :</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">cart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cart</span><span class="p">(</span><span class="mi">199</span><span class="p">);</span>
-<span class="nx">cart</span><span class="p">.</span><span class="nx">doPay</span><span class="p">(</span><span class="k">new</span> <span class="nx">CreditCardStrategy</span><span class="p">());</span> <span class="c1">// pour le premier cas</span>
-<span class="nx">cart</span><span class="p">.</span><span class="nx">doPay</span><span class="p">(</span><span class="k">new</span> <span class="nx">OtherPaymentStrategy</span><span class="p">());</span> <span class="c1">// pour le second cas</span>
-</code></pre></div></div>
-
-<p>Le <b>Prototype</b> qui permet de créer de nouveaux objets à partir d’objets existants tout en laissant à la classe le soin du type d’objet à créer.</p>
-
-<p>La <b>Fabrique</b> pour instancier des objets dans une classe mère tout en laissant aux sous classes le choix des types d’objets à créer.</p>
-
-<p>L’ <b>Object Pool</b> pour économiser le temps d’instanciation et de suppression lorsque de nombreux objets ayant une vie courte seront utilisés.</p>
-
-<h2 id="pour-finir">Pour finir</h2>
-
-<p>Vous l’aurez compris, le Design Pattern fait partie intégrante des outils indispensables du développeur.<br /> 
-Le but de cet article est de vous donner l’envie de vous y intéresser, de lire, de découvrir et surtout d’apprendre à savoir quand les utiliser afin de répondre au mieux à vos besoins.</p>
-
-<p>Attention toutefois à ne pas tomber dans l’exact contraire, à savoir, l’anti pattern.<br />
-Cela reviendrait à faire le mauvais choix et donc à apporter la mauvaise réponse à une problématique donnée.</p>
-
-<p>Voici un exemple développé en Java par Maxime, il combine le Pattern Observer et Builder avec comme thème l’organisation de course à pied. <br />
-Lien du repos git : https://github.com/ekit3/design-pattern</p>
-
-<p>Sources ayant servie à écrire l’article et pour aller plus loin :</p>
-
-<p>https://fr.wikibooks.org/wiki/Patrons_de_conception
-https://ryax.tech/fr/design-pattern-cest-quoi-et-pourquoi-lutiliser/
-https://refactoring.guru/
-https://madasamy.medium.com/introduction-to-object-oriented-design-patterns-part-i-4e5c7845015b</p>
 </span>
-      </div>
-    </article>
-  </div>
+                <!-- Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.Mais qu’est ce qu’une Progressive Web App ?Pour certains c’est la promesse d’une expérience mobile responsive boostée par les fonctionnalités de ... -->
+                <a class="read-more" href="/articles/front-end/pwa-innovation-or-consolation/">
+                    <span class="material-icons">arrow_forward_ios</span> 
+                    Lire la suite
+                </a>
+            </div>
+        </article>
+    
+    <!-- Pagination links -->
+    
+    <nav aria-label="Page navigation">
+    
+    <ul class="pagination justify-content-center">
+      <!-- First Page. -->
+      
+        <li class="page-item">
+          <a 
+            class="page-link"
+            href="/"
+            rel="first">
+            <span class="material-icons">
+              first_page
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Première">Première</span>
+          </a>
+        </li>
+      
+
+      <!-- Previous Page. -->
+      
+        <li class="page-item">
+          <a class="page-link" 
+            href="/" 
+            rel="prev">
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </span>
+            <span class="text-link" aria-hidden="true" aria-label="Précédent">Précédent</span>
+          </a>
+        </li>
+      
+
+      <!-- Indicator Number. -->
+      <li class="page-item nb-pages disabled">
+        <span class="page-link">
+          Page: 2 sur 2</span>
+      </li>
+
+      <!-- Next Page. -->
+      
+        <li class="page-item disabled">
+          <span class="page-link">
+            <span class="text-link" aria-hidden="true" aria-label="Suivante">Suivante</span>
+            <span class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </span>
+          </span>
+        </li>
+      
+      <!-- Last Page. -->
+      
+        <li class="page-item disabled">
+          <span class="page-link">
+            <span class="text-link" aria-hidden="true" aria-label="Dernière">Dernière</span>
+            <span class="material-icons" aria-hidden="true">
+              last_page
+            </span>
+          </span>
+        </li>
+      
+    </ul>
+    
+  </nav>
+</div>
 
             <footer class="footer">
     <div class="footer-content">
