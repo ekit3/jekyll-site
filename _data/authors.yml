@@ -9,11 +9,11 @@ julien_wittouck:
     web: http://twitter.com/codekaio
 romain_vermeeren:
     name: Romain Vermeeren
-    email: 
+    email: romain.vermeeren@ekit3.com
     web: 
 yohann_gueguin:
     name: Yohann Gueguin
-    email: 
+    email: yohann.gueguin@ekit3.com
     web: 
 yoann_bouquet:
     name: Yoann Bouquet
@@ -21,17 +21,21 @@ yoann_bouquet:
     web: 
 mehdi_kheir:
     name: Mehdi Kheir
-    email: 
+    email: mehdi.kheir@ekit3.com
     web: 
 pauline_vandame:
     name: Pauline Vandame
-    email: 
+    email: pauline.vandame@ekit3.com
     web:
 florian_barbet:
     name: Florian Barbet
-    email:
+    email: florian.barbet@ekit3.com
     web:
 jean_dusenne:
     name: Jean Dusenne
     email:
+    web:
+maxime_montagne:
+    name: Maxime Montagne
+    email: maxime.montagne@ekit3.com
     web:
