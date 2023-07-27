@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-07-26T03:10:51-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Kafka</title><link href="/articles/architecture/kafka/" rel="alternate" type="text/html" title="Kafka" /><published>2023-05-11T02:00:00-05:00</published><updated>2023-05-11T02:00:00-05:00</updated><id>/articles/architecture/kafka</id><content type="html" xml:base="/articles/architecture/kafka/">&lt;h5 id=&quot;introduction-à-kafka&quot;&gt;Introduction à Kafka&lt;/h5&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-07-27T03:10:11-05:00</updated><id>/feed.xml</id><title type="html">Blog | Tech</title><subtitle>Welcome To the Ekite's Tech Blogs.</subtitle><entry><title type="html">Feature Flipping</title><link href="/articles/architecture/feature-flipping/" rel="alternate" type="text/html" title="Feature Flipping" /><published>2023-07-27T02:00:00-05:00</published><updated>2023-07-27T02:00:00-05:00</updated><id>/articles/architecture/feature-flipping</id><content type="html" xml:base="/articles/architecture/feature-flipping/">&lt;h5 id=&quot;introduction&quot;&gt;Introduction&lt;/h5&gt;
+
+&lt;p&gt;Ici nous allons parler de Feature Flipping, (que vous pouvez aussi connaitre sous le nom de Feature Toggles, Feature Switches, Feature Flag et bien d’autres encore), qui a pour principe de donner la possibilité de contrôler l’accès à des fonctionnalités de vos applications.&lt;/p&gt;
+
+&lt;p&gt;Cette technique devient pertinente lorsque que par exemple, nous voulons mettre en place des fonctionnalités destinées à un public cible (beta user, premium user …), que nous souhaitons avoir plus de contrôle sur l’ensemble des services proposés par une application (possibilité de désactiver telle ou telle fonctionnalité pour maintenance, évolution, correctifs).&lt;/p&gt;
+
+&lt;p&gt;Cette méthodologie peut être implémentée dans différents langage et de manière différente, cela va être à vous de choisir ce qui correspond le mieux à votre besoin. 
+Il existe déjà des librairies, des Frameworks, et même des solutions SaaS pour répondre à ce besoin.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/articles/architecture/feature-flipping//intro.jpg&quot; alt=&quot;image&quot; /&gt; &lt;br /&gt;
+&lt;!--END_SUMMARY--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;quel-intérêt-pour-la-technique-&quot;&gt;Quel intérêt pour la technique ?&lt;/h2&gt;
+
+&lt;h3 id=&quot;cycle-de-vie-de-livraison-dapplication&quot;&gt;Cycle de vie de livraison d’application&lt;/h3&gt;
+
+&lt;p&gt;Le Feature Flipping apporte beaucoup de souplesse dans le cycle de vie d’une application et ce à plusieurs niveaux.&lt;/p&gt;
+
+&lt;p&gt;D’abord l’équipe de développement va pouvoir désactiver tout ou partie du code source d’une ou de plusieurs features. Une feature non finalisée ou qu’on ne souhaite pas activer ne bloquera pas le déploiement d’une release complète. Ce qui ajoute énormément de liberté à l’équipe de développement dans ses réalisations.&lt;/p&gt;
+
+&lt;p&gt;Ces features pourront être activées dans un second temps et n’empêchent donc pas le bon fonctionnement du processus de déploiement continu d’une application.&lt;/p&gt;
+
+&lt;h3 id=&quot;graceful-degradation--progressive-enhancement--fr-dégradation-gracieuse--amélioration-progressive&quot;&gt;Graceful degradation &amp;amp; Progressive enhancement ( fr: Dégradation gracieuse &amp;amp; Amélioration progressive)&lt;/h3&gt;
+
+&lt;p&gt;Cela permet aussi, lorsqu’on identifie un problème sur une fonctionnalité, de pouvoir la désactiver sans avoir besoin de déployer une nouvelle release. L’activation et la désactivation d’une feature peut se faire distinctement du déploiement d’une release. Imaginons que votre parcours de vente soit complétement bloqué à cause d’une étape facultative, la désactiver rendra le service à vos utilisateurs&lt;/p&gt;
+
+&lt;p&gt;On peut également faire du déploiement “progressif” de fonctionnalités. C’est à dire, n’autoriser l’accès qu’à une poignée d’utilisateurs de l’application. Ainsi, cela permet à l’équipe de s’assurer de la pertinence d’une fonctionnalité avant un déploiement complet à l’ensemble des utilisateurs, et aussi potentiellement détecter des anomalies niveau applicatif ou infrastructure, qui n’avaient pas été anticipées.&lt;/p&gt;
+
+&lt;h2 id=&quot;quel-intérêt-pour-le-métier-&quot;&gt;Quel intérêt pour le Métier ?&lt;/h2&gt;
+
+&lt;h3 id=&quot;tests-ab&quot;&gt;Tests A/B&lt;/h3&gt;
+
+&lt;p&gt;Dans l’agilité, nous parlons souvent du principe de l’empirisme. Ce principe se résume grosso-modo à l’apprentissage par l’expérience. L’A/B testing en est un bel exemple. Il permet de proposer des parcours différents de façon aléatoire afin de récolter des datas sur l’utilisation de l’application, et donc, de comprendre comment les utilisateurs l’utilisent en réalité.&lt;/p&gt;
+
+&lt;p&gt;La mise en place de campagnes de test “A/B testing” est simple à comprendre, il permet de donner l’accès à différents parcours utilisateurs sur une même fonctionnalité ou encore de modifier graphiquement l’application pour avoir différents retours selon son utilisation. Ainsi, grâce aux données récoltées lors des campagnes de test, nous allons pouvoir valider une ou plusieurs hypothèses sur l’utilisation d’une ou de plusieurs fonctionnalités.&lt;/p&gt;
+
+&lt;p&gt;Nous avons donc appris par l’expérience des utilisateurs que l’application devra s’orienter vers la version définitive d’une fonctionnalité qui correspond mieux aux besoins utilisateurs.&lt;/p&gt;
+
+&lt;h3 id=&quot;fonctionnalités-temporaires--payantes&quot;&gt;Fonctionnalités temporaires &amp;amp; Payantes&lt;/h3&gt;
+
+&lt;p&gt;Le feature flipping permet également de pouvoir activer des fonctionnalités uniquement lors de périodes spécifiques. Comme par exemple, un jeu ou un affichage spécifique pour la période de Noël, qu’on pourra désactiver une fois les fêtes terminées. 
+Des modules activés uniquement en période de soldes, ou même des campagnes réservées aux premiers utilisateurs qui accéderons a la fonctionnalité. 
+On peut également rapidement mettre en place un système pour gérer des fonctionnalités payantes de la même manière que pour les features temporaire, juste en changeant les critères de sélection.&lt;/p&gt;
+
+&lt;h2 id=&quot;comment-implémenter&quot;&gt;Comment implémenter&lt;/h2&gt;
+
+&lt;p&gt;Il existe un &lt;a href=&quot;https://featureflags.io/&quot;&gt;site web&lt;/a&gt; qui rassemble énormément de ressources autour de ce sujet, des guides, mais aussi une liste de librairies/SDKs. En le parcourant, nous nous rendons compte qu’il existe beaucoup de façons différentes de l’implémenter.&lt;/p&gt;
+
+&lt;p&gt;Il existe plusieurs frameworks disponibles, parfois pour plusieurs langages de développement, nous pouvons retrouver par exemple, FF4J pour Java, FFLIP pour nodeJS ou encore Toggle pour Golang.&lt;/p&gt;
+
+&lt;p&gt;On peut également retrouver des solutions Saas qui vont vous permettre via un SDK, (et bien sûr moyennant finance 😊), d’implémenter du feature flipping dans votre code, c’est le cas par exemple de launchdarkly, qui a un sdk disponible pour quasiment tous les langages du marché.&lt;/p&gt;
+
+&lt;p&gt;Le plus intéressant serait peut-être de créer une solution maison, mais cela demanderait pas mal d’effort, et pourrait devenir vite complexe à gérer pour les différents langages qu’on peut utiliser. Cependant ! Il existe une solution open source, que vous pouvez déployer, via du conteneur dans votre infrastructure, compatible avec les langages les plus communs, il s’agit de Unleash qui apprait comme étant une solution très attrayante ! Mettant à disposition facilement une plateforme de gestion des features, facile à déployer et à maintenir, vous laissant également la possibilité d’y implémenter des fonctionnalités propres à vos besoin, compatible avec la plupart des langages, que demander de mieux !&lt;/p&gt;
+
+&lt;h2 id=&quot;quelques-tests-pour-se-faire-un-avis&quot;&gt;Quelques tests pour se faire un avis&lt;/h2&gt;
+
+&lt;p&gt;Pour tester rapidement, nous avons décidé de fabriquer une application web, développée en React, qui ferait appel à deux APIs différentes, une développée en NestJS, l’autre en Java Spring, pour justement activer ou non des features.&lt;/p&gt;
+
+&lt;p&gt;Côté React nous avons utilisé &lt;a href=&quot;https://github.com/paralleldrive/react-feature-toggles/&quot;&gt;React Feature Toggles&lt;/a&gt;, l’implémentation du feature flipping est assez simple coté front. Nous récupérons la liste des features et en fonction de leur disponibilité : les composants relatifs à ces features sont activés/chargés.&lt;/p&gt;
+
+&lt;p&gt;Pour l’API Nestjs, nous avons utilisé &lt;a href=&quot;https://github.com/FredKSchott/fflip&quot;&gt;FFLIP&lt;/a&gt;, plutôt simple à mettre en place, qui fonctionne avec un principe de critères qui peuvent être définis, calculés et cumulés, qui donnent accès à une ou plusieurs features. La simplicité d’utilisation et de compréhension permet une mutualisation rapide du code et le tout sans coût supplémentaire, contrairement à d’autres solutions Saas.&lt;/p&gt;
+
+&lt;p&gt;Exemple d’un critère&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;isPaidUser&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isPaid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isPaid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isPaid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Exemple d’une feature&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;newFeatureRollout&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;c1&quot;&gt;// Si la feature est associée à une liste de critère, tous les critères doivent être évalués à vrai pour rendre accessible la feature à l’utilisateur &lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;criteria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; 
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;isPaidUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;percentageOfUsers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allowUserIDs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AllowEdIds&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Exemple utilisation simple&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fflip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;fflip&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+
+ &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Bob&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;isPaid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;scrum&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;canDrinkBeer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+
+&lt;span class=&quot;nx&quot;&gt;fflip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;criteria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Criteria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Une liste de critères comme définie plus haut &lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Une liste de feature comme définie plus haut &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; 
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fflip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFeaturesForUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt; 
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;listName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fflip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isFeatureEnabledForUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;canDrinkBeer&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Welcome to the Closed Beta!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; can go drink some beer!\n`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pour finir, avec l’API Spring, nous avons essayé de mettre en place un système maison, afin de vérifier la possibilité de se passer de librairie ou solution tierce. Et le résultat est plutôt concluant, nous avons des résultats similaires entre les 2 APIs.&lt;/p&gt;
+
+&lt;p&gt;Très grossièrement, pour imager à quoi ressemble un bout de code qui utilise du Feature Flipping, nous pourrions le résumer à un ensemble de “if”.&lt;/p&gt;
+
+&lt;p&gt;Type implémentation simple&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    if Feature.is_enabled(‘new_feature’) 
+        # new feature 
+    else 
+        # other 
+    End 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le Feature Flipping consiste à activer ou désactiver une fonctionnalité en fonction d’une variable, dynamiquement dans le code.&lt;/p&gt;
+
+&lt;p&gt;Mais vous vous rendrez compte que c’est un peu plus complexe que cela, si vous le souhaitez, vous pouvez retrouver nos essais &lt;a href=&quot;https://github.com/ekit3/feature-flipping&quot;&gt;ici&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Au final il nous restait un bon nombre de librairies sur différentes technologies à tester, la liste étant longue, peu importe les affinités que vous avez dans les langages de développement vous trouverez de quoi essayer et pourquoi pas le mettre en place&lt;/p&gt;
+
+&lt;h2 id=&quot;limites&quot;&gt;Limites&lt;/h2&gt;
+
+&lt;h3 id=&quot;multiplications-des-cas-de-tests&quot;&gt;Multiplications des cas de tests&lt;/h3&gt;
+
+&lt;p&gt;Ce type de développement implique une grande rigueur quant au suivi et à la mise en place des tests autour de l’application. La multiplication des scénarios de tests et des différents parcours utilisateurs peut être une source de complication si le Feature Flipping n’est pas suivi ni appliqué correctement. Une grande rigueur est nécessaire de la part de toute l’équipe de développement.&lt;/p&gt;
+
+&lt;h3 id=&quot;changement-modèle-de-données&quot;&gt;Changement modèle de données&lt;/h3&gt;
+
+&lt;p&gt;Il ne faut pas oublier non plus que certaines modifications de fonctionnalités peuvent impliquer des impacts sur le modèle de données de l’application, ce qui peut rendre compliqué la cohabitation de plusieurs features.&lt;/p&gt;
+
+&lt;p&gt;Le métier ne demandera pas le feature flipping pour les mêmes raisons (activation des features en fonctions des périodes, des profils utilisateurs) que le développement (faciliter le développement, le déploiement et rendre dispo la feature une fois terminée et testée)&lt;/p&gt;
+
+&lt;p&gt;Alors, dans quelle mesure et jusqu’où peut-on aller avec le Feature Flipping ?&lt;/p&gt;
+
+&lt;h3 id=&quot;quelques-conseils&quot;&gt;Quelques conseils&lt;/h3&gt;
+
+&lt;p&gt;Si vous deviez mettre en place le Feature Flipping, un premier conseil serait de le faire dès le début de vos projets ou de l’intégrer sur des nouvelles fonctionnalités indépendantes, cela peut représenter un gros travail de reprendre un système déjà en place.&lt;/p&gt;
+
+&lt;p&gt;Il vous faudra également beaucoup de liant entre les équipes de développement, la qualité et le métier afin garantir une application parfaitement fonctionnelle de bout en bout. 
+Mais ces efforts en valent la peine, vous n’aurez plus à attendre les tests de telle ou telle feature pour déployer, vous pourrez interagir plus facilement avec vos utilisateurs et mieux réagir en cas de problèmes.&lt;/p&gt;</content><author><name>[&quot;yohann_gueguin&quot;, &quot;maxime_montagne&quot;, &quot;jean_dusenne&quot;]</name></author><category term="Architecture" /><summary type="html">Introduction Ici nous allons parler de Feature Flipping, (que vous pouvez aussi connaitre sous le nom de Feature Toggles, Feature Switches, Feature Flag et bien d’autres encore), qui a pour principe de donner la possibilité de contrôler l’accès à des fonctionnalités de vos applications. Cette technique devient pertinente lorsque que par exemple, nous voulons mettre en place des fonctionnalités destinées à un public cible (beta user, premium user …), que nous souhaitons avoir plus de contrôle sur l’ensemble des services proposés par une application (possibilité de désactiver telle ou telle fonctionnalité pour maintenance, évolution, correctifs). Cette méthodologie peut être implémentée dans différents langage et de manière différente, cela va être à vous de choisir ce qui correspond le mieux à votre besoin. Il existe déjà des librairies, des Frameworks, et même des solutions SaaS pour répondre à ce besoin.</summary></entry><entry><title type="html">Kafka</title><link href="/articles/architecture/kafka/" rel="alternate" type="text/html" title="Kafka" /><published>2023-05-11T02:00:00-05:00</published><updated>2023-05-11T02:00:00-05:00</updated><id>/articles/architecture/kafka</id><content type="html" xml:base="/articles/architecture/kafka/">&lt;h5 id=&quot;introduction-à-kafka&quot;&gt;Introduction à Kafka&lt;/h5&gt;
 
 &lt;p&gt;Bienvenue dans cette vidéo !
 Ici nous allons vulgariser les concepts de bases liés à Kafka, et vous donner une idée des cas dans lesquels il est justifié de l’utiliser.
@@ -1974,137 +2128,4 @@ Parmi les plus connus on peut citer Single-spa, Bit, Qiankun, Open components �
 
 &lt;p&gt;Il est nécessaire de mettre en place une gouvernance forte pour garantir une cohérence dans les choix pris lors du développement des différents composants. (Objectif : assurer une qualité et maintenabilité globale).&lt;/p&gt;
 
-&lt;p&gt;Links : https://www.infoq.com/news/2019/04/real-world-framework-benchmark/&lt;/p&gt;</content><author><name>[&quot;yohann_gueguin&quot;, &quot;florian_barbet&quot;, &quot;laurent_duchaussoy&quot;]</name></author><category term="Front-End" /><summary type="html">Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ». Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE. Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”. Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun. Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs. Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun. Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…</summary></entry><entry><title type="html">Eco Conception</title><link href="/articles/green-it/eco-conception/" rel="alternate" type="text/html" title="Eco Conception" /><published>2022-02-02T01:00:00-06:00</published><updated>2022-02-02T01:00:00-06:00</updated><id>/articles/green-it/eco-conception</id><content type="html" xml:base="/articles/green-it/eco-conception/">&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image4.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;L’éco-design, l’éco-conception, le green it ou dernièrement &lt;code class=&quot;highlighter-rouge&quot;&gt;la conception responsable de service numérique&lt;/code&gt; sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire.&lt;/p&gt;
-
-&lt;p&gt;“Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)&lt;/p&gt;
-
-&lt;!--END_SUMMARY--&gt;
-
-&lt;p&gt;Que ce soit dans une démarche écologique engagée ou à des fins de communication, le monde de l’informatique n’échappe pas à cette problématique sociétale. Comme dans tous les domaines, l’optimisation des ressources consommées se fait à tous les niveaux et sur tous les périmètres d’un projet informatique :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Conception fonctionnelle&lt;/li&gt;
-  &lt;li&gt;Ergonomie&lt;/li&gt;
-  &lt;li&gt;Conception technique&lt;/li&gt;
-  &lt;li&gt;Conception graphique&lt;/li&gt;
-  &lt;li&gt;Développement&lt;/li&gt;
-  &lt;li&gt;Hébergement&lt;/li&gt;
-  &lt;li&gt;Contenu
-…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Si certaines solutions paraissent évidentes, comme l’abonnement à une énergie verte, d’autres sont plus étonnantes, comme le fait de remplacer les boutons officiels de partage des réseaux sociaux.&lt;/p&gt;
-
-&lt;p&gt;Cet article n’a pas pour but de toutes les lister mais d’aborder le lien entre solution numérique et consommation de ressources et de proposer un panel représentatif de la richesse du sujet. Le but n’est pas de donner une leçon ou de sauver  le monde.&lt;/p&gt;
-
-&lt;h5 id=&quot;le-numérique-la-physique-avant-tout&quot;&gt;Le numérique, la physique avant tout.&lt;/h5&gt;
-
-&lt;p&gt;En premier lieu, il convient de poser quelques notions pour comprendre comment des informations dématérialisées comme une page web, un email ou encore le visionnage d’une vidéo peut avoir un impact sur l’environnement.&lt;/p&gt;
-
-&lt;p&gt;Prenons l’exemple d’une page d’un site e-commerce.&lt;/p&gt;
-
-&lt;p&gt;Pour consulter cette page web, l’internaute à besoin d’un ordinateur, d’un smartphone ou d’une tablette qu’il va renouveler en moyenne tous les 2 ans. Ce terminal est connecté à une box. La fabrication de ces appareils est coûteuse en ressources environnementales puisque la production de leurs composants exige beaucoup d’énergie, des traitements chimiques et des métaux rares.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image3.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
-&lt;a href=&quot;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&quot; target=&quot;_blank&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ensuite (de façon simplifiée) pour afficher les éléments de la page web (des photos du produit, une description, des caractéristiques, une vidéo explicative, des produits complémentaires….) : on fait appel à des informations stockées sur un serveur, celui-ci traitant la demande et renvoyant les éléments à afficher en retour. Ces informations passent par un réseau de câbles qui consomme de l’énergie, s’use, doit être remplacé ou changé pour absorber la quantité de données toujours croissante.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image2.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Chacun de ces appels nécessite de l’électricité, dont la production est responsable d’émissions de gaz à effet de serre. Plus il y a d’éléments différents, plus ces éléments sont volumineux, plus l’impact environnemental de cette page sera élevé.
-Ces serveurs ont également besoin d’électricité pour fonctionner, et comme ils génèrent de la chaleur à l’usage, ils nécessitent des systèmes de refroidissement eux aussi coûteux en électricité pour fonctionner.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image5.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
-&lt;em&gt;Problématique de refroidissement des datacenters - ferme de serveurs sous marin&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Le socle du numérique et ses impacts sur l’environnement est en réalité physique !&lt;/p&gt;
-
-&lt;p&gt;Sans oublier également, le technicien qui se déplace pour la maintenance et toutes les autres dépendances et impacts que cela génère…&lt;/p&gt;
-
-&lt;h5 id=&quot;les-impacts-du-numérique-sur-lenvironnement-en-quelques-chiffres&quot;&gt;Les impacts du numérique sur l’environnement en quelques chiffres:&lt;/h5&gt;
-
-&lt;p&gt;Le rapport de GreenIT.fr réalisé avec le soutien de l’Institut du Numérique Responsable réalisé en 2019 nous indique que le secteur du numérique représente 3,8% de l’émission des gaz à effet de serre au niveau mondial. La plus grande source d’impact environnemental du numérique est liée aux équipements des utilisateurs qui représentent 39% des émissions de gaz à effet de serre, 74% de la consommation d’eau et 76% de contribution à l’épuisement des ressources.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/articles/green-it/eco-conception//image1.gif&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
-&lt;em&gt;évolution de l’empreinte environnementale de 2010 a 2025  (&lt;a href=&quot;https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf&quot; target=&quot;_blank&quot;&gt;source&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;economie-déchelle&quot;&gt;Economie d’échelle&lt;/h5&gt;
-
-&lt;p&gt;Il nous paraît important d’expliquer le principe d’économie d’échelle avant de s’intéresser aux optimisations concrètes.&lt;br /&gt;
-Pourquoi ? Pour éviter le linchage populaire lorsque vous lirez qu’utiliser une simple quote au lieu d’une double fait consommer moins.&lt;/p&gt;
-
-&lt;p&gt;L’économie d’échelle correspond traditionnellement à la baisse d’un coût unitaire de production qui rapporté à une augmentation de la quantité produite entraîne une économie importante.&lt;br /&gt;
-Vous retirez une frite de chaque repas vendu en france par mcdo (1 800 000 /jour) et vous économisez de la pomme de terre à la fin de l’année !&lt;/p&gt;
-
-&lt;p&gt;Rapporté à notre sujet, il s’agit de diminuer la ressource consommée par chacun de vos utilisateurs pour finalement économiser une grande quantité d’énergie. Et quand on s’appelle Google, par exemple, la mise en place du dark mode entraîne des économies conséquentes.&lt;/p&gt;
-
-&lt;h5 id=&quot;en-pratique&quot;&gt;En pratique&lt;/h5&gt;
-
-&lt;p&gt;En pratique, il est possible d’agir à tous les niveaux de création et de vie d’un produit informatique : depuis sa conception fonctionnelle, graphique ou technique jusqu’à sa réalisation et sa mise en œuvre.&lt;/p&gt;
-
-&lt;p&gt;Il n’est pas question ici de vous fournir une liste exhaustive d’actions à mettre en place mais plutôt d’évoquer quelques problématiques pour découvrir le sujet ou s’y sensibiliser.&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Compatibilité des sites web aux différents appareils et navigateurs&lt;/b&gt;&lt;br /&gt;
-Au vu du rôle des équipements d’affichage dans l’impact du numérique sur l’environnement, il est primordial aujourd’hui de concevoir les sites web de façon responsive. Cela va permettre à n’importe quel utilisateur de l’utiliser de façon optimale sans avoir besoin d’un appareil en particulier. Cela permet également de limiter le poids des pages (par exemple sur la taille des images) en fonction du terminal utilisé. 
-La compatibilité vers les anciens navigateurs est également à prendre en compte pour minimiser les changements d’équipement.
-Les éventuels surcoûts de développement sont ici rattrapés par l’audience touchée et le confort de l’expérience utilisateur qui sera bénéfique à la conversion et donc au business.&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Sobriété du design et du contenu&lt;/b&gt;&lt;br /&gt;
-Lorsque l’on se lance dans un projet qu’il soit professionnel ou personnel, on souhaite tous qu’il soit unique. Mais attention, à vouloir trop personnaliser on sort souvent des standards ce qui entraîne des chargements supplémentaires. Il est important de prendre en compte l’impact d’une police originale, d’une photo très haute définition ou d’éléments graphiques minutieux pour décider si l’apport au niveau UX reste intéressant.&lt;/p&gt;
-
-&lt;p&gt;Un site web éco-conçu est un site sobre au design épuré, sans forcément le dépouiller : il s’agit de respecter les besoins et les contraintes tout en supprimant le superflu.&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Sobriété des fonctionnalités&lt;/b&gt;&lt;br /&gt;
-Dans une société d’abondance, les produits numériques ne font pas exception à la règle. Combien de fonctionnalités utilisez-vous réellement sur vos applications?
-Il arrive vite que l’on empile les nouvelles fonctionnalités en se réjouissant de voir notre projet grandir et s’étoffer, avec l’impression d’offrir aux utilisateurs une expérience riche. Mais encore une fois l’éco conception fait réfléchir sur l’utile et le superflu. Il est important de connaître le parcours de ses utilisateurs et de retirer les fonctionnalités non utilisées pour un gain d’énergie, de performance mais aussi de lisibilité.&lt;/p&gt;
-
-&lt;p&gt;Diversifier son offre est intéressant mais gardez en tête de répondre aux besoins pour lesquels vos utilisateurs vous ont contacté.&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;S’arrêter à temps: le mieux est l’ennemi du bien&lt;/b&gt;
-L’un des aspects les plus compliqué à gérer est de savoir se limiter dans l’optimisation.
-L’instantanéité par exemple : elle n’est parfois pas utile et repasser sur des traitements asynchrone répondra amplement à vos besoins tout en diminuant le nombre d’échanges dans votre SI.&lt;/p&gt;
-
-&lt;p&gt;Une saisie assistée peut accompagner parfaitement votre utilisateur sans aller jusqu’à faire de l’autocomplétion systématique dès 3 caractères saisis.&lt;/p&gt;
-
-&lt;p&gt;Une redirection simple vers les réseaux sociaux est souvent suffisante et beaucoup moins consommatrice que les boutons natifs proposés par ces plateformes qui génèrent de nombreux appels.&lt;/p&gt;
-
-&lt;h5 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h5&gt;
-
-&lt;p&gt;Il existe une multitude d’actions possibles pour limiter l’impact des produits numériques. Nous pourrions passer des heures à décrire comment réduire la consommation d’énergie en passant sur du dark mode, ou en modifiant les CSS pour optimiser l’aspect d’une page pour l’impression par exemple.&lt;br /&gt;
-Le but de cet article était plutôt de sensibiliser au sujet, d’exposer la richesse des options possibles pour limiter l’impact environnemental de son produit en intégrant l’écoconception au sein du processus créatif.&lt;/p&gt;
-
-&lt;p&gt;Selon la nature du produit, énormément de choses peuvent être faites, tout dépend de votre contexte…Si le sujet vous intéresse et que vous avez envie d’aller plus loin, voici quelques liens utiles et notamment une liste des bonnes pratiques.&lt;/p&gt;
-
-&lt;h5 id=&quot;pour-aller-aller-plus-loin&quot;&gt;Pour aller aller plus loin&lt;/h5&gt;
-
-&lt;p&gt;liste de bonnes pratiques:&lt;br /&gt;
-&lt;a href=&quot;https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.htm&quot;&gt;https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.htm&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Liste d’outils utiles pour mesurer son impact:&lt;br /&gt;
-&lt;a href=&quot;https://institutnr.org/outils-ecoconception-accessibilite&quot;&gt;https://institutnr.org/outils-ecoconception-accessibilite&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Rapport mondial sur l’impact du numérique en 2019: &lt;br /&gt;
-&lt;a href=&quot;https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf&quot;&gt;https://www.greenit.fr/wp-content/uploads/2019/10/2019-10-GREENIT-etude_EENM-rapport-accessible.VF_.pdf&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Impact du numérique en France : &lt;br /&gt;
-&lt;a href=&quot;https://www.greenit.fr/wp-content/uploads/2021/02/2021-01-iNum-etude-impacts-numerique-France-rapport-0.8.pdf&quot;&gt;https://www.greenit.fr/wp-content/uploads/2021/02/2021-01-iNum-etude-impacts-numerique-France-rapport-0.8.pdf&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Sobriété numérique, consommation usage et production: &lt;br /&gt;
-&lt;a href=&quot;https://theshiftproject.org/wp-content/uploads/2020/10/Deployer-la-sobriete-numerique_Rapport-complet_ShiftProject.pdf&quot;&gt;https://theshiftproject.org/wp-content/uploads/2020/10/Deployer-la-sobriete-numerique_Rapport-complet_ShiftProject.pdf&lt;/a&gt;
-&lt;a href=&quot;https://medium.com/codeshake/%C3%A9coconception-8-cas-pratiques-dapplication-14032c72e8f6&quot;&gt;https://medium.com/codeshake/%C3%A9coconception-8-cas-pratiques-dapplication-14032c72e8f6&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie/#:~:text=L'analyse%20du%20cycle%20de,de%20services%20sur%20l'environnement&quot;&gt;https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie/#:~:text=L'analyse%20du%20cycle%20de,de%20services%20sur%20l'environnement&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;références-&quot;&gt;Références :&lt;/h5&gt;
-&lt;p&gt;&lt;a href=&quot;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&quot;&gt;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&lt;/a&gt;
-&lt;a href=&quot;https://www.eco-conception.fr/static/definition-de-leco-conception.html&quot;&gt;https://www.eco-conception.fr/static/definition-de-leco-conception.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&quot;&gt;https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf?modal=false&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Impact du dark mode:&lt;br /&gt;
-&lt;a href=&quot;https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm&quot;&gt;https://www.cnetfrance.fr/news/android-google-confirme-que-le-mode-sombre-ameliore-l-autonomie-39876317.htm&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&quot;&gt;https://hitek.fr/actualite/le-compte-est-bon-mario-macdonalds_4002&lt;/a&gt;&lt;/p&gt;</content><author><name>[&quot;pauline_vandame&quot;, &quot;romain_vermeeren&quot;, &quot;mehdi_kheir&quot;]</name></author><category term="Green-IT" /><summary type="html">L’éco-design, l’éco-conception, le green it ou dernièrement la conception responsable de service numérique sont des termes qui représentent, avant tout, le fait de réfléchir à l’impact environnemental de son projet informatique et aux solutions pour le limiter ou le réduire. “Approche méthodique qui prend en considération les aspects environnementaux du processus de conception et développement dans le but de réduire les impacts environnementaux négatifs tout au long du cycle de vie d’un produit” (Norme ISO14006 v2020)</summary></entry></feed>
+&lt;p&gt;Links : https://www.infoq.com/news/2019/04/real-world-framework-benchmark/&lt;/p&gt;</content><author><name>[&quot;yohann_gueguin&quot;, &quot;florian_barbet&quot;, &quot;laurent_duchaussoy&quot;]</name></author><category term="Front-End" /><summary type="html">Inspiré par les architectures microservices Back-End, le principe du micro-front end se résume en une agrégation de composants web « isolées ». Voyez la page finale comme un puzzle où chaque morceau serait un composant MFE. Ces composants peuvent être une barre de navigation, un bouton ou tout simplement un texte. Cette découpe apporte en quelque sorte de la “liberté”. Ce type d’architecture permet de choisir son framework Front, d’être autonome sur sa livraison et de séparer les projets par équipes au lieu de travailler sur un monolith commun. Le but du MFE est de simplifier la gestion, la maintenabilité, la conception et le découpage des interfaces utilisateurs. Garantir le bon fonctionnement de la page Web finale demandera de la rigueur et un travail commun. Il existe une multitude de façon de faire du micro-front end notamment en utilisant des technologies HTML (Iframe) ou un agrégateur en Back End (type Node Js, Java etc..)…</summary></entry></feed>
